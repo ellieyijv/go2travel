@@ -8,8 +8,8 @@
             <div class="row" style="padding-top:13px;" >
             <b-card-text class="col special-price">{{card.price}}</b-card-text>
          
-            <b-button class="special-days col">15天14夜</b-button>
-            <b-button class="special-more col">查看更多</b-button>
+            <div class="special-days col" >15天14夜</div>
+            <b-button class="special-more col btn-lg">查看更多</b-button>
            
         </div>
     </div>
@@ -35,6 +35,17 @@ export default {
 .card img{
     height:210px;
 }
+
+.card img:hover{
+    position:relative;
+    top:-25px;
+    left:-15px;
+    right:-15px;
+    width:380px;
+    height:auto;
+    display:block;
+    z-index:999;
+}
 .card-body{
     padding:0;
 }
@@ -44,7 +55,7 @@ export default {
     height:52px;
     font-size:18px;
     color:#103A5B;
-    font-weight:bold;
+    font-family: 'FangPing';
     padding:10px;
 }
 
@@ -66,6 +77,9 @@ export default {
     color:#FFFFFF;
     border:none;
     border-radius: 0;
+    font-size:14px;
+    text-align: center;
+    padding-top:2%;
 }
 
 .special-more{
@@ -73,5 +87,6 @@ export default {
     color:white;
     border:none;
     border-radius: 0;
+    font-size:14px;
 }
 </style>

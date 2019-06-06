@@ -80,35 +80,36 @@ export default {
 
 <style scoped>
 .imagebox {
-  position: relative;
-  background-image: url("/images/carousel.png");
-  background-repeat: no-repeat;
-  height:400px;
-  background-size: cover ;
+    position: relative;
+    background-image: url("/images/carousel.png");
+    background-repeat: no-repeat;
+    height:400px;
+    background-size: cover ;
 }
 .imagebox .imagebox-desc {
-  background-image: linear-gradient(180deg,rgba(51,122,1178,0.2),rgba(16,58,91,1));
-  max-width:455px;
-  height:100%;
-  color: white;
-  font-size: 1.2em;
-  left: 0px;
-  padding: 0px 40px;
-  position: absolute;
-  transition: 0.5s padding;
- 
-  top:0;
- 
+    background-image: linear-gradient(180deg,rgba(51,122,1178,0.2),rgba(16,58,91,1));
+    max-width:455px;
+    height:100%;
+    color: white;
+    font-size: 1.2em;
+    left: 0px;
+    padding: 0px 40px;
+    position: absolute;
+    transition: 0.5s padding;
+    font-family: "FangPing";
+    
+    top:0;
+    
 }
 
 .imagebox-desc p{
-  font-size: 16px
+    font-size: 16px
 }
 .imagebox-desc h5{
-  font-size:20px;
+    font-size:20px;
 }
 .imagebox-desc H4{
-  font-size:24px;
-  font-weight: bold;
+    font-size:24px;
+    font-weight: bold;
 }
 </style>

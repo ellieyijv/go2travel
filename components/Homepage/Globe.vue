@@ -67,7 +67,7 @@ export default {
     }
     .globeTitle h4{
         letter-spacing: 2px;
-        font-family: 'PingFang';
+        font-family: 'FangPing';
         font-size:18px;
     }
     .globeTitle h5{

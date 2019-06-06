@@ -7,9 +7,7 @@
 		<Globe />
 		<ContactUS />
 		<Footer />
-		<!-- <back-to-top bottom="50px" right="50px">
-			<button type="button" class="btn btn-info btn-to-top"><i class="fab fa-chevron-up"></i></button>
-		</back-to-top> -->
+	    <BackToTop />
 	</div>
 </template>
 
@@ -22,7 +20,7 @@ import PopularTours from '../components/Homepage/PopularTours'
 import Globe from '../components/Homepage/Globe'
 import ContactUS from '../components/Homepage/ContactUS'
 import Footer from '../components/Public/Footer'
-
+import BackToTop from '../components/Public/BackToTop'
 export default {
 	asyncData() {
 		return new Promise(resolve => {
@@ -33,7 +31,7 @@ export default {
 	},
 
 	components:{
-		Carousel, AppHeader, SpecialDeals, PopularTours, Globe, ContactUS, Footer
+		Carousel, AppHeader, SpecialDeals, PopularTours, Globe, ContactUS, Footer,BackToTop
 	},
 
 

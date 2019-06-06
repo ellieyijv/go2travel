@@ -1,6 +1,5 @@
 @font-face {
     font-family: 'FangPing';
-    src: url('./fonts/PingFangHK.ttf') format('ttf'); 
-    font-weight: normal;
-    font-style: normal;
+    src: url('./fonts/PingFangHK.ttf') format('truetype'); 
+
 }

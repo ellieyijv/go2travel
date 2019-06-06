@@ -86,7 +86,7 @@ export default {
 .specialtitle h4{
     font-size:18px;
     letter-spacing: 2px;
-    font-family: 'PingFang';
+    font-family: 'FangPing';
 }
 .specialtitle h5{
    

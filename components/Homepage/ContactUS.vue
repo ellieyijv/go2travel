@@ -7,8 +7,8 @@
             <div class="col-md-7" >
                 <div class="row" style="margin-top:50px; color:#897B72">
                     <div class="col-md-3" style="text-align:center">
-                        <h4 style="font-size:18px;">關於我們</h4>
-                        <h5 style="font-size:14px">ABOUT Us</h5>
+                        <h4 class="titleStyle">關於我們</h4>
+                        <h5 class="subtitleStyle">ABOUT US</h5>
                     </div>
                     <div class="col-md-9" >
                         <div class="contactUsText">
@@ -43,5 +43,16 @@ export default {
 .btn-outline-secondary:hover{
     color:white;
     background-color:#897B72;
+}
+
+.titleStyle{
+    font-family: 'FangPing';
+    font-size:18px;
+    letter-spacing: 2px;
+}
+.subtitleStyle{
+    font-family: 'Playfair Display', serif;
+    font-size:14px;
+    letter-spacing: 3px;
 }
 </style>

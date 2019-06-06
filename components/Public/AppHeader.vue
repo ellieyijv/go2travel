@@ -79,6 +79,8 @@ export default {};
   font-size:16px;
   color:#103A5B;
   letter-spacing: 2px;
+  font-family: "FangPing";
 }
+
 
 </style>

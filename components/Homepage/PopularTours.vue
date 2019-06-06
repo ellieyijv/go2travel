@@ -96,7 +96,7 @@ export default {
     font-size:18px;
     color:#103A5B;
     letter-spacing: 2px;
-    font-family: 'PingFang';
+    font-family: 'FangPing';
 }
 #populartour h5{
     font-size:14px;
