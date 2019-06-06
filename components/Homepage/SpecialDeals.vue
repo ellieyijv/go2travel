@@ -28,7 +28,7 @@ export default {
                 img:"/images/special/aussydney.png",
                 title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
                 subtitle: "最後機會 立馬下訂",
-                price:"$3447 /人起",
+                price:"$3,447 /人起",
                 days:"15天14夜"
             },
             {
@@ -36,7 +36,7 @@ export default {
                 img:'/images/special/ausclassic.png',
                 title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
                 subtitle: "最後機會 立馬下訂",
-                price:"$3447 /人起",
+                price:"$3,447 /人起",
                 days:"15天14夜"
             },
             {
@@ -44,7 +44,7 @@ export default {
                 img:'/images/special/aussydmel.png',
                 title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
                 subtitle: "最後機會 立馬下訂",
-                price:"$3447 /人起",
+                price:"$3,447 /人起",
                 days:"15天14夜"
             },
             {
@@ -52,7 +52,7 @@ export default {
                 img:'/images/special/aus.png',
                 title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
                 subtitle: "最後機會 立馬下訂",
-                price:"$3447 /人起",
+                price:"$3,447 /人起",
                 days:"15天14夜"
             },
             {
@@ -60,7 +60,7 @@ export default {
                 img:'/images/special/auscans.png',
                 title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
                 subtitle: "最後機會 立馬下訂",
-                price:"$3447 /人起",
+                price:"$3,447 /人起",
                 days:"15天14夜"
             },
             {
@@ -68,7 +68,7 @@ export default {
                 img:'/images/special/auscanssyd.png',
                 title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
                 subtitle: "最後機會 立馬下訂",
-                price:"$3447 /人起",
+                price:"$3,447 /人起",
                 days:"15天14夜"
             },]
         }
@@ -86,7 +86,7 @@ export default {
 .specialtitle h4{
     font-size:18px;
     letter-spacing: 2px;
-    font-family: 'FangPing';
+  
 }
 .specialtitle h5{
    

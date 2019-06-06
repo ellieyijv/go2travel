@@ -38,7 +38,7 @@ export default {
     width: 255px;
     height: 180px;
     margin: auto;
-    font-family: 'FangPing';
+ 
 }
 
 .bottomtitle{

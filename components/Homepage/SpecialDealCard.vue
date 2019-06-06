@@ -1,11 +1,14 @@
 <template>
 <div >
-    <b-card :card="card" class="cardStyle" :img-src="card.img" img-alt="Image" img-top>
-        
+    
+    <b-card :card="card" class="cardStyle" >
+        <div class="parent">
+            <div class="child img-top" :style="{ backgroundImage: 'url(' + card.img + ')' }"  ></div>
+        </div>
         <b-card-text class="special-title">{{card.title}}</b-card-text>
         <b-card-text class="special-subtitle">{{card.subtitle}}</b-card-text>  
         <div class="container-fluid">
-            <div class="row" style="padding-top:13px;" >
+            <div class="row">
             <b-card-text class="col special-price">{{card.price}}</b-card-text>
          
             <div class="special-days col" >15天14夜</div>
@@ -36,16 +39,7 @@ export default {
     height:210px;
 }
 
-.card img:hover{
-    position:relative;
-    top:-25px;
-    left:-15px;
-    right:-15px;
-    width:380px;
-    height:auto;
-    display:block;
-    z-index:999;
-}
+
 .card-body{
     padding:0;
 }
@@ -55,7 +49,7 @@ export default {
     height:52px;
     font-size:18px;
     color:#103A5B;
-    font-family: 'FangPing';
+    
     padding:10px;
 }
 
@@ -70,6 +64,8 @@ export default {
     color:#103A5B;
     margin:auto;
     padding-left:8px !important;
+    font-size:14px;
+    padding:11px;
 }
 
 .special-days{
@@ -79,7 +75,7 @@ export default {
     border-radius: 0;
     font-size:14px;
     text-align: center;
-    padding-top:2%;
+    padding-top:4%;
 }
 
 .special-more{
@@ -88,5 +84,26 @@ export default {
     border:none;
     border-radius: 0;
     font-size:14px;
+}
+
+.parent {
+   width: 100%;
+   height:210px;
+   overflow: hidden;
+}
+
+.child {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  transition: all .5s;
+}
+
+.parent:hover .child,
+.parent:focus .child
+{
+  transform: scale(1.2);
+  display:block;
 }
 </style>

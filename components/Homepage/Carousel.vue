@@ -97,7 +97,7 @@ export default {
     padding: 0px 40px;
     position: absolute;
     transition: 0.5s padding;
-    font-family: "FangPing";
+  
     
     top:0;
     

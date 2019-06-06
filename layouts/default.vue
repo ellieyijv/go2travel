@@ -14,5 +14,7 @@ export default {
 </script>
 
 <style>
-
+html, body{
+  font-family: 'FangPing';
+}
 </style>

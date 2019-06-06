@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<AppHeader/>
+		<AppNavBar />
 		<Carousel />
 		<SpecialDeals />
 		<PopularTours />
@@ -21,6 +22,7 @@ import Globe from '../components/Homepage/Globe'
 import ContactUS from '../components/Homepage/ContactUS'
 import Footer from '../components/Public/Footer'
 import BackToTop from '../components/Public/BackToTop'
+import AppNavBar from '../components/Public/AppNavBar'
 export default {
 	asyncData() {
 		return new Promise(resolve => {
@@ -31,7 +33,7 @@ export default {
 	},
 
 	components:{
-		Carousel, AppHeader, SpecialDeals, PopularTours, Globe, ContactUS, Footer,BackToTop
+		Carousel, AppHeader, SpecialDeals, PopularTours, Globe, ContactUS, Footer,BackToTop, AppNavBar
 	},
 
 
@@ -40,10 +42,7 @@ export default {
 </script>
 
 <style scoped>
-body{
-	font-family: 'FangPing' , 'Playfair Display' !important;
-	
-}
+
 .container-fluid {
 	padding-left:0 !important;
 	padding-right:0 !important;
