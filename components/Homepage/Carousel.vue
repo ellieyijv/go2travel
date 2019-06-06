@@ -19,10 +19,11 @@
                 <a href="#hola">
                     <!-- <img src="/images/carousel.png" class="w-100 d-block" style="height:401px;"> -->
                     <div class="imagebox-desc">
-                        <div class="container mb-1" style="padding-top:200px;">
+                        <div class="container mb-1" style="padding-top:160px;">
                             <p>15天14夜</p>
                             <h5>澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城</h5>
-                            <h4>$1899</h4>
+                            <h4 style="padding-top:25px;">$1,899 <span style="font-size:14px; color:#337AB2;">/人起</span></h4>
+
                         </div>
                     </div>
                 </a>
@@ -110,6 +111,6 @@ export default {
 }
 .imagebox-desc H4{
     font-size:24px;
-    font-weight: bold;
+   
 }
 </style>

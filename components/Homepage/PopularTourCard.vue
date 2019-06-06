@@ -6,10 +6,10 @@
             <p  style="font-size:16px; color:white">{{ tour.title }}</p>  
         </div>
         <div class="slider" >
-            <div>
+            <div style="padding:5%">
                 <p style="font-size:14px">{{tour.days}}</p>
                 <p style="font-size:16px">{{tour.title}}</p>
-                <p style="font-size:20px">{{tour.price}}</p>
+                <p class="tourPrice">{{tour.price}}<span>/人起</span></p>
             </div>
             
         </div>
@@ -38,6 +38,7 @@ export default {
     width: 255px;
     height: 180px;
     margin: auto;
+    font-family: 'FangPing';
 }
 
 .bottomtitle{
@@ -52,8 +53,9 @@ export default {
 .bottomtitle p{
     bottom:0;
     position:absolute;
-    left:5px;
+    left:15px;
     top:40%;
+    right:10px;
 }
 
 .hovereffect .slider {
@@ -73,14 +75,22 @@ export default {
 	transition-duration: 1s;
     transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
     overflow-y: hidden;
-	height: 100%; 
+    height: 100%; 
 }
 
 .hovereffect:hover .bottomtitle {
     display: none;
 }
 
+.slider .tourPrice{
+    font-family: 'SemiBold';
+    font-size:20px;
+    padding-top:15px;
+}
 
-
+.slider .tourPrice span{
+    color:#7EB6E2;
+    font-size:12px;
+}
 
 </style>
