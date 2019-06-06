@@ -4,14 +4,20 @@
     style="text-shadow: 0px 0px 2px #000"
     fade
     indicators
-    img-height="400px"
+    img-height="400"
   >
+
+  <!-- <b-carousel-slide
+        caption="First slide"
+        text="Nulla vitae elit libero, a pharetra augue mollis interdum."
+        img-src="/images/carousel.png"
+      ></b-carousel-slide> -->
+
     <div class="carousel-inner">
             
             <div class="carousel-item active imagebox ">
-                <!-- <img class="d-block w-100 img-fluid" src="~/assets/images/carousel.png" alt="Beautiful city view">     -->
                 <a href="#hola">
-                    <img src="/images/carousel.png" class="img-fluid w-100" style="height:401px;">
+                    <!-- <img src="/images/carousel.png" class="w-100 d-block" style="height:401px;"> -->
                     <div class="imagebox-desc">
                         <div class="container mb-1" style="padding-top:200px;">
                             <p>15天14夜</p>
@@ -24,10 +30,9 @@
 
             
 
-    <div class="carousel-item active imagebox ">
-                <!-- <img class="d-block w-100 img-fluid" src="~/assets/images/carousel.png" alt="Beautiful city view">     -->
+            <!-- <div class="carousel-item active imagebox ">
                 <a href="#hola">
-                    <img src="/images/carousel.png" class="img-fluid w-100" style="height:401px;">
+                    <img src="/images/carousel.png" class="img-fluid w-100" style="max-height:401px;">
                     <div class="imagebox-desc">
                         <div class="container mb-1" style="padding-top:200px;">
                             <p>15天14夜</p>
@@ -36,7 +41,7 @@
                         </div>
                     </div>
                 </a>
-            </div>
+            </div> -->
 
             <!-- <div class="carousel-item">
                 <a href="#hola">
@@ -76,10 +81,14 @@ export default {
 <style scoped>
 .imagebox {
   position: relative;
+  background-image: url("/images/carousel.png");
+  background-repeat: no-repeat;
+  height:400px;
+  background-size: cover ;
 }
 .imagebox .imagebox-desc {
   background-image: linear-gradient(180deg,rgba(51,122,1178,0.2),rgba(16,58,91,1));
-  width:455px;
+  max-width:455px;
   height:100%;
   color: white;
   font-size: 1.2em;

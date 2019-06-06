@@ -37,6 +37,7 @@ export default {
     position:relative;
     width: 255px;
     height: 180px;
+    margin: auto;
 }
 
 .bottomtitle{

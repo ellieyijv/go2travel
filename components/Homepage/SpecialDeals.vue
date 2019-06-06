@@ -6,8 +6,8 @@
         </div>
         <div class="container" style="padding-bottom:70px;">
             <div class="row">
-                <div v-for="card in cardList" :key="card.id"> 
-                    <SpecialDealCard :card="card" class="col-md-4"/>
+                <div v-for="card in cardList" :key="card.id" class="col-md-4 col-sm-12" style="margin-bottom:20px;"> 
+                    <SpecialDealCard :card="card" />
                 </div>
             </div>
         </div>

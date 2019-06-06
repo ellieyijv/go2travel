@@ -29,7 +29,7 @@ export default {
 .cardStyle{
     width:350px;
     height:386px;
-    margin:20px 0;
+    margin:auto;
 }
 
 .card img{
@@ -58,6 +58,7 @@ export default {
     line-height:27px;
     color:#103A5B;
     margin:auto;
+    padding-left:8px !important;
 }
 
 .special-days{
