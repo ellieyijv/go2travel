@@ -1,24 +1,26 @@
 <template>
-    <div class="container-fluid" id="footer">
-        <div class="row">
-            <section class="col-md-4">
-                <img src="/images/footerlogo.png" />
-            </section>
-            <section class="col-md-4">
-                <b-nav  justified class="links" style="font-size:14px">
-                    <b-nav-item active>關於我們</b-nav-item>
-                    <b-nav-item>聯繫我們</b-nav-item>
-                    <b-nav-item>下載行程</b-nav-item>
-                    <b-nav-item >銀行賬戶</b-nav-item>
-                    <b-nav-item class="getridofline" >隱私政策</b-nav-item>
-                </b-nav>
-            </section>
-            <section class="col-md-4" >
-                <i class="fab">&#xf39e;</i>
-                <i class="fab fa-weixin"></i>
-            </section>
-        </div>
-    </div>
+    <b-container fluid id="footer">
+        <b-container>
+            <div class="row">
+                <section class="col-md-4">
+                    <img src="/images/footerlogo.png" />
+                </section>
+                <section class="col-md-4">
+                    <b-nav  justified class="links" style="font-size:14px">
+                        <b-nav-item active>關於我們</b-nav-item>
+                        <b-nav-item>聯繫我們</b-nav-item>
+                        <b-nav-item class="getridofline" >隱私政策</b-nav-item>
+                    </b-nav>
+                </section>
+                <section class="col-md-4" >
+                    <div class="right">
+                    <i class="fab">&#xf39e;</i>
+                    <i class="fab fa-weixin"></i>
+                    </div>
+                </section>
+            </div>
+        </b-container>
+    </b-container>
 
 </template>
 
@@ -32,7 +34,7 @@ export default {
 #footer{
     background-color: #103A5B;
     padding:25px;
-    text-align:center;
+ 
     color:white;
 }
 
@@ -64,6 +66,11 @@ i.fab {
 
 .nav-link{
     padding:0.5rem 0 !important;
+}
+
+.right{
+    position:absolute;
+    right:0;
 }
 
 </style>
