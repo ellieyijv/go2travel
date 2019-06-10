@@ -13,7 +13,7 @@
                     <div class="col-md-9" >
                         <div class="contactUsText">
                             <P style="font-size:14px;">南半球的热情在这里绽放，时尚、优雅、活力、传奇，伴随着慵懒的海湾，狂欢！火车一般是从墨尔本南十字火车站出发，从墨尔本到吉朗。其中从墨尔本到吉朗是火车线，周一至周五高峰时期十几分钟一趟，周六、周日基本每个小时都有一趟。</p>
-                            <b-button class="mt-5 btn-lg" variant="outline-secondary" @click="goToAboutUs">查看更多</b-button>
+                            <b-button class="mt-5 btn-lg" variant="outline-secondary" >查看更多</b-button>
                         </div>
                     </div>
                 </div>
@@ -26,9 +26,9 @@
 
 export default {
     methods:{
-        goToAboutUs(){
-            this.$router.push('/aboutus');
-        }
+        // goToAboutUs(){
+        //     this.$router.push('/aboutus');
+        // }
     }
 }
 </script>
