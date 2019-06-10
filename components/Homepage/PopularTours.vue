@@ -105,4 +105,18 @@ export default {
     letter-spacing: 3px;
     line-height: 3px;
 }
+
+@media (min-width: 990px) and (max-width: 1200px){
+    .col-md-3{
+        flex: 0 0 33.3333%;
+        max-width: 33.3333%;  
+    }
+}
+
+@media (min-width: 768px) and (max-width: 990px){
+    .col-md-3{
+        flex: 0 0 50%;
+        max-width: 50%;  
+    }
+}
 </style>

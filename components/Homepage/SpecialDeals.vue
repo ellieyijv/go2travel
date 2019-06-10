@@ -21,10 +21,16 @@ export default {
 		SpecialDealCard
     },
 
+    methods:{
+        goToDetails(id){
+            this.$router.push(`/Products/${id}`)
+        }
+    },
+
     data(){
         return{
             cardList:[{
-                id: 1,
+                id: 25407,
                 img:"/images/special/aussydney.png",
                 title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
                 subtitle: "原價 $3,889 最後機會 立馬下訂",
@@ -32,7 +38,7 @@ export default {
                 days:"15天14夜"
             },
             {
-                id: 2,
+                id: 25408,
                 img:'/images/special/ausclassic.png',
                 title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
                 subtitle: "最後機會 立馬下訂",
@@ -40,7 +46,7 @@ export default {
                 days:"15天14夜"
             },
             {
-                id: 3,
+                id: 25409,
                 img:'/images/special/aussydmel.png',
                 title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
                 subtitle: "最後機會 立馬下訂",
@@ -75,6 +81,8 @@ export default {
     }
     
 }
+
+ 
 </script>
 
 <style scoped>
@@ -94,5 +102,12 @@ export default {
     letter-spacing: 3px;
     font-family: 'Playfair Display', serif;
     line-height: 3px;
+}
+
+@media (min-width: 768px) and (max-width: 1200px){
+    .col-md-4{
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
 }
 </style>

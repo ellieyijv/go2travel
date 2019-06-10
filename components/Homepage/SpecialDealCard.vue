@@ -1,7 +1,6 @@
 <template>
-<div >
-    
-    <b-card :card="card" class="cardStyle" >
+<nuxt-link :to="'/products/' + card.id">
+    <b-card :card="card" class="cardStyle">
         <div class="parent">
             <div class="child img-top" :style="{ backgroundImage: 'url(' + card.img + ')' }"  ></div>
         </div>
@@ -9,22 +8,20 @@
         <b-card-text class="special-subtitle">{{card.subtitle}}</b-card-text>  
         <div class="container-fluid">
             <div class="row">
-            <b-card-text class="col special-price">{{card.price}}</b-card-text>
-         
-            <div class="special-days col" >15天14夜</div>
-            <b-button class="special-more col btn-lg">查看更多</b-button>
-           
+                <b-card-text class="col special-price">{{card.price}}</b-card-text>
+                <div class="special-days col" >15天14夜</div>
+                <b-button class="special-more col btn-lg">查看更多</b-button> 
+            </div>
         </div>
-    </div>
-    </b-card>
-    
-</div>
+    </b-card>  
+</nuxt-link>
 </template>
 
 <script>
 import { BCard } from 'bootstrap-vue'
 export default {
-    props:['card']
+    props:['card'],
+  
 }
 </script>
 

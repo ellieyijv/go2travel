@@ -3,7 +3,7 @@
   <b-container fluid id="header">
     <b-container class="contactStyle">
     <b-row align-h="between">
-      <b-col cols="6">
+      <b-col cols="6" sm="10" >
         <span>致電 020 7637 7760 </span><span class="addborder"> 電郵 go4funtravel@hotmail.com </span>
       </b-col>
       <b-col cols="2"><p class="addborder">聯系我們</p></b-col>
@@ -42,7 +42,7 @@ export default {};
    
 }
 
-@media (max-width: 420px) {
+@media (max-width: 575px) {
   #header {
     display: none;
   }

@@ -1,19 +1,19 @@
 <template>
     <b-container fluid id="footer">
         <b-container>
-            <div class="row">
-                <section class="col-md-4">
+            <div class="d-flex justify-content-between">
+                <section class="footerLogo p-2">
                     <img src="/images/footerlogo.png" />
                 </section>
-                <section class="col-md-4">
-                    <b-nav  justified class="links" style="font-size:14px">
+                <section class="p-2">
+                    <b-nav class="links" style="font-size:14px">
                         <b-nav-item active>關於我們</b-nav-item>
                         <b-nav-item>聯繫我們</b-nav-item>
                         <b-nav-item class="getridofline" >隱私政策</b-nav-item>
                     </b-nav>
                 </section>
-                <section class="col-md-4" >
-                    <div class="right">
+                <section class="p-2" >
+                    <div class="social">
                     <i class="fab">&#xf39e;</i>
                     <i class="fab fa-weixin"></i>
                     </div>
@@ -34,9 +34,9 @@ export default {
 #footer{
     background-color: #103A5B;
     padding:25px;
- 
     color:white;
 }
+
 
 .links a{
     color: white;
@@ -50,7 +50,6 @@ export default {
 }
 
 i.fab {
-
     font-size:1em;
     border-radius: 50%;
     background-color:white;
@@ -65,12 +64,17 @@ i.fab {
 }
 
 .nav-link{
-    padding:0.5rem 0 !important;
+    padding:0.5rem 1rem !important;
 }
 
-.right{
-    position:absolute;
-    right:0;
+@media (max-width: 521px) {
+  .links a{
+    border: none;
+  }
 }
+
+
+
+
 
 </style>

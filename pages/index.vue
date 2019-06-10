@@ -1,28 +1,27 @@
 <template>
 	<div>
-		<AppHeader/>
-		<AppNavBar />
+		
 		<Carousel />
 		<SpecialDeals />
 		<PopularTours />
 		<Globe />
-		<ContactUS />
+		<AboutUS />
 		<Footer />
-	    <BackToTop />
+	    <!-- <BackToTop /> -->
 	</div>
 </template>
 
 
 <script>
 import Carousel from '../components/Homepage/Carousel.vue'
-import AppHeader from '../components/Public/AppHeader'
+
 import SpecialDeals from '../components/Homepage/SpecialDeals'
 import PopularTours from '../components/Homepage/PopularTours'
 import Globe from '../components/Homepage/Globe'
-import ContactUS from '../components/Homepage/ContactUS'
-import Footer from '../components/Public/Footer'
+import AboutUS from '../components/Homepage/AboutUS'
+
 import BackToTop from '../components/Public/BackToTop'
-import AppNavBar from '../components/Public/AppNavBar'
+
 export default {
 	asyncData() {
 		return new Promise(resolve => {
@@ -33,7 +32,7 @@ export default {
 	},
 
 	components:{
-		Carousel, AppHeader, SpecialDeals, PopularTours, Globe, ContactUS, Footer,BackToTop, AppNavBar
+		Carousel,  SpecialDeals, PopularTours, Globe, AboutUS, BackToTop
 	},
 
 

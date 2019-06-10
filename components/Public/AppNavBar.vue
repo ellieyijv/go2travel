@@ -26,7 +26,7 @@
             <b-nav-text>歐洲</b-nav-text>
           </b-navbar-nav>
                 
-          <b-navbar-nav class="ml-auto m-n4" >
+          <b-navbar-nav class="ml-auto">
               <i class="fas fa-search" style="color:black"></i>
           </b-navbar-nav>
            
@@ -47,6 +47,19 @@ export default {
         height:auto;
         padding:0;
         margin-right:0;
+    }
+
+    @media (max-width: 575px){
+      .ml-auto{
+        margin-left:1.5rem !important;
+        margin-top:0.5rem;
+      }
+    }
+
+    @media (min-width: 576px){
+      .ml-auto{
+        margin:-1.5rem;
+      }
     }
      
 </style>
