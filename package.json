@@ -4,6 +4,9 @@
   "description": "My impeccable Nuxt.js project",
   "author": "yl",
   "private": true,
+  "engines": {
+    "node": "10.15.3"
+  },
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
     "build": "nuxt build",
