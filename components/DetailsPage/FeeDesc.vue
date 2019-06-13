@@ -2,11 +2,11 @@
     <b-container id="productfeedesc">
      
         <b-row sm="12">
-            <h4>feiyongshuoming</h4>
+            <h4>費用說明</h4>
         </b-row>
-        <b-row>
+        <b-row style="border-top: 2px solid #F7F5F1">
             <b-col>
-                <h5>Product Contains</h5>
+                <h5>費用包含</h5>
                 <li v-for="(item,index) in productFeeDescContainsArr" :key="index">
                     {{item}}
                 </li>
@@ -46,5 +46,24 @@ export default {
 
     #productfeedesc li{
         display: -webkit-box;
+    }
+
+    #productfeedesc h4{
+       font-size:20px;
+       letter-spacing: 3px;
+       color:#103a5b; 
+       padding-bottom: 1rem; 
+    }
+
+    #productfeedesc h5{
+        columns: #3c3c3c;
+        font-size:14px;
+        padding-top:2rem;
+    }
+
+    #productfeedesc li{
+          color: #7f7f7f;
+          font-size:14px;
+          line-height:24px;
     }
 </style>

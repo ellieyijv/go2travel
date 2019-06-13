@@ -2,8 +2,10 @@
     <b-container id="productNeedsToKnow">
         <b-row>
             <b-col sm="12">
-                <h4>Booking</h4>
+                <h4>预订须知</h4>
             </b-col>
+        </b-row>
+        <b-row style="border-top: 2px solid #F7F5F1; padding-top:2rem;">
             <b-col sm="12">
                 <li v-for="(item,index) in needstoknowArr" :key="index">
                     {{item}}
@@ -35,5 +37,19 @@ export default {
 
    #productNeedsToKnow li{
        display: -webkit-box;
+          color: #7f7f7f;
+          font-size:14px;
+         line-height:24px;
+          
    }
+
+    #productNeedsToKnow h4{
+       font-size:20px;
+       letter-spacing: 3px;
+       color:#103a5b; 
+       padding-bottom: 1rem; 
+    }
+
+  
+
 </style>

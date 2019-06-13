@@ -2,10 +2,10 @@
     <b-container id="productHighlight">
         <b-row>
             <b-col sm="12">
-                <h4>Special Route</h4>
+                <h4>線路特色</h4>
             </b-col>
         </b-row>
-        <b-row >
+        <b-row style="border-top: 2px solid #F7F5F1" >
             <b-col v-for="(img, index) in details.productImgs" :key="index" sm="3">
                 <img :src="img.url" />
                 <p>{{img.imgdes}}</p>
@@ -27,6 +27,19 @@ export default {
     }
 
     #productHighlight .col-sm-3{
-        text-align: center;
+      color: #7f7f7f;
+      font-size:14px;
+      padding-top: 2rem;
+    }
+
+    #productHighlight h4{
+        font-size:20px;
+       letter-spacing: 3px;
+       color:#103a5b;  
+        padding-bottom: 1rem;
+    }
+
+    #productHighlight .col-sm-3{
+            
     }
 </style>
