@@ -43,4 +43,8 @@ export default {
         background-color:white;
         padding: 1.5rem;
     }
+
+    #productfeedesc li{
+        display: -webkit-box;
+    }
 </style>

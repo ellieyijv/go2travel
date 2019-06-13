@@ -14,6 +14,12 @@
        <div class="backgroundstyle">
            <productDaysPlan :daysplan="details.productDaysPlan" />
        </div>
+        <div class="backgroundstyle">
+           <ProductNeedsToKnow :needstoknow="details.needstoknow" />
+       </div>
+       <div class="backgroundstyle">
+           <YouMightInterested :youmightinterestdlist="youmightinterestdlist"/>
+       </div>
    </div>
 </template>
 
@@ -24,12 +30,15 @@ import ProductIntro from '../../../components/DetailsPage/ProductIntro';
 import ProductHighlight from '../../../components/DetailsPage/ProductHighlight';
 import FeeDesc from '../../../components/DetailsPage/FeeDesc';
 import productDaysPlan from '../../../components/DetailsPage/ProductDaysPlan';
+import ProductNeedsToKnow from '../../../components/DetailsPage/ProductNeedsToKnow';
+import YouMightInterested from '../../../components/DetailsPage/YouMightInterested';
 export default {
-    components: { DetailsCarousel, DetailsNavSection, ProductIntro, ProductHighlight, FeeDesc, productDaysPlan},
+    components: { DetailsCarousel, DetailsNavSection, ProductIntro, ProductHighlight, FeeDesc, productDaysPlan, ProductNeedsToKnow, YouMightInterested},
     data(){
         return{
             card: {},
             details: {},
+            youmightinterestdlist: [],
             productSummary: [
                     {
                         'id': '25407',
@@ -49,7 +58,7 @@ export default {
                     },
                     {
                         'id': '25409',
-                        'img':"/images/special/aussydney.png",
+                        'img':"/images/special/ausclassic.png",
                         'title':"3澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
                         'subtitle': "原價 $3,889 最後機會 立馬下訂",
                         'price':"$3,447",
@@ -57,7 +66,7 @@ export default {
                     },
                     {
                         'id': '4',
-                        'img':"/images/special/aussydney.png",
+                        'img':"/images/special/aussydmel.png",
                         'title':"4澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
                         'subtitle': "原價 $3,889 最後機會 立馬下訂",
                         'price':"$3,447",
@@ -65,7 +74,7 @@ export default {
                     },
                     {
                         'id': '5',
-                        'img':"/images/special/aussydney.png",
+                        'img':"/images/special/aus.png",
                         'title':"5澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
                         'subtitle': "原價 $3,889 最後機會 立馬下訂",
                         'price':"$3,447",
@@ -78,8 +87,8 @@ export default {
                         'subtitle': "原價 $3,889 最後機會 立馬下訂",
                         'price':"$3,447",
                         'days':"15天14夜"
-                    },],
-             productDetails: [
+                    }],
+            productDetails: [
                  {
                     'productID': '25407',
                     'productDesc': '獨家提供史蒂芬港中文精品小團',
@@ -94,6 +103,7 @@ export default {
                     'productDaysPlan': [{'day':'thefirstday', 'content':'ddddddddddddddddd'},
                                         {'day':'thesecondday', 'content':'ddddddddddddddddd'},
                                         {'day':'thethirdday', 'content':'ddddddddddddddddd'},],
+                    'needstoknow': '1)fda 2)afd 3)fdag 4)afsd',
                 },
                 {
                     'productID': '25408',
@@ -109,18 +119,21 @@ export default {
                     'productDaysPlan': [{'day':'thefirstday', 'content':'ddddddddddddddddd'},
                                         {'day':'thesecondday', 'content':'ddddddddddddddddd'},
                                         {'day':'thethirdday', 'content':'ddddddddddddddddd'},],
-        }]}
+                     'needstoknow': '1)fda 2)afd 3)fdag 4)afsd',
+                }],
+              
+        
+        }
     },
 
    
     created(){
-  
         let id = this.$route.params.id
-    
         this.card = this.productSummary.find(x => x.id === id)
         this.details = this.productDetails.find(x=>x.productID === id)
+        this.youmightinterestdlist = this.productSummary.slice(1,4);
     }
-
+    
 
 }
 </script>

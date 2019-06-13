@@ -30,6 +30,7 @@ export default {
     width:350px;
     height:386px;
     margin:auto;
+    border-radius: 0;
 }
 
 .card img{
