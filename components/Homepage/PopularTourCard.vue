@@ -3,12 +3,12 @@
         <img class="img-responsive" :src="tour.img" alt="">
         
         <div class="bottomtitle">
-            <p  style="font-size:16px; color:white">{{ tour.title }}</p>  
+            <p >{{ tour.title }}</p>  
         </div>
         <div class="slider" >
             <div style="padding:5%">
-                <p style="font-size:14px">{{tour.days}}</p>
-                <p style="font-size:16px">{{tour.title}}</p>
+                <p class="tourDays">{{tour.days}}</p>
+                <p class="tourTitle">{{tour.title}}</p>
                 <p class="tourPrice">{{tour.price}}<span>/人起</span></p>
             </div>
             
@@ -37,8 +37,10 @@ export default {
     position:relative;
     width: 255px;
     height: 180px;
-    margin: auto;
- 
+    margin: auto; 
+}
+.hovereffect img{
+    width:100%;
 }
 
 .bottomtitle{
@@ -56,6 +58,8 @@ export default {
     left:15px;
     top:40%;
     right:10px;
+    font-size:16px; 
+    color:white
 }
 
 .hovereffect .slider {
@@ -82,6 +86,12 @@ export default {
     display: none;
 }
 
+.slider .tourDays{
+    font-size:14px;
+}
+.slider .tourTitle{
+    font-size:16px;
+}
 .slider .tourPrice{
     font-family: 'SemiBold';
     font-size:20px;
@@ -91,6 +101,42 @@ export default {
 .slider .tourPrice span{
     color:#7EB6E2;
     font-size:12px;
+}
+
+@media only screen and (max-width: 768px) {
+    .hovereffect{
+        position:relative;
+        width: 170px;
+        height: 120px;
+        margin: auto;
+    }
+    
+    .bottomtitle p{
+        font-size:12px; 
+        color:white
+    }
+
+    .slider .tourPrice{
+  
+        font-size:12px;
+        padding-top:6px;
+    }
+
+    .slider .tourPrice span{
+     
+        font-size:10px;
+    }
+
+    .slider .tourTitle{
+        font-size:12px;
+    }
+
+    .slider .tourDays{
+        font-size:10px;
+    }
+
+ 
+
 }
 
 </style>

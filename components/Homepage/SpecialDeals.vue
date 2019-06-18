@@ -6,7 +6,7 @@
         </div>
         <div class="container" style="padding-bottom:70px;">
             <div class="row">
-                <div v-for="card in cardList" :key="card.id" class="col-md-4 col-sm-12" style="margin-bottom:20px;"> 
+                <div v-for="card in cardList" :key="card.id" class="paddingStyle col-md-6 col-lg-6 col-xl-4 col-sm-4 col-6" style="margin-bottom:20px;"> 
                     <SpecialDealCard :card="card" />
                 </div>
             </div>
@@ -34,48 +34,54 @@ export default {
                 img:"/images/special/aussydney.png",
                 title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
                 subtitle: "原價 $3,889 最後機會 立馬下訂",
-                price:"$3,447 /人起",
-                days:"15天14夜"
+                price:"3447",
+                days:"15天14夜",
+                countryname: "Australia"
             },
             {
                 id: 25408,
                 img:'/images/special/ausclassic.png',
                 title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
                 subtitle: "最後機會 立馬下訂",
-                price:"$3,447 /人起",
-                days:"15天14夜"
+                price:"3447",
+                days:"15天14夜",
+                countryname: "Australia",
             },
             {
                 id: 25409,
                 img:'/images/special/aussydmel.png',
                 title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
                 subtitle: "最後機會 立馬下訂",
-                price:"$3,447 /人起",
-                days:"15天14夜"
+                price:"3447",
+                days:"15天14夜",
+                 countryname: "Australia"
             },
             {
                 id: 4,
                 img:'/images/special/aus.png',
                 title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
                 subtitle: "最後機會 立馬下訂",
-                price:"$3,447 /人起",
-                days:"15天14夜"
+                price:"3447",
+                days:"15天14夜",
+                countryname: "Australia"
             },
             {
                 id: 5,
                 img:'/images/special/auscans.png',
                 title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
                 subtitle: "最後機會 立馬下訂",
-                price:"$3,447 /人起",
-                days:"15天14夜"
+                price:"3447",
+                days:"15天14夜",
+                countryname: "Australia"
             },
             {
                 id: 6,
                 img:'/images/special/auscanssyd.png',
                 title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
                 subtitle: "最後機會 立馬下訂",
-                price:"$3,447 /人起",
-                days:"15天14夜"
+                price:"3447",
+                days:"15天14夜",
+                countryname: "Australia"
             },]
         }
     }
@@ -89,6 +95,7 @@ export default {
 #specildeals{
     background-color: #E5E5E5;
     color: #103A5B;
+
 }
 
 .specialtitle h4{
@@ -104,10 +111,11 @@ export default {
     line-height: 3px;
 }
 
-@media (min-width: 768px) and (max-width: 1200px){
-    .col-md-4{
-        flex: 0 0 50%;
-        max-width: 50%;
+
+
+.paddingStyle{
+      padding-left:0px !important;
+      padding-right: 0px !important;
     }
-}
+
 </style>

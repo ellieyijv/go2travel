@@ -40,6 +40,6 @@ export default {
     }
 
     #productHighlight .col-sm-3{
-            
+        text-align: center;
     }
 </style>

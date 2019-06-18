@@ -1,14 +1,14 @@
 <template>
-       <b-carousel
-    id="carousel-fade"
-    style="text-shadow: 0px 0px 2px #000"
-    fade
-    controls 
-  >
+    <b-carousel
+        id="carousel-fade"
+        style="text-shadow: 0px 0px 2px #000"
+        fade
+        indicators 
+    >
     <div class="carousel-inner">
         <section v-for="card in detailsImgList" :key="card.id"> 
             <div class="carousel-item active imagebox" :style="{ backgroundImage: 'url(' + card.img + ')'}">
-               
+               <img src="/images/about/herobannertext.png" class="centeredTitle"/>
             </div>
         </section>
     </div>
@@ -21,7 +21,7 @@ export default {
        return{
            detailsImgList:[{
                productId: '25407',
-               img: '/images/carousel2.png',
+               img: '/images/about/Rectangle.png',
            },
            {
                productId: '1',
@@ -36,13 +36,22 @@ export default {
 .imagebox {
     position: relative;
     background-repeat: no-repeat;
-    height:400px;
+    height:610px;
     background-size: cover ;
 }
 
+ .centeredTitle{
+        text-align: center;
+        position: absolute;
+        top: 45%;
+        left: 40%;    
+        width:20%;
+    }
+   
 @media (max-width: 1000px){
     .imagebox{
-        background-position: right -250px center;
+    
+        height:400px;
     }
 }
 </style>

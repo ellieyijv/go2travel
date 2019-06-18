@@ -80,7 +80,7 @@ export default {
                 img:"/images/carousel.png",
                 title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
                 subtitle: "原價 $3,889 最後機會 立馬下訂",
-                price:"$1,889 /人起",
+                price:"$1,889",
                 days:"15天14夜"
             },
             {
@@ -88,7 +88,7 @@ export default {
                 img:'/images/carousel.png',
                 title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
                 subtitle: "最後機會 立馬下訂",
-                price:"$3,447 /人起",
+                price:"$3,447",
                 days:"15天14夜"
             },
             {
@@ -96,7 +96,7 @@ export default {
                 img:'/images/carousel.png',
                 title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
                 subtitle: "最後機會 立馬下訂",
-                price:"$2,000 /人起",
+                price:"$2,000",
                 days:"15天14夜"
             },
         ]

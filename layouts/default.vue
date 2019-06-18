@@ -20,5 +20,6 @@ export default {
 <style>
 html, body{
   font-family: 'FangPing';
+  text-decoration: none;
 }
 </style>

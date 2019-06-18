@@ -46,7 +46,8 @@ export default {
                         'title':"1澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
                         'subtitle': "原價 $3,889 最後機會 立馬下訂",
                         'price':"$3,447",
-                        'days':"15天14夜"
+                        'days':"15天14夜",
+                        'countryname': "Australia"
                     },
                     {
                         'id': '25408',
@@ -54,7 +55,8 @@ export default {
                         'title':"2澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
                         'subtitle': "原價 $3,889 最後機會 立馬下訂",
                         'price':"$3,447",
-                        'days':"15天14夜"
+                        'days':"15天14夜",
+                        'countryname': "Australia"
                     },
                     {
                         'id': '25409',
@@ -62,7 +64,8 @@ export default {
                         'title':"3澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
                         'subtitle': "原價 $3,889 最後機會 立馬下訂",
                         'price':"$3,447",
-                        'days':"15天14夜"
+                        'days':"15天14夜",
+                        'countryname': "Australia"
                     },
                     {
                         'id': '4',
@@ -70,7 +73,8 @@ export default {
                         'title':"4澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
                         'subtitle': "原價 $3,889 最後機會 立馬下訂",
                         'price':"$3,447",
-                        'days':"15天14夜"
+                        'days':"15天14夜",
+                        'countryname': "Australia"
                     },
                     {
                         'id': '5',
@@ -78,7 +82,8 @@ export default {
                         'title':"5澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
                         'subtitle': "原價 $3,889 最後機會 立馬下訂",
                         'price':"$3,447",
-                        'days':"15天14夜"
+                        'days':"15天14夜",
+                        'countryname': "Australia"
                     },
                     {
                         'id': '6',
@@ -86,7 +91,8 @@ export default {
                         'title':"6澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
                         'subtitle': "原價 $3,889 最後機會 立馬下訂",
                         'price':"$3,447",
-                        'days':"15天14夜"
+                        'days':"15天14夜",
+                        'countryname': "Australia"
                     }],
             productDetails: [
                  {

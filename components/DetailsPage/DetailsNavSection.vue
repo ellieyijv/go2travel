@@ -5,8 +5,8 @@
             <b-row>
                 <b-col sm="6">
                     <b-nav>
-                        <b-nav-item >首頁 ></b-nav-item>
-                        <b-nav-item>澳洲 ></b-nav-item>
+                        <b-nav-item to="/">首頁 ></b-nav-item>
+                        <b-nav-item :to="'/'+card.countryname +'/'">澳洲 ></b-nav-item>
                         <b-nav-item active disabled>{{card.title}}</b-nav-item>
                     </b-nav>
                     <h4>{{card.title}}</h4>
@@ -62,7 +62,7 @@ export default {
         color: #7f7f7f;;
         font-size:14px;
         padding: 0.5rem 0;
-        line-height:3px;
+    
     }
     .disabled{
         color:rgba(0, 0, 0, 0.5);
@@ -79,7 +79,7 @@ export default {
     #detailsNavSection p{
         color:#666666;
         font-size:14px;
-        line-height: 3px;
+  
         margin-top:10px;
     }
    

@@ -26,27 +26,32 @@ export default {
             globeList:[{
                 id:1,
                 img: "/images/globe/Ellipse.png",
-                title: "亞洲"
+                title: "亞洲",
+                countryname: "Asian"
             },
             {
                 id:2,
                 img: "/images/globe/globe1.png",
-                title: "美洲"
+                title: "美洲",
+                countryname: "American"
             },
             {
                 id:3,
                 img: "/images/globe/globe2.png",
-                title: "非洲"
+                title: "非洲",
+                countryname: "Africa"
             },
             {
                 id:4,
                 img: "/images/globe/globe3.png",
-                title: "澳大利亞"
+                title: "澳大利亞",
+                countryname: "Australia"
             },
             {
                 id:5,
                 img: "/images/globe/globe5.png",
-                title: "歐洲"
+                title: "歐洲",
+                countryname: "Europe"
             }]
         }
     }
@@ -83,5 +88,15 @@ export default {
      
         padding-bottom:70px;
     }
- 
+    
+    @media only screen and (max-width: 767px) {
+        #globe .alignCenter{
+            margin-left:0;
+        
+        }
+       /* .alignCenter .col{
+            padding-left:8px;
+            padding-right:8px;
+        } */
+    }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <b-container id="youmightinterested"> 
-        <h4>xiangguantuijian</h4>
+        <h4>相關推薦</h4>
         <b-row>
             <b-col v-for="card in youmightinterestdlist" :key="card.id" sm="3" md="4">
                <SpecialDealCard :card="card" />

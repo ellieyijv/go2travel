@@ -6,7 +6,7 @@
         </div>
         <div class="container">
             <div class="row">
-                <div v-for="tour in tourList" :key="tour.id" class="col-md-3" style="margin-bottom:20px;"> 
+                <div v-for="tour in tourList" :key="tour.id" class="paddingStyle col-md-3 col-xs-6 col-sm-4 col-6" style="margin-bottom:20px;"> 
                     <PopularTourCard :tour="tour" />
                 </div>
             </div>
@@ -117,6 +117,13 @@ export default {
     .col-md-3{
         flex: 0 0 50%;
         max-width: 50%;  
+    }
+}
+
+@media (max-width: 768px){
+    .paddingStyle{
+      padding-left:0px !important;
+      padding-right: 0px !important;
     }
 }
 </style>

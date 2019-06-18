@@ -2,10 +2,10 @@
     <b-container fluid id="footer">
         <b-container>
             <div class="d-flex justify-content-between">
-                <section class="footerLogo p-2">
+                <section class="footerLogo">
                     <img src="/images/footerlogo.png" />
                 </section>
-                <section class="p-2">
+                <section >
                     <b-nav class="links" style="font-size:14px">
                         <b-nav-item active>關於我們</b-nav-item>
                         <b-nav-item>聯繫我們</b-nav-item>
@@ -37,6 +37,9 @@ export default {
     color:white;
 }
 
+.footerLogo{
+        padding-right: 0.5rem;
+}
 
 .links a{
     color: white;
@@ -64,7 +67,7 @@ i.fab {
 }
 
 .nav-link{
-    padding:0.5rem 1rem !important;
+    padding:0.5rem 0.5rem !important;
 }
 
 @media (max-width: 521px) {
@@ -73,7 +76,11 @@ i.fab {
   }
 }
 
-
+/* @media (max-width: 575px) {
+  #footer {
+    display: none;
+  }
+} */
 
 
 

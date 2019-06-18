@@ -1,5 +1,5 @@
 <template>
-<nuxt-link :to="'/products/' + card.id">
+<nuxt-link :to="'/'+card.countryname +'/'+ card.id" style="text-decoration:none">
     <b-card :card="card" class="cardStyle">
         <div class="parent">
             <div class="child img-top" :style="{ backgroundImage: 'url(' + card.img + ')' }"  ></div>
@@ -8,10 +8,11 @@
         <b-card-text class="special-subtitle">{{card.subtitle}}</b-card-text>  
         <div class="container-fluid">
             <div class="row">
-                <b-card-text class="col special-price">{{card.price}}</b-card-text>
-                <div class="special-days col" >15天14夜</div>
-                <b-button class="special-more col btn-lg">查看更多</b-button> 
+                <b-card-text class="col special-price col-12 col-sm-12 col-md-4">${{numberWithCommas(card.price)}} /人起</b-card-text>    
+                <div class="special-days col" >{{card.days}}</div>
+                <b-button class="special-more col btn-lg">查看更多</b-button>       
             </div>
+            
         </div>
     </b-card>  
 </nuxt-link>
@@ -21,6 +22,11 @@
 import { BCard } from 'bootstrap-vue'
 export default {
     props:['card'],
+    methods:{
+        numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+    }
   
 }
 </script>
@@ -32,11 +38,6 @@ export default {
     margin:auto;
     border-radius: 0;
 }
-
-.card img{
-    height:210px;
-}
-
 
 .card-body{
     padding:0;
@@ -86,22 +87,74 @@ export default {
 
 .parent {
    width: 100%;
-   height:210px;
    overflow: hidden;
 }
 
 .child {
-  width: 100%;
-  height: 100%;
-  background-position: center;
-  background-size: cover;
-  transition: all .5s;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    transition: all .5s;
+    padding-top: 210px;
 }
 
-.parent:hover .child,
+.cardStyle:hover .child,
 .parent:focus .child
 {
   transform: scale(1.2);
   display:block;
+}
+
+@media only screen and (max-width: 768px) {
+    .cardStyle{
+        width:170px;
+        height:236px;
+        margin:auto;
+        border-radius: 0;
+}
+
+    .img-top{
+        height:102px;
+    }
+
+    .special-title{
+        width:170px;
+        font-size:12px;
+        height:32px;
+     
+    }
+    .child {
+        padding-top: 102px;
+    }  
+    
+    .special-subtitle{
+   
+        font-size:10px;
+        padding-top:0;
+        margin-bottom:0;
+    
+    }
+    .special-days{
+        font-size:12px;
+        text-align: center;
+        height:32px;
+        
+    }
+
+    .special-price{
+    
+        padding-left:8px !important;
+        font-size:14px;
+        padding:0;
+  
+    }
+
+    .special-more{
+
+        font-size:12px;
+         height:32px;
+}
+
 }
 </style>
