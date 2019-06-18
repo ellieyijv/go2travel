@@ -57,8 +57,9 @@ props: ['productList'],
     padding-top:5rem;
 }
 #productListComp .cardlist {
-  margin-bottom: 3rem;
-  
+    margin-bottom: 3rem;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 

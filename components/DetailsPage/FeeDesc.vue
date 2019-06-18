@@ -5,7 +5,7 @@
             <h4>費用說明</h4>
         </b-row>
         <b-row style="border-top: 2px solid #F7F5F1">
-            <b-col>
+            <b-col class="borderStyle">
                 <h5>費用包含</h5>
                 <li v-for="(item,index) in productFeeDescContainsArr" :key="index">
                     {{item}}
@@ -41,7 +41,9 @@ export default {
 <style scoped>
     #productfeedesc{
         background-color:white;
-        padding: 1.5rem;
+        padding-top: 1.5rem;
+        padding-right:1.5rem;
+        padding-left:1.5rem;
     }
 
     #productfeedesc li{
@@ -62,8 +64,13 @@ export default {
     }
 
     #productfeedesc li{
-          color: #7f7f7f;
-          font-size:14px;
-          line-height:24px;
+        color: #7f7f7f;
+        font-size:14px;
+        line-height:24px;
+    }
+
+    .borderStyle{
+        border-right: 2px solid rgb(247, 245, 241);
+        padding-bottom: 1.5rem;
     }
 </style>

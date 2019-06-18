@@ -1,6 +1,6 @@
 <template>
     <b-container fluid id="aboutusDetailsComp">
-          <b-row>
+          <b-row style=" direction: rtl;">
                <b-col md="6" xl="6" class="backimg">   
                 </b-col>
                 <b-col md="6" lg="6" class="containerStyle">
@@ -10,7 +10,7 @@
                     </div>
                 </b-col>
             </b-row>
-             <b-row style=" direction: rtl;">
+             <b-row >
                  <b-col md="6" xl="6" class="backimg">   
                 </b-col>
                 <b-col md="6" lg="6" xl="6" class="containerStyle">
@@ -21,7 +21,7 @@
                 </b-col>
                
             </b-row>
-             <b-row>
+             <b-row style=" direction: rtl;">
                 <b-col  md="6" xl="6" class="backimg">   
                 </b-col>
                 <b-col md="6" lg="6" xl="6" class="containerStyle">

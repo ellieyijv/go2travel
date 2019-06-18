@@ -3,11 +3,11 @@
     <b-container fluid id="countryNavBarComp" class="p-4">
         <b-container class="countrynavbar">
             <b-row>
-                <b-col cols="auto" class="mr-auto p-1">
+                <b-col cols="auto" class="mr-auto p-2">
                     <h5>{{$route.params.countryname}}</h5>
                 </b-col>
               
-                <b-col cols="auto" sm="p-1">
+                <b-col cols="auto" >
                     <b-nav class="justify-content-end">
                         <b-nav-item active>共{{productNum}}個商品</b-nav-item>
                         <b-nav-item @click="$emit('priceByOrder')">價格
@@ -30,11 +30,11 @@
                 <b-col sm="12">
                     Please choose your destination
                 </b-col>
-            <b-col sm="2"  v-for="city in countrycities" :key="city.id">
-                <b-nav class="justify-content-between"  >
-                    <b-nav-item active>{{city.name}}</b-nav-item>
-                </b-nav>
-            </b-col>
+                <b-col cols="6" sm="4" md="3" lg="2" v-for="city in countrycities" :key="city.id">
+                    <button class="justify-content-between" @click="filterfunc">
+                    {{city.name}}
+                    </button>
+                </b-col>
         </b-row>
         </b-container>
     </b-container>
@@ -64,6 +64,9 @@ export default {
             }
         },
    
+    },
+    created(){
+
     }
 }
 </script>
@@ -83,18 +86,35 @@ export default {
         margin-bottom: 40px;
     }
     .cityNav .nav-item{
-        margin:auto;
-       
+        margin:auto; 
     }
 
-    .cityNav ul{
+    .cityNav button{
         margin-top: 20px;
-        background-color:#C2A579;    
+        width:140px;
+        border:none;
+        border-radius: 0;
+        background-color: #E5E5E5;
+        color:#3c3c3c;
+        padding:8px;
+    }
+   
+    .cityNav button.active  {
+        background-color:#C2A579;
+        color:white;
     }
 
     .cityNav .nav-link{
         color:white;
     }
     
- 
+    .countrynavbar h5{
+            margin-left: 0.5rem;
+        }
+  
+    @media (max-width: 589px){
+        .countrynavbar h5{
+            margin-left: 1.5rem;
+        }
+    }
 </style>
