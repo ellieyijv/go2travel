@@ -48,7 +48,7 @@ export default {
     height:52px;
     font-size:18px;
     color:#103A5B;
-    
+    font-family: "FangPingMedium";
     padding:10px;
 }
 
@@ -65,6 +65,7 @@ export default {
     padding-left:8px !important;
     font-size:14px;
     padding:11px;
+    font-family: "FangPingMedium";
 }
 
 .special-days{

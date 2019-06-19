@@ -48,6 +48,7 @@ export default {
 
     #productfeedesc li{
         display: -webkit-box;
+        font-family: 'FangPingRegular';
     }
 
     #productfeedesc h4{
@@ -64,7 +65,7 @@ export default {
     }
 
     #productfeedesc li{
-        color: #7f7f7f;
+        color: #3c3c3c;
         font-size:14px;
         line-height:24px;
     }

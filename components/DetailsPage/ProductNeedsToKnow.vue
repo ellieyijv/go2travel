@@ -36,10 +36,11 @@ export default {
    }
 
    #productNeedsToKnow li{
-       display: -webkit-box;
-          color: #7f7f7f;
-          font-size:14px;
-         line-height:24px;
+        display: -webkit-box;
+        color: #3c3c3c;
+        font-size:14px;
+        line-height:24px;
+        font-family:'FangPingRegular';
           
    }
 

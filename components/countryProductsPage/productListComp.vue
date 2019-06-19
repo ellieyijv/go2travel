@@ -8,7 +8,7 @@
                         </div>
                     </b-col>
             </b-row>
-            
+            <b-row cols="12" class="text-center">
             <b-pagination
                     v-model="currentPage"
                     :total-rows="rows"
@@ -16,9 +16,9 @@
                     aria-controls="products"
                     limit="6"
                     hide-goto-end-buttons
-                    >
-                    
+                    >    
             </b-pagination>
+            </b-row>
                 
             </b-container>
     </b-container>
@@ -52,7 +52,7 @@ props: ['productList'],
 }
 </script>
 
-<style scoped>
+<style>
 #productListComp{
     padding-top:5rem;
 }
@@ -62,14 +62,25 @@ props: ['productList'],
     padding-right: 0;
 }
 
+ #productListComp ul{
+     margin:auto;
+     margin-bottom:5rem;
+ }
 
- .page-link{
+ #productListComp li{
+     padding-left:1rem;
+ }
+
+ #productListComp .page-link{
     border: none !important;
+    background-color:transparent;
+    color:#3c3c3c;
 }
 
-.page-item.active .page-link {
-    border-radius: 50% !important;
+#productListComp .page-item.active .page-link {
+    border-radius: 100% !important;
     background-color: #013a5b !important;
+    color:white;
 }
 
 </style>

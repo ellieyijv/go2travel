@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div id="homepagestyle">
 		
 		<Carousel />
 		<SpecialDeals />
@@ -41,7 +41,9 @@ export default {
 </script>
 
 <style scoped>
-
+#homepagestyle{
+	font-family: 'FangPingMedium';
+}
 .container-fluid {
 	padding-left:0 !important;
 	padding-right:0 !important;

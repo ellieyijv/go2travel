@@ -10,10 +10,10 @@
                 <b-col cols="auto" >
                     <b-nav class="justify-content-end">
                         <b-nav-item active>共{{productNum}}個商品</b-nav-item>
-                        <b-nav-item @click="$emit('priceByOrder')">價格
+                        <b-nav-item @click="$emit('priceByOrder')" :style="{opacity:opacityValue}">價格
                             <i :class="arrowPriceDirection"></i>
                         </b-nav-item>
-                        <b-nav-item @click="$emit('daysByOrder')">天數
+                        <b-nav-item @click="$emit('daysByOrder')" :style="{opacity:opacityValue1}">天數
                             <i :class="arrowDaysDirection"></i>
                         </b-nav-item>
                         <b-nav-item @click="switchFilter()">籂選
@@ -43,13 +43,15 @@
 
 <script>
 export default {
-    props: ['countrycities', 'productNum', 'arrowPriceDirection', 'arrowDaysDirection'],
+    props: ['countrycities', 'productNum', 'arrowPriceDirection', 'arrowDaysDirection', 'opacityValue', 'opacityValue1'],
+
     data(){
         return{
             filter: false,
             sortprice: true,
             filtericon: 'fas fa-sliders-h',
             open: false,
+          
         }
     },
 

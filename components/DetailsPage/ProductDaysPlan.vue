@@ -43,8 +43,9 @@ export default {
     }
 
     #productDaysPlans p{
-          color: #7f7f7f;
+          color: #3c3c3c;
           font-size:14px;
           line-height:24px;
+          font-family: 'FangPingRegular';
     }
 </style>

@@ -34,6 +34,7 @@ export default {
     #productIntro{
         background-color:white;
          padding: 1.5rem;
+         font-family: 'FangPingMedium';
     }
 
     #productIntro  .col{
@@ -52,6 +53,7 @@ export default {
     }
 
     #productIntro .content{
-       color:#7f7f7f;
+        color:#3c3c3c;
+        font-family: 'FangPingRegular';
     }
 </style>

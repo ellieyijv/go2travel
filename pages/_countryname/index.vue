@@ -6,6 +6,8 @@
                             :productNum = "producListNum"  
                             :arrowDaysDirection = "arrowDaysDirection"
                             :arrowPriceDirection = "arrowPriceDirection"
+                            :opacityValue = "opacityValue"
+                            :opacityValue1 = "opacityValue1"
                             @priceByOrder="sortedProductList"
                             @daysByOrder ="sortedByDaysProductList"/>
         <productListComp  :productList = "productList" />
@@ -19,6 +21,7 @@ import countryNavBarComp from "../../components/countryProductsPage/countryNavBa
 import productListComp from "../../components/countryProductsPage/productListComp";
 export default {
    components:{heroImgComp, countryNavBarComp, productListComp},
+
    data(){
        return{
              orderByPriceasc: true,
@@ -144,7 +147,9 @@ export default {
             },
             ],
             arrowDaysDirection: "fas fa-arrow-up",
-            arrowPriceDirection: "fas fa-arrow-up"
+            arrowPriceDirection: "fas fa-arrow-up",
+            opacityValue: "0.6",
+            opacityValue1: '0.6'
        }
    },
    methods:{
@@ -161,8 +166,10 @@ export default {
             return 0;
        },
      sortedProductList(){
-          
+                 
             this.orderByPriceasc = !this.orderByPriceasc;
+            this.opacityValue = '1';
+            this.opacityValue1 = '0.6'
             if(this.orderByPriceasc){
                 this.productList.sort((a, b)=> a.price - b.price);
                 this.arrowPriceDirection = "fas fa-arrow-up"
@@ -179,8 +186,9 @@ export default {
 
        sortedByDaysProductList(){
             this.orderByDaysasc = !this.orderByDaysasc;
-
-               if(this.orderByDaysasc){
+            this.opacityValue1 = '1';
+            this.opacityValue = "0.6";
+            if(this.orderByDaysasc){
                 this.productList.sort((a, b) =>this.compare(a, b));
                 this.arrowDaysDirection = "fas fa-arrow-up"
             }else{
@@ -190,9 +198,9 @@ export default {
        }
    },
 
-   created(){
-        this.productList.sort((a, b)=> a.price - b.price);
-   },
+//    created(){
+//         this.productList.sort((a, b)=> a.price - b.price);
+//    },
    computed:{
        producListNum(){
            return this.productList.length;

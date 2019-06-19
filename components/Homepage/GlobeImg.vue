@@ -1,9 +1,11 @@
 <template>
 <nuxt-link :to="'/' + globe.countryname">
-    <div :globe="globe" >
-        <img :src="globe.img" class="img-responsive"/>
-        <p >{{globe.title}}</p>
+    <div :globe="globe" class="parent">
+   
+        <img :src="globe.img" class="img-responsive child"/>
+      
     </div>
+      <p >{{globe.title}}</p>
 </nuxt-link>
 </template>
 
@@ -35,4 +37,31 @@ p{
     }
   
 }
+
+.parent {
+   /* width: 100%; */
+	border-radius:100%; 
+	height: 150px; 
+	margin: 0 auto;
+    width:154px;
+    overflow:hidden;
+   
+}
+
+.child {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    transition: all .5s;
+   
+}
+
+.parent:hover .child,
+.parent:focus .child
+{
+  transform: scale(1.2);
+  display:block;
+}
+
 </style>
