@@ -19,7 +19,7 @@
                         <h4>${{card.price}}<span style="font-size:14px; font-family:'FangPing'">/人起</span></h4>
                         <p>{{details.productSpecialPrice}}</p>
                         <p>{{details.productRebate}}</p>
-                        <b-btn block @click="gotoinquiry(details)">聯系我們</b-btn>
+                        <b-btn class="contactBtn" block :to="'/'+ path + '/inquiry'">聯系我們</b-btn>
                     </div>
                 </b-col>
             </b-row>
@@ -48,10 +48,16 @@
 <script>
 export default {
     props:['card', 'details'],
-    methods: {
-        gotoinquiry(){
-            
+    data(){
+        return{
+            path: '',
         }
+    },
+    methods: {
+     
+    },
+    created(){
+        this.path = this.$route.params.countryname + '/' + this.$route.params.id;
     }
         
 }
@@ -117,7 +123,7 @@ export default {
         font-weight: bolder;
     }
 
-    #rightSection button{
+    #rightSection .contactBtn{
         background-color:#103a5b;
         margin-top:1.5rem;
     }

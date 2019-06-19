@@ -31,7 +31,7 @@
                     Please choose your destination
                 </b-col>
                 <b-col cols="6" sm="4" md="3" lg="2" v-for="city in countrycities" :key="city.id">
-                    <button class="justify-content-between" @click="filterfunc">
+                    <button class="justify-content-between">
                     {{city.name}}
                     </button>
                 </b-col>

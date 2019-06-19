@@ -49,7 +49,7 @@
                                 >
                                      <b-form-textarea
                                         id="textarea"
-                                        v-model="text"
+                                    
                                         rows="4"       
                                         ></b-form-textarea>
                                 </b-form-group>
