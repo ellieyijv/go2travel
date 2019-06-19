@@ -19,7 +19,7 @@
                         <h4>${{card.price}}<span style="font-size:14px; font-family:'FangPing'">/人起</span></h4>
                         <p>{{details.productSpecialPrice}}</p>
                         <p>{{details.productRebate}}</p>
-                        <b-btn block>聯系我們</b-btn>
+                        <b-btn block @click="gotoinquiry(details)">聯系我們</b-btn>
                     </div>
                 </b-col>
             </b-row>
@@ -48,7 +48,11 @@
 <script>
 export default {
     props:['card', 'details'],
-    created(){}
+    methods: {
+        gotoinquiry(){
+            
+        }
+    }
         
 }
 </script>
