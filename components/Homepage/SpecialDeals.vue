@@ -93,7 +93,7 @@ export default {
 
 <style scoped>
 #specildeals{
-    background-color: #E5E5E5;
+    background-color: #f7f5f1;
     color: #103A5B;
 
 }

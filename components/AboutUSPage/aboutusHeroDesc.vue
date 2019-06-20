@@ -20,6 +20,7 @@ export default {
     #aboutusMainDesc{
         background-color: #103a5b;
         color:white;
+        padding-top:1rem;
     }
 
     #aboutusMainDesc .descStyle{
@@ -44,6 +45,7 @@ export default {
     @media (max-width: 1000px){
       #aboutusMainDesc .descStyle{
         width:80%;
+        padding: 1rem 0;
     }
 }
 

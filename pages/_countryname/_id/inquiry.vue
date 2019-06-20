@@ -1,5 +1,5 @@
 <template>
-   <div>
+   <div class="container-fluid backgroundColor">
        <inquiryForm />
    </div>
 </template>
@@ -12,5 +12,8 @@ export default {
 </script>
 
 <style scoped>
+.backgroundColor{
+    background-color: #f7f5f1;
+}
 
 </style>

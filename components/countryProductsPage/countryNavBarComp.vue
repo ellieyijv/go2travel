@@ -1,22 +1,22 @@
 <template>
 <div>
-    <b-container fluid id="countryNavBarComp" class="p-4">
+    <b-container fluid id="countryNavBarComp" >
         <b-container class="countrynavbar">
             <b-row>
-                <b-col cols="auto" class="mr-auto p-2">
+                <b-col cols="auto" class="mr-auto p-3 countryname">
                     <h5>{{$route.params.countryname}}</h5>
                 </b-col>
               
                 <b-col cols="auto" >
                     <b-nav class="justify-content-end">
-                        <b-nav-item active>共{{productNum}}個商品</b-nav-item>
-                        <b-nav-item @click="$emit('priceByOrder')" :style="{opacity:opacityValue}">價格
+                        <b-nav-item class="p-3" active>共{{productNum}}個商品</b-nav-item>
+                        <b-nav-item class="p-3" @click="$emit('priceByOrder')" :style="{opacity:opacityValue}">價格
                             <i :class="arrowPriceDirection"></i>
                         </b-nav-item>
-                        <b-nav-item @click="$emit('daysByOrder')" :style="{opacity:opacityValue1}">天數
+                        <b-nav-item class="p-3" @click="$emit('daysByOrder')" :style="{opacity:opacityValue1}">天數
                             <i :class="arrowDaysDirection"></i>
                         </b-nav-item>
-                        <b-nav-item @click="switchFilter()">籂選
+                        <b-nav-item  @click="switchFilter()" class="filterBackground p-3">籂選
                             <i :class="filtericon"></i>
                         </b-nav-item>
                     </b-nav>
@@ -30,8 +30,9 @@
                 <b-col sm="12">
                     Please choose your destination
                 </b-col>
+        
                 <b-col cols="6" sm="4" md="3" lg="2" v-for="city in countrycities" :key="city.id">
-                    <button class="justify-content-between">
+                    <button class="justify-content-between" :class="{active: isActive}" @click="$emit('filterProductByCity', city.name)" >
                     {{city.name}}
                     </button>
                 </b-col>
@@ -51,7 +52,7 @@ export default {
             sortprice: true,
             filtericon: 'fas fa-sliders-h',
             open: false,
-          
+            isActive: false
         }
     },
 
@@ -96,14 +97,14 @@ export default {
         width:140px;
         border:none;
         border-radius: 0;
-        background-color: #E5E5E5;
-        color:#3c3c3c;
+        background-color: rgba(194,165,121,0.1);
+        color:#897b72;
         padding:8px;
     }
    
     .cityNav button.active  {
         background-color:#C2A579;
-        color:white;
+        color:#897b72;
     }
 
     .cityNav .nav-link{
@@ -113,10 +114,20 @@ export default {
     .countrynavbar h5{
             margin-left: 0.5rem;
         }
+    .filterBackground{
+        background-color:  rgba(27,117,187,0.3);
+        
+    }
   
     @media (max-width: 589px){
-        .countrynavbar h5{
-            margin-left: 1.5rem;
+        .countrynavbar  .countryname{
+            margin:auto;
+        }
+        .countrynavbar .nav-link{
+            padding: 0.5rem 0.4rem;
+        }
+        .justify-content-end{
+            justify-content: flex-start !important;
         }
     }
 </style>

@@ -59,6 +59,7 @@ export default {
     color:#897B72;
     width:40%;
     margin:auto;
+   
 }
 
 .contentStyle h5{
@@ -73,6 +74,7 @@ export default {
 
 .containerStyle{
     display:flex;
+    background-color: #f7f5f1;
 }
 
   @media (max-width: 1000px){

@@ -6,7 +6,7 @@
         <b-form-input
             :id="item.id"
             required
-            :type="type"
+            :type="item.type"
         ></b-form-input>
     </b-form-group>      
 </template>

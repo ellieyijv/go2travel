@@ -9,7 +9,8 @@
                             :opacityValue = "opacityValue"
                             :opacityValue1 = "opacityValue1"
                             @priceByOrder="sortedProductList"
-                            @daysByOrder ="sortedByDaysProductList"/>
+                            @daysByOrder ="sortedByDaysProductList"
+                            @filterProductByCity ="sortedByCities"/>
         <productListComp  :productList = "productList" />
  
     </div>
@@ -26,8 +27,9 @@ export default {
        return{
              orderByPriceasc: true,
              orderByDaysasc: true,
-             countrycities: [{
-                'id':1,
+             countrycities: [
+            {
+                'id': 1,
                 'name': 'showall'
             },
             {
@@ -62,7 +64,8 @@ export default {
                 subtitle: "原價 $3,889 最後機會 立馬下訂",
                 price:"3447",
                 days:"5天4夜",
-                countryname: "Australia"
+                countryname: "Australia",
+                cities: 'Sydney'
             },
             {
                 id: 25408,
@@ -72,6 +75,7 @@ export default {
                 price:"1447",
                 days:"10天9夜",
                 countryname: "Australia",
+                cities: 'Brisban'
             },
             {
                 id: 25409,
@@ -80,7 +84,8 @@ export default {
                 subtitle: "最後機會 立馬下訂",
                 price:"3347",
                 days:"11天10夜",
-                 countryname: "Australia"
+                countryname: "Australia",
+                cities: 'Perth'
             },
             {
                 id: 4,
@@ -89,7 +94,8 @@ export default {
                 subtitle: "最後機會 立馬下訂",
                 price:"3147",
                 days:"12天11夜",
-                countryname: "Australia"
+                countryname: "Australia",
+                cities: 'Brisban'
             },
             {
                 id: 5,
@@ -98,7 +104,8 @@ export default {
                 subtitle: "最後機會 立馬下訂",
                 price:"3247",
                 days:"15天14夜",
-                countryname: "Australia"
+                countryname: "Australia",
+                cities: 'Kaensi'
             },
             {
                 id: 6,
@@ -107,7 +114,8 @@ export default {
                 subtitle: "最後機會 立馬下訂",
                 price:"3347",
                 days:"8天7夜",
-                countryname: "Australia"
+                countryname: "Australia",
+                cities: 'Gold Coast'
             },
             {
                 id: 7,
@@ -116,7 +124,8 @@ export default {
                 subtitle: "最後機會 立馬下訂",
                 price:"3347",
                 days:"15天14夜",
-                countryname: "Australia"
+                countryname: "Australia",
+                cities: 'Melbourn'
             },
                  {
                 id: 8,
@@ -125,7 +134,8 @@ export default {
                 subtitle: "最後機會 立馬下訂",
                 price:"3247",
                 days:"15天14夜",
-                countryname: "Australia"
+                countryname: "Australia",
+                cities: 'Melbourn'
             },
             {
                 id: 9,
@@ -134,7 +144,8 @@ export default {
                 subtitle: "最後機會 立馬下訂",
                 price:"3347",
                 days:"8天7夜",
-                countryname: "Australia"
+                countryname: "Australia",
+                cities: 'Kaensi'
             },
             {
                 id: 10,
@@ -143,14 +154,19 @@ export default {
                 subtitle: "最後機會 立馬下訂",
                 price:"3347",
                 days:"15天14夜",
-                countryname: "Australia"
+                countryname: "Australia",
+                cities: 'Kaensi'
             },
             ],
             arrowDaysDirection: "fas fa-arrow-up",
             arrowPriceDirection: "fas fa-arrow-up",
             opacityValue: "0.6",
-            opacityValue1: '0.6'
+            opacityValue1: '0.6',
+            clone: []
        }
+   },
+   created(){
+       this.clone = JSON.parse(JSON.stringify(this.productList));
    },
    methods:{
      
@@ -195,7 +211,22 @@ export default {
                 this.productList.sort((b, a)=> this.compare(a, b));
                 this.arrowDaysDirection = "fas fa-arrow-down"
             }
+       },
+
+
+        sortedByCities(cityName){
+            
+            const list = this.clone.filter((el)=>{ 
+                if(cityName == "showall"){
+                    return this.clone;
+                }else{
+                    return el.cities == cityName
+                }
+                
+           })
+           this.productList = list;
        }
+       
    },
 
 //    created(){

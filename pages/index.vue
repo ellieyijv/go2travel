@@ -44,10 +44,7 @@ export default {
 #homepagestyle{
 	font-family: 'FangPingMedium';
 }
-.container-fluid {
-	padding-left:0 !important;
-	padding-right:0 !important;
-}
+
 
 .btn-to-top {
   width: 60px;
