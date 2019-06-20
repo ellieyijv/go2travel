@@ -8,6 +8,7 @@
                             :arrowPriceDirection = "arrowPriceDirection"
                             :opacityValue = "opacityValue"
                             :opacityValue1 = "opacityValue1"
+                            :isActive = "isActive"
                             @priceByOrder="sortedProductList"
                             @daysByOrder ="sortedByDaysProductList"
                             @filterProductByCity ="sortedByCities"/>
@@ -162,7 +163,8 @@ export default {
             arrowPriceDirection: "fas fa-arrow-up",
             opacityValue: "0.6",
             opacityValue1: '0.6',
-            clone: []
+            clone: [],
+            isActive: false
        }
    },
    created(){
@@ -215,9 +217,9 @@ export default {
 
 
         sortedByCities(cityName){
-            
             const list = this.clone.filter((el)=>{ 
                 if(cityName == "showall"){
+
                     return this.clone;
                 }else{
                     return el.cities == cityName

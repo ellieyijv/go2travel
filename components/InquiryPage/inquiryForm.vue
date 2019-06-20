@@ -166,9 +166,9 @@ export default {
     font-weight: bold;
 }
 
-.inquiryform p{
-    font-size:13px;
-    color:#3c3c3c;
+.inquiryform .col-form-label{
+    font-size:13px !important;
+    color:#3c3c3c !important;
 }
 
 .inquiryform .formtitlestyle{

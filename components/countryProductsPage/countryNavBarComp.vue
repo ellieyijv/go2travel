@@ -30,13 +30,19 @@
                 <b-col sm="12">
                     Please choose your destination
                 </b-col>
-        
-                <b-col cols="6" sm="4" md="3" lg="2" v-for="city in countrycities" :key="city.id">
-                    <button class="justify-content-between" :class="{active: isActive}" @click="$emit('filterProductByCity', city.name)" >
-                    {{city.name}}
-                    </button>
-                </b-col>
-        </b-row>
+            </b-row>
+            <b-row>
+              
+                 <button v-for="city in countrycities" :key="city.name" 
+                            class="justify-content-between col-lg-2"
+                            :class="['tab-button', { active: currentTab === city.name }]"  
+                            @click="clickFunc(city.name)" >
+                       <div> {{city.name}}</div>
+
+                </button>
+               
+             
+            </b-row>
         </b-container>
     </b-container>
 </div>
@@ -44,7 +50,7 @@
 
 <script>
 export default {
-    props: ['countrycities', 'productNum', 'arrowPriceDirection', 'arrowDaysDirection', 'opacityValue', 'opacityValue1'],
+    props: ['countrycities', 'productNum', 'arrowPriceDirection', 'arrowDaysDirection', 'opacityValue', 'opacityValue1', 'isActive'],
 
     data(){
         return{
@@ -52,7 +58,7 @@ export default {
             sortprice: true,
             filtericon: 'fas fa-sliders-h',
             open: false,
-            isActive: false
+            currentTab: 'showall'
         }
     },
 
@@ -66,11 +72,13 @@ export default {
                 this.filtericon = "fas fa-sliders-h"
             }
         },
-   
+        clickFunc(cityName){
+            console.log(cityName)
+            this.currentTab = cityName;
+            this.$emit('filterProductByCity', cityName);
+        }  
     },
-    created(){
-
-    }
+   
 }
 </script>
 
@@ -92,7 +100,7 @@ export default {
         margin:auto; 
     }
 
-    .cityNav button{
+    .cityNav .tab-button{
         margin-top: 20px;
         width:140px;
         border:none;
@@ -102,7 +110,7 @@ export default {
         padding:8px;
     }
    
-    .cityNav button.active  {
+    .cityNav .tab-button.active{
         background-color:#C2A579;
         color:#897b72;
     }
