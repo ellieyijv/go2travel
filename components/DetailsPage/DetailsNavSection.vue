@@ -28,16 +28,16 @@
     <b-container fluid style="border:1px solid #EFEFEF; margin-top:30px;">
         <b-container>
             <b-row>
-                <b-col sm="6">
-                <b-nav class="tabnav justify-content-between ">
-                        <b-nav-item active class="productItem" style="">產品介紹</b-nav-item>
-                        <b-nav-item>行程安排</b-nav-item>
-                        <b-nav-item>費用說明</b-nav-item>
-                        <b-nav-item>條款規則</b-nav-item>
-                        <b-nav-item>客戶評論</b-nav-item>
+                <b-col sm="12" md="12" lg="8" xl="6" style="border-left: 1px solid #EFEFEF;" >
+                <b-nav class="tabnav justify-content-between">
+                        <b-nav-item active>產品介紹</b-nav-item>
+                        <b-nav-item href="#productDaysPlans">行程安排</b-nav-item>
+                        <b-nav-item href="#productfeedesc">費用說明</b-nav-item>
+                        <b-nav-item href="#productNeedsToKnow">條款規則</b-nav-item>
+                        <b-nav-item href="#youmightinterested">相關推薦</b-nav-item>
                     </b-nav>
                 </b-col>
-                <b-col sm="6">
+                <b-col sm="0" md="6">
                 </b-col>
             </b-row>
         </b-container>
@@ -91,32 +91,22 @@ export default {
     #detailsNavSection p{
         color:#666666;
         font-size:14px;
-  
-        margin-top:10px;
     }
    
     .sectionNav .nav-link{
         margin-top:3rem;
        
     }
-
-    .productItem{
-        border-left:1px solid #EFEFEF;
-        padding-left:0.5rem
-    }
-    .productItem .active{
+    .nav-link.active{
         color:#103a5b;
-     
     }
     #rightSection p{
         font-size:14px;
-        color:#7f7f7f;
-        line-height: 0.5;
-        
+        color:#7f7f7f;  
+     
     }
 
     #rightSection h4{
-        padding-bottom:1rem;
         color:#103a5b;
         letter-spacing: 1px;
         font-size:36px;
@@ -125,7 +115,7 @@ export default {
 
     #rightSection .contactBtn{
         background-color:#103a5b;
-        margin-top:1.5rem;
+        margin-top:2.5rem;
     }
     
     .tabnav .nav-item{
@@ -134,4 +124,16 @@ export default {
         border-right:1px solid #EFEFEF;
         padding-right:1.8rem;
     }
+
+    @media (max-width: 576px){
+        .tabnav .nav-item{
+            padding-right:1.3rem;
+        }
+    }
+    @media (min-width:996px){
+         #rightSection p{
+             line-height: 5px;
+         }
+    }
+   
 </style>

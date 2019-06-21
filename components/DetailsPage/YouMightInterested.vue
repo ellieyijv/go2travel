@@ -2,7 +2,7 @@
     <b-container id="youmightinterested"> 
         <h4>相關推薦</h4>
         <b-row>
-            <b-col v-for="card in youmightinterestdlist" :key="card.id" sm="3" md="4">
+            <b-col v-for="card in youmightinterestdlist" :key="card.id" cols="6" sm="4" md="6" lg="6" xl="4" class="cardLayout">
                <SpecialDealCard :card="card" />
             </b-col>
         </b-row>
@@ -27,7 +27,7 @@ export default {
     color: #103A5B;
 }
 
-#youmightinterested .col-sm-4{
+#youmightinterested .cardLayout{
     margin-bottom: 2rem;
 }   
 </style>

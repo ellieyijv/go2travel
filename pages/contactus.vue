@@ -126,11 +126,14 @@
 
 <script>
 export default {
-
+    layout: 'formpagelayout'
 }
 </script>
 
 <style>
+#contactus{
+    height:130rem;
+}
 #contactus .contactusform, #contactus .contactinfoform{
  
     background-color:#fff;
@@ -175,9 +178,6 @@ export default {
     font-size:14px;
 }
 
-#contactus #footer{
-    position:absolute;
-    bottom:0;
-}
+
 
 </style>

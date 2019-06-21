@@ -2,7 +2,7 @@
     <b-container id="productNeedsToKnow">
         <b-row>
             <b-col sm="12">
-                <h4>预订须知</h4>
+                <h4>條款規則</h4>
             </b-col>
         </b-row>
         <b-row style="border-top: 2px solid #F7F5F1; padding-top:2rem;">

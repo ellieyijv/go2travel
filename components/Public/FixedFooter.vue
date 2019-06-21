@@ -1,5 +1,5 @@
 <template>
-    <b-container fluid id="footer">
+    <b-container fluid id="fixedfooter">
         <b-container>
             <div class="d-flex justify-content-between">
                 <section class="footerLogo">
@@ -31,28 +31,30 @@ export default {
 </script>
 
 <style scoped>
-#footer{
+#fixedfooter{
     background-color: #103A5B;
     padding:25px;
     color:white;
+	position: fixed;
+	bottom:0;
 }
 
-.footerLogo{
+#fixedfooter .footerLogo{
         padding-right: 0.5rem;
 }
 
-.links a{
+#fixedfooter .links a{
     color: white;
     border-right:1px solid white;
     line-height:5px;
     margin-top:10px;
 }
 
-.getridofline a{
+#fixedfooter .getridofline a{
     border-right:none !important;
 }
 
-i.fab {
+#fixedfooter i.fab {
     font-size:1em;
     border-radius: 50%;
     background-color:white;
@@ -66,12 +68,12 @@ i.fab {
     margin:5px;
 }
 
-.nav-link{
+#fixedfooter .nav-link{
     padding:0.5rem 0.5rem !important;
 }
 
 @media (max-width: 521px) {
-  .links a{
+  #fixedfooter .links a{
     border: none;
   }
 }

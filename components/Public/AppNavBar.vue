@@ -2,43 +2,50 @@
    
     <b-container fluid id="navBar">
         <b-container >
-        <b-navbar toggleable="sm">
-        <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
-        <b-navbar-brand href="/">
-             <img src="/images/logo.png" alt="logo">
-        </b-navbar-brand>
+            <b-navbar toggleable="sm">
+                <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
+                <b-navbar-brand href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </b-navbar-brand>
 
-        <b-collapse id="nav-text-collapse" is-nav>
-            
-          <b-navbar-nav class="mx-4">
-            <nuxt-link to="/asian">亞洲</nuxt-link>
-          </b-navbar-nav >
-            <b-navbar-nav class="mx-4">
-            <nuxt-link to="/american">美洲</nuxt-link>
-          </b-navbar-nav>
-            <b-navbar-nav class="mx-4">
-            <nuxt-link to="/africa">非洲</nuxt-link>
-          </b-navbar-nav>
-            <b-navbar-nav class="mx-4">
-            <nuxt-link to="/australia">澳大利亞</nuxt-link>
-          </b-navbar-nav>
-            <b-navbar-nav class="mx-4">
-            <nuxt-link to="/europe">歐洲</nuxt-link>
-          </b-navbar-nav>
-                
-          <b-navbar-nav class="ml-auto">
-              <i class="fas fa-search" style="color:black"></i>
-          </b-navbar-nav>
-           
-        </b-collapse>
-      </b-navbar>
-    </b-container>
+                <b-collapse id="nav-text-collapse" is-nav>
+                    <b-navbar-nav class="mx-4">
+                        <nuxt-link to="/亞洲">亞洲</nuxt-link>
+                    </b-navbar-nav >
+                        <b-navbar-nav class="mx-4">
+                        <nuxt-link to="/美洲">美洲</nuxt-link>
+                    </b-navbar-nav>
+                        <b-navbar-nav class="mx-4">
+                        <nuxt-link to="/非洲">非洲</nuxt-link>
+                    </b-navbar-nav>
+                        <b-navbar-nav class="mx-4">
+                        <nuxt-link to="/澳大利亞">澳大利亞</nuxt-link>
+                    </b-navbar-nav>
+                        <b-navbar-nav class="mx-4">
+                        <nuxt-link to="/歐洲">歐洲</nuxt-link>
+                    </b-navbar-nav>
+                            
+                    <b-navbar-nav class="ml-auto" @click="showSearch = !showSearch">
+                        <i class="fas fa-search" style="color:black"></i>
+                    </b-navbar-nav>
+                </b-collapse>
+            </b-navbar>
+        </b-container>
+        <b-container v-if="showSearch" >
+            <SearchModal class="searchlayout"/>
+        </b-container>
     </b-container>
 </template>
 
 <script>
+import SearchModal from './SearchModal';
 export default {
-
+    components: {SearchModal},
+    data(){
+        return{
+            showSearch: true,
+        }
+    }
 }
 </script>
 
@@ -47,11 +54,14 @@ export default {
         height:auto;
         padding:0;
         margin-right:0;
+        background-color: white !important;
     }
 
     .navbar-nav a{
       color:#103a5b;
     }
+
+   
     
     @media (max-width: 575px){
       .ml-auto{

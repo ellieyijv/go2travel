@@ -42,10 +42,11 @@ export default {
         letter-spacing: 5px;
     }
 
-    @media (max-width: 1000px){
+    @media (max-width: 1400px){
       #aboutusMainDesc .descStyle{
         width:80%;
         padding: 1rem 0;
+        padding-bottom:4rem;
     }
 }
 

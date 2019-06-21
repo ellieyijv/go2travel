@@ -3,7 +3,7 @@
     <b-container fluid id="countryNavBarComp" >
         <b-container class="countrynavbar">
             <b-row>
-                <b-col cols="auto" class="mr-auto p-3 countryname">
+                <b-col cols="auto" class="mr-auto p-3 countryname ">
                     <h5>{{$route.params.countryname}}</h5>
                 </b-col>
               
@@ -33,13 +33,15 @@
             </b-row>
             <b-row>
               
-                 <button v-for="city in countrycities" :key="city.name" 
-                            class="justify-content-between col-lg-2"
-                            :class="['tab-button', { active: currentTab === city.name }]"  
+                 <b-col v-for="city in countrycities" :key="city.name" 
+                            class="justify-content-between"
+                            lg="2" cols="6" md="4" 
                             @click="clickFunc(city.name)" >
-                       <div> {{city.name}}</div>
+                        <div :class="['tab-button', { active: currentTab === city.name }]" > 
+                           {{city.name}}
+                        </div>
 
-                </button>
+                 </b-col>
                
              
             </b-row>
@@ -102,14 +104,15 @@ export default {
 
     .cityNav .tab-button{
         margin-top: 20px;
-        width:140px;
         border:none;
-        border-radius: 0;
-        background-color: rgba(194,165,121,0.1);
+        border-radius: 0; 
+        background-color:  rgba(194,165,121,0.1);
         color:#897b72;
-        padding:8px;
+        padding: 0.5rem;
+        text-align: center;
+        cursor: pointer;
     }
-   
+    
     .cityNav .tab-button.active{
         background-color:#C2A579;
         color:#897b72;
@@ -120,8 +123,9 @@ export default {
     }
     
     .countrynavbar h5{
-            margin-left: 0.5rem;
-        }
+        padding-top: 0.5rem;
+
+    }
     .filterBackground{
         background-color:  rgba(27,117,187,0.3);
         

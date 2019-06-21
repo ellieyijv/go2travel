@@ -6,7 +6,7 @@
             </b-col>
         </b-row>
         <b-row style="border-top: 2px solid #F7F5F1" >
-            <b-col v-for="(img, index) in details.productImgs" :key="index" sm="3">
+            <b-col v-for="(img, index) in details.productImgs" :key="index" sm="6" lg="4" xl="3" class="hilightlistStyle">
                 <img :src="img.url" />
                 <p>{{img.imgdes}}</p>
             </b-col>
@@ -26,7 +26,7 @@ export default {
          padding: 1.5rem;
     }
 
-    #productHighlight .col-sm-3{
+    #productHighlight .hilightlistStyle{
       color: #7f7f7f;
       font-size:14px;
       padding-top: 2rem;
@@ -39,7 +39,9 @@ export default {
         padding-bottom: 1rem;
     }
 
-    #productHighlight .col-sm-3{
+    #productHighlight .hilightlistStyle{
         text-align: center;
     }
+
+
 </style>
