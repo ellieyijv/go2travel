@@ -1,7 +1,7 @@
 <template>
    
     <b-container fluid id="navBar">
-        <b-container >
+        <b-container style="position:relative">
             <b-navbar toggleable="sm">
                 <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
                 <b-navbar-brand href="/">
@@ -30,10 +30,11 @@
                     </b-navbar-nav>
                 </b-collapse>
             </b-navbar>
+            <div v-if="showSearch" >
+                <SearchModal/>
+            </div>
         </b-container>
-        <b-container v-if="showSearch" >
-            <SearchModal class="searchlayout"/>
-        </b-container>
+    
     </b-container>
 </template>
 
