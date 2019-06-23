@@ -6,7 +6,7 @@
                 <a :href="'/'+item.countryname +'/'+ item.id">{{ item.title }}</a>
             </li>
         </ul> 
-    </div>
+    </div>                                                                                                                                                                                                                                                                                                   
 </template>
 
 <script>
