@@ -30,9 +30,11 @@
                     </b-navbar-nav>
                 </b-collapse>
             </b-navbar>
-            <div v-if="showSearch" >
-                <SearchModal/>
-            </div>
+            <b-row v-if="showSearch" >
+                <b-col>
+                    <SearchModal/>
+                </b-col>
+            </b-row>
         </b-container>
     
     </b-container>
@@ -44,7 +46,7 @@ export default {
     components: {SearchModal},
     data(){
         return{
-            showSearch: true,
+            showSearch: false,
         }
     }
 }
