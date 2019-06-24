@@ -126,4 +126,13 @@ export default {
         right:0;
         margin-top:20px;
      }
+
+     @media (max-width: 375px){
+        .searchContainer{
+              width:100%;
+          }
+          .searchIcon{
+              right:15px;
+          }
+     }
 </style>
