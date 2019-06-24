@@ -16,6 +16,7 @@
 
 <script>
 import SpecialDealCard from '../Homepage/SpecialDealCard'
+import axios from 'axios'
 export default {
     components:{
 		SpecialDealCard
@@ -27,7 +28,7 @@ export default {
         }
     },
 
-    data(){
+   data(){
         return{
             cardList:[{
                 id: 25407,
@@ -84,7 +85,14 @@ export default {
                 countryname: "Australia"
             },]
         }
-    }
+    },
+
+    async asyncData(){
+        let res =  await axios.get("/")
+        return {cardList: res.data}
+           
+    },
+    
     
 }
 

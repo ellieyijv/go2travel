@@ -67,9 +67,17 @@ module.exports = {
   modules: [
     // Doc: https://bootstrap-vue.js.org/docs/
     'bootstrap-vue/nuxt',
-    
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
   ],
-
+  proxy: {
+    '/api': {
+      target: 'http://localhost:1337/productsummaries',
+      pathRewrite: {
+        '^/api' : '/'
+        }
+      }
+  }
   /*
   ** Build configuration
   */
