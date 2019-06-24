@@ -77,7 +77,7 @@ module.exports = {
         '^/api' : '/'
         }
       }
-  }
+  },
   /*
   ** Build configuration
   */
