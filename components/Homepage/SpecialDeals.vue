@@ -87,11 +87,11 @@ export default {
         }
     },
 
-    async asyncData(){
-        let res =  await axios.get("/")
-        return {cardList: res.data}
+    // async asyncData(){
+    //     let res =  await axios.get("/")
+    //     return {cardList: res.data}
            
-    },
+    // },
     
     
 }
