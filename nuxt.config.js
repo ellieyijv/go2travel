@@ -69,14 +69,14 @@ module.exports = {
     'bootstrap-vue/nuxt',
   
   ],
-  proxy: {
-    '/api': {
-      target: 'http://localhost:1337/productsummaries',
-      pathRewrite: {
-        '^/api' : '/'
-        }
-      }
-  },
+  // proxy: {
+  //   '/api': {
+  //     target: 'http://localhost:1337/productsummaries',
+  //     pathRewrite: {
+  //       '^/api' : '/'
+  //       }
+  //     }
+  // },
   /*
   ** Build configuration
   */
