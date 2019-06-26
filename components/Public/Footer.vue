@@ -11,6 +11,7 @@
                         <b-nav-item to="/contactus">聯繫我們</b-nav-item>
                         <b-nav-item class="getridofline" >隱私政策</b-nav-item>
                     </b-nav>
+                    <p>Copyright 2019 @ Go4Fun Travel Services</p>
                 </section>
                 <section class="p-2" >
                     <div class="social">
@@ -43,11 +44,16 @@ export default {
 
 .links a{
     color: white;
-    border-right:1px solid white;
+     border-right:1px solid white;
     line-height:5px;
     margin-top:10px;
 }
 
+.links li{
+    margin:auto;
+    width: 33.33%;
+    text-align: center;
+}
 .getridofline a{
     border-right:none !important;
 }
