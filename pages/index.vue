@@ -14,21 +14,52 @@
 
 <script>
 import Carousel from '../components/Homepage/Carousel.vue'
-
 import SpecialDeals from '../components/Homepage/SpecialDeals'
 import PopularTours from '../components/Homepage/PopularTours'
 import Globe from '../components/Homepage/Globe'
 import AboutUS from '../components/Homepage/AboutUS'
-
 import BackToTop from '../components/Public/BackToTop'
 
+import Strapi from 'strapi-sdk-javascript/build/main'
+const apiUrl = process.env.API_URL || 'http://localhost:1337'
+const strapi = new Strapi(apiUrl)
 export default {
-	asyncData() {
-		return new Promise(resolve => {
-			setTimeout(function() {
-				resolve({ show: true });
-			}, 1000);
-		});
+	data(){
+		return{
+			cardList: ''
+		}
+	}
+		
+	,
+	async fetch({store}) {
+		store.commit('specialDeals/emptyList')
+        const response = await strapi.request('post', '/graphql', {
+        data: {
+            query: `query {
+                specialdeals {
+                    id
+                    title
+                    subtitle
+                    price
+                    days
+                    country_name
+                    image{
+                        url
+                    }
+                }
+            }
+            `
+        }
+    }).catch((error => {
+            console.log(error)
+        }))
+        response.data.specialdeals.forEach(product => { 
+			product.image.url = `${apiUrl}${product.image.url}`
+            store.commit('specialDeals/add', {
+                id: product.id,
+                ...product
+            })
+        })
 	},
 
 	components:{

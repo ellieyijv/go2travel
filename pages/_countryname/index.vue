@@ -168,11 +168,12 @@ export default {
        }
    },
    created(){
+       
        this.clone = JSON.parse(JSON.stringify(this.productList));
    },
    methods:{
      
-       compare(a, b){
+        compare(a, b){
             let numbera = this.getTheStringNum(a.days);
             console.log('a' + numbera);
             let numberb = this.getTheStringNum(b.days);
@@ -182,8 +183,8 @@ export default {
             if(numbera > numberb)
                 return 1;
             return 0;
-       },
-     sortedProductList(){
+        },
+        sortedProductList(){
                  
             this.orderByPriceasc = !this.orderByPriceasc;
             this.opacityValue = '1';
@@ -196,13 +197,13 @@ export default {
                 this.arrowPriceDirection = "fas fa-arrow-down"
             }
 
-       },
+        },
 
-       getTheStringNum(string){
+        getTheStringNum(string){
             return string.match(/\d+/g).map(Number)[0];
-       },
+        },
 
-       sortedByDaysProductList(){
+        sortedByDaysProductList(){
             this.orderByDaysasc = !this.orderByDaysasc;
             this.opacityValue1 = '1';
             this.opacityValue = "0.6";
@@ -213,7 +214,7 @@ export default {
                 this.productList.sort((b, a)=> this.compare(a, b));
                 this.arrowDaysDirection = "fas fa-arrow-down"
             }
-       },
+        },
 
 
         sortedByCities(cityName){

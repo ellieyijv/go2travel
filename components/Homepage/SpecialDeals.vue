@@ -7,7 +7,7 @@
         <div class="container" style="padding-bottom:70px;">
             <div class="row">
                 <div v-for="card in cardList" :key="card.id" class="paddingStyle col-md-6 col-lg-6 col-xl-4 col-sm-4 col-6" style="margin-bottom:20px;"> 
-                    <SpecialDealCard :card="card" />
+                    <SpecialDealCard :card="card"/>
                 </div>
             </div>
         </div>
@@ -16,84 +16,25 @@
 
 <script>
 import SpecialDealCard from '../Homepage/SpecialDealCard'
-import axios from 'axios'
+
+
 export default {
     components:{
 		SpecialDealCard
     },
 
-    methods:{
-        goToDetails(id){
-            this.$router.push(`/Products/${id}`)
-        }
-    },
-
    data(){
         return{
-            cardList:[{
-                id: 25407,
-                img:"/images/special/aussydney.png",
-                title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
-                subtitle: "原價 $3,889 最後機會 立馬下訂",
-                price:"3447",
-                days:"15天14夜",
-                countryname: "Australia"
-            },
-            {
-                id: 25408,
-                img:'/images/special/ausclassic.png',
-                title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
-                subtitle: "最後機會 立馬下訂",
-                price:"3447",
-                days:"15天14夜",
-                countryname: "Australia",
-            },
-            {
-                id: 25409,
-                img:'/images/special/aussydmel.png',
-                title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
-                subtitle: "最後機會 立馬下訂",
-                price:"3447",
-                days:"15天14夜",
-                 countryname: "Australia"
-            },
-            {
-                id: 4,
-                img:'/images/special/aus.png',
-                title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
-                subtitle: "最後機會 立馬下訂",
-                price:"3447",
-                days:"15天14夜",
-                countryname: "Australia"
-            },
-            {
-                id: 5,
-                img:'/images/special/auscans.png',
-                title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
-                subtitle: "最後機會 立馬下訂",
-                price:"3447",
-                days:"15天14夜",
-                countryname: "Australia"
-            },
-            {
-                id: 6,
-                img:'/images/special/auscanssyd.png',
-                title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
-                subtitle: "最後機會 立馬下訂",
-                price:"3447",
-                days:"15天14夜",
-                countryname: "Australia"
-            },]
+            query: '', 
+                
         }
     },
-
-    // async asyncData(){
-    //     let res =  await axios.get("/")
-    //     return {cardList: res.data}
-           
-    // },
     
-    
+    computed: {
+       cardList(){
+           return this.$store.getters['specialDeals/list']
+       } 
+    },  
 }
 
  
