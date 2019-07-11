@@ -20,44 +20,29 @@ import Globe from '../components/Homepage/Globe'
 import AboutUS from '../components/Homepage/AboutUS'
 import BackToTop from '../components/Public/BackToTop'
 
-import Strapi from 'strapi-sdk-javascript/build/main'
-const apiUrl = process.env.API_URL || 'http://localhost:1337'
-const strapi = new Strapi(apiUrl)
+import axios from 'axios'
+const apiUrl = process.env.API_URL || 'http://localhost:8000'
+
 export default {
 	data(){
 		return{
 			cardList: ''
 		}
-	}
+	},
 		
-	,
+	
 	async fetch({store}) {
 		store.commit('specialDeals/emptyList')
-        const response = await strapi.request('post', '/graphql', {
-        data: {
-            query: `query {
-                specialdeals {
-                    id
-                    title
-                    subtitle
-                    price
-                    days
-                    country_name
-                    image{
-                        url
-                    }
-                }
-            }
-            `
-        }
-    }).catch((error => {
+        const {data} = await axios.get(`${apiUrl}/api/specialdeals`).catch((error => {  
             console.log(error)
         }))
-        response.data.specialdeals.forEach(product => { 
-			product.image.url = `${apiUrl}${product.image.url}`
+       
+        data.forEach(item => { 
+              console.log(item.product);
+			// item.product.cardImage = `${apiUrl}${product.image.url}`
             store.commit('specialDeals/add', {
-                id: product.id,
-                ...product
+                id: item.product.id,
+                ...item.product
             })
         })
 	},
