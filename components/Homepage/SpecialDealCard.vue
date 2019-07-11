@@ -1,8 +1,8 @@
 <template>
-<nuxt-link :to="'/'+card.countryname +'/'+ card.id" style="text-decoration:none">
+<nuxt-link :to="'/'+card.country_name +'/'+ card.id" style="text-decoration:none">
     <b-card :card="card" class="cardStyle">
         <div class="parent">
-            <div class="child img-top" :style="{ backgroundImage: 'url(' + card.img + ')' }"  ></div>
+            <div class="child img-top" :style="{ backgroundImage: 'url(' + card.image.url + ')' }"  ></div>
         </div>
         <b-card-text class="special-title">{{card.title}}</b-card-text>
         <b-card-text class="special-subtitle">{{card.subtitle}}</b-card-text>  
@@ -11,8 +11,7 @@
                 <b-card-text class="col special-price col-12 col-sm-12 col-md-4">${{numberWithCommas(card.price)}} /人起</b-card-text>    
                 <div class="special-days col" >{{card.days}}</div>
                 <b-button class="special-more col btn-lg">查看更多</b-button>       
-            </div>
-            
+            </div>   
         </div>
     </b-card>  
 </nuxt-link>
