@@ -12,10 +12,11 @@
                             <b-col md="6">
                                 <b-form-group 
                                     label="姓名*"
-                                    lable-for="name"
+                                    lable-for="name"   
                                 >
                                     <b-form-input
-                                        id="name"
+                                        name="name"
+                                        v-model="name"
                                         required
                                     ></b-form-input>
                                 </b-form-group>   
@@ -29,9 +30,10 @@
                                     lable-for="email"
                                 >
                                     <b-form-input
-                                        id="email"
+                                        name="email"
                                         required
                                         type="email"
+                                        v-model="email"
                                     ></b-form-input>
                                 </b-form-group>  
                             </b-col> 
@@ -41,9 +43,10 @@
                                     lable-for="phone"
                                 >
                                     <b-form-input
-                                        id="phone"
+                                        name="phone"
                                         required
                                         type="number"
+                                        v-model="phone"
                                     ></b-form-input>
                                 </b-form-group>  
                             </b-col>
@@ -55,8 +58,9 @@
                                     lable-for="textarea"
                                 >
                                     <b-form-textarea
-                                        id="textarea"
+                                        name="message"
                                         style="border-radius:3px;"
+                                        v-model="message"
                                         rows="3"       
                                     ></b-form-textarea>
                                 </b-form-group>
@@ -126,7 +130,15 @@
 
 <script>
 export default {
-    layout: 'formpagelayout'
+    layout: 'formpagelayout',
+    data(){
+        return{
+            name: '',
+            email: '',
+            phone: '',
+            message: ''
+        }
+    }
 }
 </script>
 
