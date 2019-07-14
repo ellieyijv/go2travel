@@ -1,9 +1,20 @@
 <template>
     <b-container fluid style="background-color:#f7f5f1;" id="contactus">
         <b-container>
+           
             <b-row>
                 <b-col md="8">
-                    <b-form class="contactusform">
+                    <b-form class="contactusform" 
+                            method="POST" 
+                            action="api/sendemail/contactus" 
+                            @submit.prevent="sendContactUsEmail"      
+                    >
+                        <p v-if="errors.length">
+                        <b>Please correct the following error(s):</b>
+                        <ul>
+                            <li v-for="error in errors" :key="error.id">{{ error }}</li>
+                        </ul>
+                    </p>
                         <b-row >
                             <h4>聯系我們</h4>
                         </b-row>
@@ -67,7 +78,12 @@
                             </b-col>
                         </b-row>
                         <b-row>
-                             <b-button type="submit" variant="primary" class="formBtn">提交</b-button>
+                             <b-button type="submit" 
+                                        variant="primary" 
+                                        class="formBtn"
+                                        :disabled="isActive">
+                                提交
+                            </b-button>
                         </b-row>
                         </div>
                     </b-form>
@@ -136,60 +152,66 @@ export default {
             name: '',
             email: '',
             phone: '',
-            message: ''
+            message: '',
+            errors: [],
+            isActive: false
         }
-    }
+    },
+    methods: {
+       sendContactUsEmail(){
+          if(this.name && this.phone && this.email){
+              this.isActive = true;
+             
+          }
+       }
+     },
 }
 </script>
 
 <style>
-#contactus{
-    height:130rem;
-}
-#contactus .contactusform, #contactus .contactinfoform{
- 
-    background-color:#fff;
-    margin:3rem 0;
-}
+    #contactus{
+        height:130rem;
+    }
+    #contactus .contactusform, #contactus .contactinfoform{
+    
+        background-color:#fff;
+        margin:3rem 0;
+    }
 
-#contactus .contactusform h4, .contactinfoform h4{
-    color:#103a5b;
-    font-size:20px;
-    letter-spacing: 2px;
-    padding:2rem;
-    font-weight:bold;  
-}
+    #contactus .contactusform h4, .contactinfoform h4{
+        color:#103a5b;
+        font-size:20px;
+        letter-spacing: 2px;
+        padding:2rem;
+        font-weight:bold;  
+    }
 
-#contactus legend, .contactinfoform p, .contentStyle{
-    font-size:13px !important;
-    color:#3c3c3c;
-    font-family: 'FangPingRegular';
-}
+    #contactus legend, .contactinfoform p, .contentStyle{
+        font-size:13px !important;
+        color:#3c3c3c;
+        font-family: 'FangPingRegular';
+    }
 
-#contactus .formcontent{
-    padding:1rem;
-    border-top: 2px solid #f7f5f1;
-}
+    #contactus .formcontent{
+        padding:1rem;
+        border-top: 2px solid #f7f5f1;
+    }
 
-#contactus .contactusform input{
-    height:40px;
-    color:#e0e0e0;
- 
-}
+    #contactus .contactusform input{
+        height:40px;
+        color:#e0e0e0;
+    
+    }
 
-#contactus .contactusform .formBtn{
-    margin-top:2rem;
-    margin-left:1rem;
-    padding:0.5rem 3rem;
-    background-color: #103a5b;
-    margin-bottom:4rem;
-}
+    #contactus .contactusform .formBtn{
+        margin-top:2rem;
+        margin-left:1rem;
+        padding:0.5rem 3rem;
+        background-color: #103a5b;
+        margin-bottom:4rem;
+    }
 
-
-#contactus .contactinfoform h5{
-    font-size:14px;
-}
-
-
-
+    #contactus .contactinfoform h5{
+        font-size:14px;
+    }
 </style>

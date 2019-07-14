@@ -1,5 +1,6 @@
-const pkg = require('./package')
 
+const env = require('dotenv').config()
+const pkg = require('./package')
 
 module.exports = {
   mode: 'universal',
@@ -47,7 +48,7 @@ module.exports = {
   ** Customize the progress-bar color
   */
   loading: { color: 'black' },
-
+  env: env.parsed,
   /*
   ** Global CSS
   */
