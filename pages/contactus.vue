@@ -145,6 +145,14 @@
 </template>
 
 <script>
+  <script src="https://www.google.com/recaptcha/api.js?render=6Le0qa0UAAAAAObenOh4hhw9MRMISCqo2h_ceaCV" />
+  
+  grecaptcha.ready(function() {
+      grecaptcha.execute(process.env.recaptcha_site_key, {action: 'api/sendemail/contactus'}).then(function(token) {
+          
+      });
+  });
+
 export default {
     layout: 'formpagelayout',
     data(){
