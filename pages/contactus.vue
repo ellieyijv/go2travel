@@ -5,9 +5,7 @@
             <b-row>
                 <b-col md="8">
                     <b-form class="contactusform" 
-                            method="POST" 
-                            action="api/sendemail/contactus" 
-                            @submit.prevent="sendContactUsEmail"      
+                            @submit="sendContactUsEmail"      
                     >
                         <p v-if="errors.length">
                         <b>Please correct the following error(s):</b>
@@ -71,7 +69,7 @@
                                     <b-form-textarea
                                         name="message"
                                         style="border-radius:3px;"
-                                        v-model="message"
+                                        v-model="msg"
                                         rows="3"       
                                     ></b-form-textarea>
                                 </b-form-group>
@@ -145,6 +143,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     layout: 'formpagelayout',
     data(){
@@ -152,17 +151,26 @@ export default {
             name: '',
             email: '',
             phone: '',
+            msg: '',
             message: '',
             errors: [],
             isActive: false
         }
     },
     methods: {
-       sendContactUsEmail(){
-          if(this.name && this.phone && this.email){
-              this.isActive = true;
-             
-          }
+        sendContactUsEmail(e){
+            if(this.name && this.phone && this.email){
+              this.isActive = true; 
+        }  
+        axios.post("http://localhost:3668/api/sendemail/contactus").then(res =>{
+              console.log(res);
+              this.message = res.data;
+          }).catch(function (error){
+              console.log(error);
+          })
+
+          e.preventDefault();
+          
        }
      },
 }
