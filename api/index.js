@@ -15,8 +15,10 @@ var transporter = nodemailer.createTransport({
 
 
 app.post('/contactus', (req, res)=>{
-	if(!req.body.email || !req.body.phone || !req.body.name){
-		res.status(500).json({'message': 'please fill in the required fields'})
+	if(req.body.email || req.body.phone || req.body.name){
+		next();
+	}else{
+		res.status(500).json({'message': 'please fill in the required'})
 	}
 	var mailBody = {
 		from: req.body.email,
