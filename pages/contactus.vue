@@ -109,7 +109,7 @@
 
 import axios from 'axios';
 export default {
-    layout: 'formpagelayout',
+    // layout: 'formpagelayout',
     data(){
         return{
             name: '',
@@ -154,7 +154,12 @@ export default {
 </script>
 
 <style scoped>
-  
+    @media(min-width:1080px){
+        #contactus{
+            height: 100vh;
+        }
+        
+    }
     #contactus .contactusform, #contactus .contactinfoform{
     
         background-color:#fff;
