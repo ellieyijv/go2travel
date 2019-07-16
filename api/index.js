@@ -15,27 +15,27 @@ var transporter = nodemailer.createTransport({
 
 
 app.post('/contactus', (req, res)=>{
-	if(req.body.email || req.body.phone || req.body.name){
-		next();
+	console.log(req.body);
+	if(req.body.email && req.body.phone && req.body.name){
+		var mailBody = {
+			from: req.body.email,
+			to: process.env.Email_To,
+			subject: 'Sending Email using Node.js',
+			text: `this is the message from ${req.body.msg}`
+		};
+	
+		transporter.sendMail(mailBody, function(error, info){
+			if(error) {
+				console.log(error);
+				res.status(responseCode).json(response);
+			}else {
+				console.log('email sent:' + info.response);
+				res.status(200).json({'message': 'success'})
+			}
+		});
 	}else{
 		res.status(500).json({'message': 'please fill in the required'})
 	}
-	var mailBody = {
-		from: req.body.email,
-		to: process.env.Email_To,
-		subject: 'Sending Email using Node.js',
-		text: `this is the message from ${req.body.message}`
-	};
-
-	transporter.sendMail(mailBody, function(error, info){
-		if(error) {
-			console.log(error);
-			return error;
-		}else {
-			console.log('email sent:' + info.response);
-			res.status(200).json({'message': 'Sent message success'})
-		}
-	});
 			
 })
 

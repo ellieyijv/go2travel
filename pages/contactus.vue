@@ -5,14 +5,15 @@
             <b-row>
                 <b-col md="8">
                     <b-form class="contactusform" 
-                            @submit="sendContactUsEmail"      
+                            @submit.prevent="sendContactUsEmail"      
                     >
-                        <p v-if="errors.length">
+                        <div v-if="errors.length">
                         <b>Please correct the following error(s):</b>
                         <ul>
                             <li v-for="error in errors" :key="error.id">{{ error }}</li>
                         </ul>
-                    </p>
+                        <h5 v-if="message.length">{{message}}</h5>
+                        </div>
                         <b-row >
                             <h4>聯系我們</h4>
                         </b-row>
@@ -75,11 +76,21 @@
                                 </b-form-group>
                             </b-col>
                         </b-row>
+                        <!-- <b-row>
+                            <b-form-group>
+                                <b-form-input
+                                    name="g-recaptcha-response"
+                                    id="g-recaptcha-response"
+                                    hidden
+                                >
+                                </b-form-input>
+                            </b-form-group>
+                        </b-row> -->
                         <b-row>
                              <b-button type="submit" 
                                         variant="primary" 
                                         class="formBtn"
-                                        :disabled="isActive">
+                                        :disabled="isDisabled">
                                 提交
                             </b-button>
                         </b-row>
@@ -143,13 +154,7 @@
 </template>
 
 <script>
-  <script src="https://www.google.com/recaptcha/api.js?render=6Le0qa0UAAAAAObenOh4hhw9MRMISCqo2h_ceaCV" />
-  
-  grecaptcha.ready(function() {
-      grecaptcha.execute(process.env.recaptcha_site_key, {action: 'api/sendemail/contactus'}).then(function(token) {
-          
-      });
-  });
+
 
 import axios from 'axios';
 export default {
@@ -162,25 +167,39 @@ export default {
             msg: '',
             message: '',
             errors: [],
-            isActive: false
+            isDisabled: false
         }
     },
+    async mounted() {
+        await this.$recaptcha.init()
+    },
     methods: {
-        sendContactUsEmail(e){
+        sendContactUsEmail(){
             if(this.name && this.phone && this.email){
-              this.isActive = true; 
-        }  
-        axios.post("http://localhost:3668/api/sendemail/contactus").then(res =>{
-              console.log(res);
-              this.message = res.data;
-          }).catch(function (error){
-              console.log(error);
-          })
-
-          e.preventDefault();
-          
-       }
-     },
+              this.isDisabled = true; 
+            }  
+            this.message  = "";
+            const token = this.$recaptcha.execute('login');
+            axios.post("api/sendemail/contactus", {
+                name: this.name,
+                email: this.email,
+                phone: this.phone,
+                msg: this.msg,
+               
+            }).then(res =>{      
+                    if(res.data.message == "success"){
+                        this.isDisabled = false;
+                        this.message = "Thanks for contacting us";
+                    }else{
+                        this.isDisabled = false;
+                        console.log(res);
+                        this.errors.push(res.data.response);
+                    }  
+                }).catch(function (error){
+                   this.errors.push(error); 
+             })           
+        }
+    },
 }
 </script>
 

@@ -25,7 +25,8 @@ module.exports = {
         src:
           "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js",
         type: "text/javascript"
-      },
+      }
+ 
     ],
 
     link: [
@@ -68,19 +69,16 @@ module.exports = {
   modules: [
     // Doc: https://bootstrap-vue.js.org/docs/
     'bootstrap-vue/nuxt',
-  
+    '@nuxtjs/recaptcha',
   ],
-  // proxy: {
-  //   '/api': {
-  //     target: 'http://localhost:1337/productsummaries',
-  //     pathRewrite: {
-  //       '^/api' : '/'
-  //       }
-  //     }
-  // },
-  /*
-  ** Build configuration
-  */
+
+  recaptcha: {
+    hideBadge: true,
+    siteKey: process.env.recaptcha_site_key,
+    version: 3
+  },
+  
+
   build: {
     /*
     ** You can extend webpack config here
