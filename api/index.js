@@ -15,9 +15,9 @@ var transporter = nodemailer.createTransport({
 
 
 app.post('/contactus', (req, res)=>{
-	console.log(req.body);
+	
 	if(req.body.email && req.body.phone && req.body.name){
-		var mailBody = {
+		let mailBody = {
 			from: req.body.email,
 			to: process.env.Email_To,
 			subject: 'Sending Email using Node.js',
@@ -26,10 +26,8 @@ app.post('/contactus', (req, res)=>{
 	
 		transporter.sendMail(mailBody, function(error, info){
 			if(error) {
-				console.log(error);
 				res.status(responseCode).json(response);
 			}else {
-				console.log('email sent:' + info.response);
 				res.status(200).json({'message': 'success'})
 			}
 		});

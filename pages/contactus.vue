@@ -1,103 +1,55 @@
 <template>
     <b-container fluid style="background-color:#f7f5f1;" id="contactus">
         <b-container>
-           
             <b-row>
-                <b-col md="8">
+                <b-col md="8" cols="12">
                     <b-form class="contactusform" 
                             @submit.prevent="sendContactUsEmail"      
                     >
                         <div v-if="errors.length">
-                        <b>Please correct the following error(s):</b>
-                        <ul>
-                            <li v-for="error in errors" :key="error.id">{{ error }}</li>
-                        </ul>
-                        <h5 v-if="message.length">{{message}}</h5>
+                            <b>Please correct the following error(s):</b>
+                            <ul>
+                                <li v-for="error in errors" :key="error.id">{{ error }}</li>
+                            </ul>
+                            <h5 v-if="message.length">{{message}}</h5>
                         </div>
                         <b-row >
                             <h4>聯系我們</h4>
                         </b-row>
                         <div class="formcontent">
-                        <b-row>
-                            <b-col md="6">
-                                <b-form-group 
-                                    label="姓名*"
-                                    lable-for="name"   
-                                >
-                                    <b-form-input
-                                        name="name"
-                                        v-model="name"
-                                        required
-                                    ></b-form-input>
-                                </b-form-group>   
-                            </b-col>
-                        </b-row>
-
-                        <b-row>
-                            <b-col md="6">
-                                <b-form-group 
-                                    label="電郵*"
-                                    lable-for="email"
-                                >
-                                    <b-form-input
-                                        name="email"
-                                        required
-                                        type="email"
-                                        v-model="email"
-                                    ></b-form-input>
-                                </b-form-group>  
-                            </b-col> 
-                            <b-col md="6">
-                                <b-form-group 
-                                    label="電話*"
-                                    lable-for="phone"
-                                >
-                                    <b-form-input
-                                        name="phone"
-                                        required
-                                        type="number"
-                                        v-model="phone"
-                                    ></b-form-input>
-                                </b-form-group>  
-                            </b-col>
-                        </b-row>
-                        <b-row>
-                            <b-col>
-                                <b-form-group 
-                                    label="請留下你的信息"
-                                    lable-for="textarea"
-                                >
-                                    <b-form-textarea
-                                        name="message"
-                                        style="border-radius:3px;"
-                                        v-model="msg"
-                                        rows="3"       
-                                    ></b-form-textarea>
-                                </b-form-group>
-                            </b-col>
-                        </b-row>
-                        <!-- <b-row>
-                            <b-form-group>
-                                <b-form-input
-                                    name="g-recaptcha-response"
-                                    id="g-recaptcha-response"
-                                    hidden
-                                >
-                                </b-form-input>
-                            </b-form-group>
-                        </b-row> -->
-                        <b-row>
-                             <b-button type="submit" 
-                                        variant="primary" 
-                                        class="formBtn"
-                                        :disabled="isDisabled">
-                                提交
-                            </b-button>
-                        </b-row>
+                            <b-row>
+                                <b-col md="6">
+                                    <b-form-group  label="姓名*" lable-for="name" >
+                                        <b-form-input name="name"  v-model="name"  required  ></b-form-input>
+                                    </b-form-group>   
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <b-col md="6">
+                                    <b-form-group  label="電郵*"  lable-for="email">
+                                        <b-form-input  name="email"  required  type="email"  v-model="email" ></b-form-input>
+                                    </b-form-group>  
+                                </b-col> 
+                                <b-col md="6">
+                                    <b-form-group   label="電話*"   lable-for="phone" >
+                                        <b-form-input name="phone"  required   type="number"   v-model="phone" ></b-form-input> 
+                                    </b-form-group>  
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <b-col>
+                                    <b-form-group  label="請留下你的信息"  lable-for="textarea" >
+                                        <b-form-textarea   name="message"  style="border-radius:3px;" v-model="msg"  rows="3" ></b-form-textarea>   
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <b-button type="submit"  variant="primary"  class="formBtn"  :disabled="isDisabled">  提交   </b-button>
+                            </b-row>
                         </div>
                     </b-form>
                 </b-col>
-                <b-col md="4" class="contactinfoform">
+                <b-col md="4" cols="12" class="contactinfoform">
                     <b-form>
                         <h4>公司信息</h4>
                         <div class="formcontent">
@@ -146,7 +98,6 @@
                             </b-col>
                         </div>
                     </b-form>
-
                 </b-col>
             </b-row>
         </b-container>
@@ -192,7 +143,6 @@ export default {
                         this.message = "Thanks for contacting us";
                     }else{
                         this.isDisabled = false;
-                        console.log(res);
                         this.errors.push(res.data.response);
                     }  
                 }).catch(function (error){
@@ -203,14 +153,12 @@ export default {
 }
 </script>
 
-<style>
-    #contactus{
-        height:130rem;
-    }
+<style scoped>
+  
     #contactus .contactusform, #contactus .contactinfoform{
     
         background-color:#fff;
-        margin:3rem 0;
+        margin:3rem 0;    
     }
 
     #contactus .contactusform h4, .contactinfoform h4{
