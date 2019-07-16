@@ -37,10 +37,7 @@ module.exports = {
     ]
   },
   
-  server: {
-    port: 3668, // default: 3000
-    host: '127.0.0.1', // default: localhost
-  },
+
 
   serverMiddleware: ["api/index"],
 
