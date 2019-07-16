@@ -6,7 +6,7 @@
                 <b-col sm="6">
                     <b-nav>
                         <b-nav-item to="/" class="navClickStyle">首頁 ></b-nav-item>
-                        <b-nav-item :to="'/'+card.countryname +'/'" class="navClickStyle">澳洲 ></b-nav-item>
+                        <b-nav-item :to="'/'+card.countryname +'/'" class="navClickStyle">{{card.countryname}} ></b-nav-item>
                         <b-nav-item active disabled>{{card.title}}</b-nav-item>
                     </b-nav>
                     <h4>{{card.title}}</h4>

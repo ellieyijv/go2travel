@@ -32,6 +32,7 @@ import FeeDesc from '../../../components/DetailsPage/FeeDesc';
 import productDaysPlan from '../../../components/DetailsPage/ProductDaysPlan';
 import ProductNeedsToKnow from '../../../components/DetailsPage/ProductNeedsToKnow';
 import YouMightInterested from '../../../components/DetailsPage/YouMightInterested';
+import { async } from 'q';
 export default {
     components: { DetailsCarousel, DetailsNavSection, ProductIntro, ProductHighlight, FeeDesc, productDaysPlan, ProductNeedsToKnow, YouMightInterested},
     data(){
@@ -139,7 +140,10 @@ export default {
         this.details = this.productDetails.find(x=>x.productID === id)
         this.youmightinterestdlist = this.productSummary.slice(1,4);
     }
-    
+    // async fetch({store}){
+    //     let {data} = await 
+    // }
+
 
 }
 </script>
