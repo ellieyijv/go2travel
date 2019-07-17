@@ -1,6 +1,7 @@
 <template>
    <div>
         <DetailsCarousel />
+        
         <DetailsNavSection :card="card" :details="details"/>
         <div class="backgroundstyle">
            <ProductIntro />
@@ -24,6 +25,7 @@
 </template>
 
 <script>
+
 import DetailsCarousel from '../../../components/DetailsPage/DetailsCarousel';
 import DetailsNavSection from '../../../components/DetailsPage/DetailsNavSection';
 import ProductIntro from '../../../components/DetailsPage/ProductIntro';
@@ -101,10 +103,12 @@ export default {
                     'productDesc': '獨家提供史蒂芬港中文精品小團',
                     'productSpecialPrice': '優惠：原價$1,899/成人 $1,299/兒童',
                     'productRebate': '出行後點評可返 $20',
-                    'productImgs': [{'url':'/images/popular/popular1.png', 'imgdes':'葡萄酒莊品嚐美酒'}, 
-                                     {'url':'/images/popular/popular2.png', 'imgdes':'巴羅莎'},
-                                     {'url':'/images/popular/popular3.png', 'imgdes':'莱特将军瞭望台'},
-                                     {'url':'/images/popular/popular4.png', 'imgdes':'戴倫堡魔方'}],
+                    'productImgs': [{'url':'/images/popular/popular1.png', 'name':'葡萄酒莊品嚐美酒'}, 
+                                     {'url':'/images/popular/popular2.png', 'name':'巴羅莎'},
+                                     {'url':'/images/popular/popular3.png', 'name':'莱特将军瞭望台'},
+                                     {'url':'/images/popular/popular4.png', 'name':'戴倫堡魔方'},
+                                     {'url':'/images/popular/popular4.png', 'name':'戴倫堡魔方'},
+                                     {'url':'/images/popular/popular4.png', 'name':'戴倫堡魔方'}],
                     'productFeeDesc':{'contains': '1)交通：5-12座舒適用車 2)服務：市區酒店接，中文司導服務 3)司導：司導餐補費用，過路費，車輛燃油費、小費 4)配套：兒童座椅/嬰兒籃/車載WiFi 5)門票：觀海豚船票，海岸沙漠滑沙體驗 6)可選：爬蟲動物園、午餐等項目，具體以套餐包含為準',
                                        'notContain': '1)门票：自选门票 2)旅行保险(建议购买旅行保险)'},
                     'productDaysPlan': [{'day':'第1天', 'content':'乘機前往阿德萊德，接機后參加下午1点开始阿德莱德市区游览：从有阿德莱德后厨房之称的中央市场出发，途经唐人街、维多利亚广场、威廉国王大街，前往参观南澳著名的意大利琥珀柠檬酒品酒室并品酒，沿著名的人文艺术街道北大街、都市自然风光带托伦斯河岸景区以及澳大利亚最早的蓝道步行购物街，一路欣赏阿德莱德市景。参观圣彼得大教堂，并以建城之父威廉•莱特上校命名的莱特将军瞭望台留影。下午5:00pm结束观光，送回酒店休息。'},
