@@ -67,6 +67,7 @@ module.exports = {
     // Doc: https://bootstrap-vue.js.org/docs/
     'bootstrap-vue/nuxt',
     '@nuxtjs/recaptcha',
+    'nuxt-device-detect',
   ],
 
   recaptcha: {
@@ -75,7 +76,6 @@ module.exports = {
     version: 3
   },
   
-
   build: {
     /*
     ** You can extend webpack config here

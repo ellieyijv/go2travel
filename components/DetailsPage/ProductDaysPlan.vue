@@ -27,10 +27,10 @@ export default {
     }
 
     #productDaysPlans h4{
-         font-size:20px;
-       letter-spacing: 3px;
-       color:#103a5b; 
-       padding-bottom: 1rem; 
+        font-size:20px;
+        letter-spacing: 3px;
+        color:#103a5b; 
+        padding-bottom: 1rem; 
     }
 
 

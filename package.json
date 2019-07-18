@@ -8,7 +8,7 @@
     "node": "10.15.3"
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "dev": "cross-env NODE_ENV=development NUXT_HOST=0.0.0.0 nodemon server/index.js --watch server",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
@@ -26,6 +26,7 @@
     "jquery": "^3.4.1",
     "nodemailer": "^6.2.1",
     "nuxt": "^2.4.0",
+    "nuxt-device-detect": "^1.1.5",
     "nuxt-fontawesome": "^0.4.0",
     "popper.js": "^1.15.0",
     "vue-backtotop": "^1.6.1"

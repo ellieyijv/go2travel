@@ -17,7 +17,6 @@
 							<div class="card-carousel--card hilightlistStyle" 
                                 v-for="(img, index) in details.productImgs" :key="index" sm="6" lg="4" xl="3">
 									<img :src="img.url" />
-								
 									<p>{{ img.name }}</p>
 								
 								</div>
@@ -37,10 +36,21 @@ export default {
 		return {
 			currentOffset: 0,
 			windowSize: 4,
-			paginationFactor: 275,
+			paginationFactor: 275	
 		};
-    },
-    
+	},
+	//get the window width size
+	created() {
+		if(process.client){
+			window.addEventListener('resize', this.handleResize)
+			this.handleResize();
+		}
+  	},
+  	destroyed() {
+		if(process.client){
+			window.removeEventListener('resize', this.handleResize)
+		}
+  	},
     computed: {
 		atEndOfList() {
 			return (
@@ -62,7 +72,25 @@ export default {
 			} else if (direction === -1 && !this.atHeadOfList) {
 				this.currentOffset += this.paginationFactor;
 			}
-		}
+		},
+
+		handleResize() {
+			let width = window.innerWidth;
+			if( width >=1200){
+				this.windowSize = 4;
+			}
+			if( width>=992 && width<1200){
+				this.windowSize = 3;
+			}
+			if( width>=768 && width<992){
+				this.windowSize = 2;
+			}
+			if( width < 768){
+				this.windowSize = 1;
+			}
+		},
+
+	
 	}
 };
 </script>
