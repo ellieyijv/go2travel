@@ -1,19 +1,24 @@
 <template>
   <div>
-    <AppHeader/>
+        <AppHeader/>
 		<AppNavBar />
-    <nuxt />
-    <Footer />
+        <nuxt />
+        <Footer />
   </div>
 </template>
 <script>
 import AppHeader from '../components/Public/AppHeader'
 import AppNavBar from '../components/Public/AppNavBar'
 import Footer from '../components/Public/Footer'
+import axios from 'axios'
+const apiUrl = process.env.API_URL || 'http://localhost:80'
+
 export default {
   components:{
     AppHeader,Footer, AppNavBar
-  }
+  },
+ 
+    
 }
 </script>
 

@@ -21,6 +21,7 @@
 import heroImgComp from "../../components/countryProductsPage/heroImgComp";
 import countryNavBarComp from "../../components/countryProductsPage/countryNavBarComp";
 import productListComp from "../../components/countryProductsPage/productListComp";
+import axios from 'axios';
 export default {
    components:{heroImgComp, countryNavBarComp, productListComp},
 
@@ -58,107 +59,7 @@ export default {
                 'name': 'Sydney' 
             }],
 
-            productList:[{
-                id: 25407,
-                img:"/images/special/aussydney.png",
-                title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
-                subtitle: "原價 $3,889 最後機會 立馬下訂",
-                price:"3447",
-                days:"5天4夜",
-                countryname: "Australia",
-                cities: 'Sydney'
-            },
-            {
-                id: 25408,
-                img:'/images/special/ausclassic.png',
-                title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
-                subtitle: "最後機會 立馬下訂",
-                price:"1447",
-                days:"10天9夜",
-                countryname: "Australia",
-                cities: 'Brisban'
-            },
-            {
-                id: 25409,
-                img:'/images/special/aussydmel.png',
-                title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
-                subtitle: "最後機會 立馬下訂",
-                price:"3347",
-                days:"11天10夜",
-                countryname: "Australia",
-                cities: 'Perth'
-            },
-            {
-                id: 4,
-                img:'/images/special/aus.png',
-                title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
-                subtitle: "最後機會 立馬下訂",
-                price:"3147",
-                days:"12天11夜",
-                countryname: "Australia",
-                cities: 'Brisban'
-            },
-            {
-                id: 5,
-                img:'/images/special/auscans.png',
-                title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
-                subtitle: "最後機會 立馬下訂",
-                price:"3247",
-                days:"15天14夜",
-                countryname: "Australia",
-                cities: 'Kaensi'
-            },
-            {
-                id: 6,
-                img:'/images/special/auscanssyd.png',
-                title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
-                subtitle: "最後機會 立馬下訂",
-                price:"3347",
-                days:"8天7夜",
-                countryname: "Australia",
-                cities: 'Gold Coast'
-            },
-            {
-                id: 7,
-                img:'/images/special/auscanssyd.png',
-                title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
-                subtitle: "最後機會 立馬下訂",
-                price:"3347",
-                days:"15天14夜",
-                countryname: "Australia",
-                cities: 'Melbourn'
-            },
-                 {
-                id: 8,
-                img:'/images/special/auscans.png',
-                title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
-                subtitle: "最後機會 立馬下訂",
-                price:"3247",
-                days:"15天14夜",
-                countryname: "Australia",
-                cities: 'Melbourn'
-            },
-            {
-                id: 9,
-                img:'/images/special/auscanssyd.png',
-                title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
-                subtitle: "最後機會 立馬下訂",
-                price:"3347",
-                days:"8天7夜",
-                countryname: "Australia",
-                cities: 'Kaensi'
-            },
-            {
-                id: 10,
-                img:'/images/special/auscanssyd.png',
-                title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
-                subtitle: "最後機會 立馬下訂",
-                price:"3347",
-                days:"15天14夜",
-                countryname: "Australia",
-                cities: 'Kaensi'
-            },
-            ],
+            productList:[],
             arrowDaysDirection: "fas fa-arrow-up",
             arrowPriceDirection: "fas fa-arrow-up",
             opacityValue: "0.6",
@@ -166,7 +67,27 @@ export default {
             clone: [],
             isActive: false
        }
-   },
+    },
+
+    async fetch({store, params}) {
+        console.log(params);
+		store.commit('productSummary/emptyStateProductsList');
+        const {data} = await axios.get(`${apiUrl}/api/${state_id}/products/page=${page_id}`).catch((error => {  
+            console.log(error)
+        }))
+    
+        data.forEach(item => { 
+			item.product.card_image = JSON.parse(item.product.card_image)[0]
+            store.commit('productSummary/add', {
+                id: item.product.id,
+				name: item.product.product_name,
+				sales_price: item.product.sales_price,
+				price: item.product.price,
+				duration: item.product.duration,
+				image: `${apiUrl}/storage/${item.product.card_image}`,
+            })
+        })
+    },
    created(){
        
        this.clone = JSON.parse(JSON.stringify(this.productList));

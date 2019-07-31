@@ -1,15 +1,15 @@
 <template> 
     <div class="hovereffect" :tour="tour" >
-        <img class="img-responsive" :src="tour.img" alt="">
+        <img class="img-responsive" :src="tour.image" alt="">
         
         <div class="bottomtitle">
-            <p >{{ tour.title }}</p>  
+            <p >{{ tour.name }}</p>  
         </div>
         <div class="slider" >
             <div style="padding:5%">
-                <p class="tourDays">{{tour.days}}</p>
-                <p class="tourTitle">{{tour.title}}</p>
-                <p class="tourPrice">{{tour.price}}<span>/人起</span></p>
+                <p class="tourDays">{{duration}}</p>
+                <p class="tourTitle">{{tour.name}}</p>
+                <p class="tourPrice">{{tour.sales_price}}<span>/人起</span></p>
             </div>
             
         </div>
@@ -22,8 +22,8 @@ export default {
     props: ['tour'],
     data(){
         return{
-            hover: false,
-           
+            hover: false, 
+            duration: `${this.tour.duration}天${this.tour.duration-1}夜`,  
         }
     },
     

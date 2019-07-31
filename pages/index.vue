@@ -21,7 +21,7 @@ import AboutUS from '../components/Homepage/AboutUS'
 import BackToTop from '../components/Public/BackToTop'
 
 import axios from 'axios'
-const apiUrl = process.env.API_URL || 'http://localhost:8000'
+const apiUrl = process.env.API_URL || 'http://localhost:80'
 
 export default {
 	data(){
@@ -32,19 +32,41 @@ export default {
 		
 	
 	async fetch({store}) {
-		store.commit('specialDeals/emptyList')
+		//get special deals data
+		store.commit('productSummary/emptyList');
         const {data} = await axios.get(`${apiUrl}/api/specialdeals`).catch((error => {  
             console.log(error)
         }))
-       
+    
         data.forEach(item => { 
-              console.log(item.product);
-			// item.product.cardImage = `${apiUrl}${product.image.url}`
-            store.commit('specialDeals/add', {
+			item.product.card_image = JSON.parse(item.product.card_image)[0]
+            store.commit('productSummary/add', {
                 id: item.product.id,
-                ...item.product
+				name: item.product.product_name,
+				sales_price: item.product.sales_price,
+				price: item.product.price,
+				duration: item.product.duration,
+				image: `${apiUrl}/storage/${item.product.card_image}`,
             })
-        })
+		})
+		
+		//get popular tours data
+		store.commit('productSummary/emptyPopularToursList');
+        const popular_data = await axios.get(`${apiUrl}/api/populartours`).catch((error => {  
+            console.log(error)
+        }))
+	
+        popular_data.data.forEach(item => { 
+			item.product.card_image = JSON.parse(item.product.card_image)[0]
+            store.commit('productSummary/addPopularTours', {
+                id: item.product.id,
+				name: item.product.product_name,
+				sales_price: item.product.sales_price,
+				price: item.product.price,
+				duration: item.product.duration,
+				image: `${apiUrl}/storage/${item.product.card_image}`,
+            })
+		})
 	},
 
 	components:{

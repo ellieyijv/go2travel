@@ -32,7 +32,7 @@ export default {
     
     computed: {
        cardList(){
-           return this.$store.getters['specialDeals/list']
+           return this.$store.getters['productSummary/list']
        } 
     },  
 }

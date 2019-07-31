@@ -8,23 +8,11 @@
                     <img src="/images/logo.png" alt="logo">
                 </b-navbar-brand>
 
-                <b-collapse id="nav-text-collapse" is-nav>
-                    <b-navbar-nav class="mx-4">
-                        <nuxt-link to="/亞洲">亞洲</nuxt-link>
+                <b-collapse id="nav-text-collapse" is-nav >
+                    <b-navbar-nav class="mx-4" v-for="navlink in states" :key="navlink.id">
+                        <nuxt-link :to="{name: 'navlink.state', params: { id:key}}">{{navlink.state}}</nuxt-link>
                     </b-navbar-nav >
-                        <b-navbar-nav class="mx-4">
-                        <nuxt-link to="/美洲">美洲</nuxt-link>
-                    </b-navbar-nav>
-                        <b-navbar-nav class="mx-4">
-                        <nuxt-link to="/非洲">非洲</nuxt-link>
-                    </b-navbar-nav>
-                        <b-navbar-nav class="mx-4">
-                        <nuxt-link to="/澳大利亞">澳大利亞</nuxt-link>
-                    </b-navbar-nav>
-                        <b-navbar-nav class="mx-4">
-                        <nuxt-link to="/歐洲">歐洲</nuxt-link>
-                    </b-navbar-nav>
-                            
+                         
                     <b-navbar-nav class="ml-auto" @click="showSearch = !showSearch">
                         <i class="fas fa-search" style="color:black"></i>
                     </b-navbar-nav>
@@ -47,7 +35,11 @@ export default {
     data(){
         return{
             showSearch: false,
+            states: []
         }
+    },
+    created(){
+        this.states = this.$store.getters.statesList;
     }
 }
 </script>
