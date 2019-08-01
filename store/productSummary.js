@@ -1,7 +1,9 @@
 export const state = () => ({
 	productList: [],
 	popularToursList: [],
-	stateProductsList:[]
+	stateProductsList:[],
+	arrowDaysDirection: '0.6',
+	arrowPriceDirection: '0.6'
   })
   
 export const mutations = {
@@ -12,6 +14,7 @@ export const mutations = {
 	emptyList(state) {
 	  state.productList = []
 	},
+
 	//homepage popular tour product list
 	addPopularTours(state, product) {
 		state.popularToursList.push(product)
@@ -27,6 +30,28 @@ export const mutations = {
 	emptyStateProductsList(state) {
 		state.stateProductsList = []
 	},
+
+	sortStateProductsByDsays(state, orderInfo) {
+		if(orderInfo.orderByDaysasc){
+			state.stateProductsList.sort((a, b) =>Number(a.duration) - Number(b.duration));
+			state.arrowDaysDirection = "fas fa-arrow-up"
+		}else{
+			state.stateProductsList.sort((b, a)=> Number(a.duration) - Number(b.duration));
+			state.arrowDaysDirection = "fas fa-arrow-down"
+		}
+	},
+
+	sortedProductListByPrice(state, orderInfo) {
+		if(orderInfo.orderByPriceasc){
+			state.stateProductsList.sort((a, b)=> a.sales_price - b.sales_price);
+			state.arrowPriceDirection = "fas fa-arrow-up"
+		}else{
+			state.stateProductsList.sort((b,a)=>a.sales_price - b.sales_price);
+			state.arrowPriceDirection = "fas fa-arrow-down"
+		}
+	}
+
+
   }
   
 export const getters = {
@@ -36,5 +61,18 @@ export const getters = {
 
 	popularList: state =>{
 		return state.popularToursList
+	},
+
+	stateProductsList: state =>{
+		return state.stateProductsList
+	},
+
+	stateArrowDaysDirection: state =>{
+		return state.arrowDaysDirection
+	},
+
+	stateArrowPriceDirection: state =>{
+		return state.arrowPriceDirection
 	}
+
 }

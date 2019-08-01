@@ -1,10 +1,10 @@
 <template>
-<nuxt-link :to="'/'+card.country_name +'/'+ card.id" style="text-decoration:none">
+<nuxt-link :to="'/'+card.slug +'/'+ card.id" style="text-decoration:none">
     <b-card :card="card" class="cardStyle">
         <div class="parent">
-            <div class="child img-top" :style="{ backgroundImage: 'url(' + card.image + ')' }"  ></div>
+            <div class="child img-top" :style="{ backgroundImage: 'url(' + card.card_image + ')' }"  ></div>
         </div>
-        <b-card-text class="special-title">{{card.name}}</b-card-text>
+        <b-card-text class="special-title">{{card.product_name}}</b-card-text>
         <b-card-text class="special-subtitle">原價${{card.price}} 最後機會 立馬下訂</b-card-text>  
         <div class="container-fluid">
             <div class="row">

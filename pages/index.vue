@@ -42,11 +42,11 @@ export default {
 			item.product.card_image = JSON.parse(item.product.card_image)[0]
             store.commit('productSummary/add', {
                 id: item.product.id,
-				name: item.product.product_name,
+				product_name: item.product.product_name,
 				sales_price: item.product.sales_price,
 				price: item.product.price,
 				duration: item.product.duration,
-				image: `${apiUrl}/storage/${item.product.card_image}`,
+				card_image: `${apiUrl}/storage/${item.product.card_image}`,
             })
 		})
 		
@@ -60,11 +60,11 @@ export default {
 			item.product.card_image = JSON.parse(item.product.card_image)[0]
             store.commit('productSummary/addPopularTours', {
                 id: item.product.id,
-				name: item.product.product_name,
+				product_name: item.product.product_name,
 				sales_price: item.product.sales_price,
 				price: item.product.price,
 				duration: item.product.duration,
-				image: `${apiUrl}/storage/${item.product.card_image}`,
+				card_image: `${apiUrl}/storage/${item.product.card_image}`,
             })
 		})
 	},

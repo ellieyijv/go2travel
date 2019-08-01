@@ -15,6 +15,10 @@ export const getters = {
 export const mutations = {
     ADD_STATES (state, statesList){
         state.statesList = statesList
+    },
+
+    EMPTY_STATES(state){
+        state.statesList = []
     }
  
 }

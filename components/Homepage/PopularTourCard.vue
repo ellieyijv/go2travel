@@ -1,14 +1,14 @@
 <template> 
     <div class="hovereffect" :tour="tour" >
-        <img class="img-responsive" :src="tour.image" alt="">
+        <img class="img-responsive" :src="tour.card_image" alt="">
         
         <div class="bottomtitle">
-            <p >{{ tour.name }}</p>  
+            <p >{{ tour.product_name }}</p>  
         </div>
         <div class="slider" >
             <div style="padding:5%">
                 <p class="tourDays">{{duration}}</p>
-                <p class="tourTitle">{{tour.name}}</p>
+                <p class="tourTitle">{{tour.product_name}}</p>
                 <p class="tourPrice">{{tour.sales_price}}<span>/人起</span></p>
             </div>
             

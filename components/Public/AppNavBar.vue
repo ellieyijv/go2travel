@@ -10,7 +10,7 @@
 
                 <b-collapse id="nav-text-collapse" is-nav >
                     <b-navbar-nav class="mx-4" v-for="navlink in states" :key="navlink.id">
-                        <nuxt-link :to="{name: 'navlink.state', params: { id:key}}">{{navlink.state}}</nuxt-link>
+                        <nuxt-link :to="'/'+navlink.id">{{navlink.state}}</nuxt-link>
                     </b-navbar-nav >
                          
                     <b-navbar-nav class="ml-auto" @click="showSearch = !showSearch">

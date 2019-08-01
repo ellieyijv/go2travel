@@ -1,0 +1,145 @@
+<template>
+    <div >
+       <!-- {{$route.params.countryname}} -->
+        <heroImgComp />
+        <countryNavBarComp  :countrycities = "countrycities" 
+                            :productNum = "producListNum"  
+                            :arrowDaysDirection = "arrowDaysDirection"
+                            :arrowPriceDirection = "arrowPriceDirection"
+                            :opacityValue = "opacityValue"
+                            :opacityValue1 = "opacityValue1"
+                            :isActive = "isActive"
+                            @priceByOrder="sortedProductList"
+                            @daysByOrder ="sortedByDaysProductList"
+                            @filterProductByCity ="sortedByCities"/>
+        <productListComp  :productList = "productList" />
+ 
+    </div>
+</template>
+
+<script>
+import heroImgComp from "../../components/countryProductsPage/heroImgComp";
+import countryNavBarComp from "../../components/countryProductsPage/countryNavBarComp";
+import productListComp from "../../components/countryProductsPage/productListComp";
+import axios from 'axios';
+const apiUrl = process.env.API_URL || 'http://localhost:80'
+
+export default {
+   components:{heroImgComp, countryNavBarComp, productListComp},
+
+   data(){
+       return{
+            orderByPriceasc: true,
+            orderByDaysasc: true,
+            countrycities: [],
+            arrowDaysDirection: "fas fa-arrow-up",
+            arrowPriceDirection: "fas fa-arrow-up",
+            opacityValue: "0.6",
+            opacityValue1: '0.6',
+            clone: [],
+            isActive: false,
+            productList: []
+       }
+    },
+
+    async asyncData({params}){
+        let id = params.slug;
+        let res = await axios.get(`${apiUrl}/api/${id}/cities`);
+        return {countrycities: res.data}
+        
+    },
+    async fetch({store, params}) {
+        let state_id = params.slug
+		store.commit('productSummary/emptyStateProductsList');
+        const {data} = await axios.get(`${apiUrl}/api/${state_id}/products`).catch((error => {  
+            console.log(error)
+        }))
+        
+        data.forEach(item => { 
+			item.card_image = JSON.parse(item.card_image)[0]
+            store.commit('productSummary/addStateProducts', {
+                id: item.id,
+				product_name: item.product_name,
+				sales_price: item.sales_price,
+				price: item.price,
+				duration: item.duration,
+				card_image: `${apiUrl}/storage/${item.card_image}`,
+            })
+        })
+    },
+   created(){ 
+        this.productList = this.$store.getters['productSummary/stateProductsList'];
+        this.clone = JSON.parse(JSON.stringify(this.productList));
+   },
+   mounted(){
+       this.countrycities.unshift({id:'' ,name: '显示全部', slug: 'showall'})
+   },
+   methods:{   
+        sortedProductList(){        
+            this.orderByPriceasc = !this.orderByPriceasc;
+            this.opacityValue = '1';
+            this.opacityValue1 = '0.6'
+            this.$store.commit('productSummary/sortedProductListByPrice', {
+                orderByPriceasc: this.orderByPriceasc,      
+             })
+            this.arrowPriceDirection = this.$store.getters['productSummary/stateArrowPriceDirection'];
+            return this.$store.getters['productSummary/stateProductsList'];
+
+        },
+
+   
+        sortedByDaysProductList(){
+            this.orderByDaysasc = !this.orderByDaysasc;
+            this.opacityValue1= '1',
+		    this. opacityValue="0.6",
+            this.$store.commit('productSummary/sortStateProductsByDsays', {
+                orderByDaysasc: this.orderByDaysasc,      
+             })
+            this.arrowDaysDirection = this.$store.getters['productSummary/stateArrowDaysDirection'];
+            return this.$store.getters['productSummary/stateProductsList'];
+        },
+
+
+        sortedByCities(cityId){
+                
+                if(!cityId){   
+                    this.productList = this.$store.getters['productSummary/stateProductsList'];
+                }else{
+                    axios.get(`${apiUrl}/api/state/${cityId}/products`)
+                        .then((res)=>{
+                           const mappedData =  res.data.map((item)=>{
+                                item.card_image = JSON.parse(item.card_image)[0]
+                                item.card_image= `${apiUrl}/storage/${item.card_image}`
+                
+                               return item;
+                            })
+                            this.productList = mappedData;
+                        })
+                        .catch((error)=>{
+                            console.log(error)
+                        });
+
+                    //map reduce filter, find    
+                   
+                }
+           
+            return this.productList
+        
+       }
+       
+   },
+
+
+   computed:{
+       producListNum(){
+            return this.productList.length;
+       }, 
+     
+   }
+
+}
+</script>
+
+<style>
+
+</style>
