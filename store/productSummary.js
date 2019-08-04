@@ -3,7 +3,8 @@ export const state = () => ({
 	popularToursList: [],
 	stateProductsList:[],
 	arrowDaysDirection: '0.6',
-	arrowPriceDirection: '0.6'
+	arrowPriceDirection: '0.6',
+	currentProductList: []
   })
   
 export const mutations = {
@@ -31,22 +32,34 @@ export const mutations = {
 		state.stateProductsList = []
 	},
 
-	sortStateProductsByDsays(state, orderInfo) {
+	addCurrentProducts(state, product) {
+		state.currentProductList.push(product)
+	},
+	emptyCurrentProductsList(state) {
+		state.currentProductList = []
+	},
+	sortProductsByDays(state, orderInfo) {
+		if(!state.currentProductList.length){
+			state.currentProductList = state.stateProductsList;
+		}
 		if(orderInfo.orderByDaysasc){
-			state.stateProductsList.sort((a, b) =>Number(a.duration) - Number(b.duration));
+			state.currentProductList.sort((a, b) =>Number(a.duration) - Number(b.duration));
 			state.arrowDaysDirection = "fas fa-arrow-up"
 		}else{
-			state.stateProductsList.sort((b, a)=> Number(a.duration) - Number(b.duration));
+			state.currentProductList.sort((b, a)=> Number(a.duration) - Number(b.duration));
 			state.arrowDaysDirection = "fas fa-arrow-down"
 		}
 	},
 
 	sortedProductListByPrice(state, orderInfo) {
+		if(!state.currentProductList.length){
+			state.currentProductList = state.stateProductsList;
+		}
 		if(orderInfo.orderByPriceasc){
-			state.stateProductsList.sort((a, b)=> a.sales_price - b.sales_price);
+			state.currentProductList.sort((a, b)=> a.sales_price - b.sales_price);
 			state.arrowPriceDirection = "fas fa-arrow-up"
 		}else{
-			state.stateProductsList.sort((b,a)=>a.sales_price - b.sales_price);
+			state.currentProductList.sort((b,a)=>a.sales_price - b.sales_price);
 			state.arrowPriceDirection = "fas fa-arrow-down"
 		}
 	}
@@ -73,6 +86,10 @@ export const getters = {
 
 	stateArrowPriceDirection: state =>{
 		return state.arrowPriceDirection
+	},
+
+	currentProductList: state =>{
+		return state.currentProductList
 	}
 
 }

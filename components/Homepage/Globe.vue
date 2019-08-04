@@ -17,44 +17,18 @@
 
 <script>
 import GlobeImg from './GlobeImg'
+
 export default {
-    components:{
-        GlobeImg
-    },
+    components:{GlobeImg},
     data(){
         return{
-            globeList:[{
-                id:1,
-                img: "/images/globe/Ellipse.png",
-                title: "亞洲",
-                countryname: "Asian"
-            },
-            {
-                id:2,
-                img: "/images/globe/globe1.png",
-                title: "美洲",
-                countryname: "American"
-            },
-            {
-                id:3,
-                img: "/images/globe/globe2.png",
-                title: "非洲",
-                countryname: "Africa"
-            },
-            {
-                id:4,
-                img: "/images/globe/globe3.png",
-                title: "澳大利亞",
-                countryname: "Australia"
-            },
-            {
-                id:5,
-                img: "/images/globe/globe5.png",
-                title: "歐洲",
-                countryname: "Europe"
-            }]
+            globeList:[]
         }
-    }
+    },
+    created(){
+        this.globeList=this.$store.getters.statesList
+    },
+    
 }
 </script>
 

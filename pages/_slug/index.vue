@@ -1,6 +1,6 @@
 <template>
     <div >
-        <heroImgComp />
+        <heroImgComp :bannerImage="bannerImage"/>
         <countryNavBarComp  :countrycities = "countrycities" 
                             :productNum = "producListNum"  
                             :arrowDaysDirection = "arrowDaysDirection"
@@ -35,9 +35,9 @@ export default {
             arrowPriceDirection: "fas fa-arrow-up",
             opacityValue: "0.6",
             opacityValue1: '0.6',
-            clone: [],
             isActive: false,
-            productList: []
+            productList: [],
+            bannerImage: ''
        }
     },
 
@@ -48,11 +48,10 @@ export default {
     },
     async fetch({store, params}) {
         let state_slug= params.slug
-        console.log(state_slug);
 		store.commit('productSummary/emptyStateProductsList');
         const {data} = await axios.get(`${apiUrl}/api/${state_slug}/products`);
         if(!data) return cb('Can not find the product');
-
+       
         data.forEach(item => { 
 			item.card_image = JSON.parse(item.card_image)[0]
             store.commit('productSummary/addStateProducts', {
@@ -68,11 +67,19 @@ export default {
         })
     },
    created(){ 
-        this.productList = this.$store.getters['productSummary/stateProductsList'];
-        this.clone = JSON.parse(JSON.stringify(this.productList));
+        this.productList = this.$store.getters['productSummary/stateProductsList'];   
    },
    mounted(){
-       this.countrycities.unshift({id:'' ,name: '显示全部', slug: 'showall'})
+        this.countrycities.unshift({id:'' ,name: '显示全部', slug: 'showall'})
+        //the second element in countrycities, contains state_id. 0 is showall.
+        const state_id = this.countrycities[1].state_id
+        const statesList = this.$store.getters.statesList;
+        this.bannerImage = statesList.find((item)=>{
+            return item.id == state_id
+        }).banner_image
+        this.bannerImage = JSON.parse(this.bannerImage);
+        this.bannerImage = `${apiUrl}/storage/${this.bannerImage}`
+        
    },
    methods:{   
         sortedProductList(){        
@@ -83,7 +90,7 @@ export default {
                 orderByPriceasc: this.orderByPriceasc,      
              })
             this.arrowPriceDirection = this.$store.getters['productSummary/stateArrowPriceDirection'];
-            return this.$store.getters['productSummary/stateProductsList'];
+            this.productList = this.$store.getters['productSummary/currentProductList'];
 
         },
 
@@ -92,23 +99,27 @@ export default {
             this.orderByDaysasc = !this.orderByDaysasc;
             this.opacityValue1= '1',
 		    this. opacityValue="0.6",
-            this.$store.commit('productSummary/sortStateProductsByDsays', {
-                orderByDaysasc: this.orderByDaysasc,      
+            this.$store.commit('productSummary/sortProductsByDays', {
+                orderByDaysasc: this.orderByDaysasc,    
              })
             this.arrowDaysDirection = this.$store.getters['productSummary/stateArrowDaysDirection'];
-            return this.$store.getters['productSummary/stateProductsList'];
+            this.productList = this.$store.getters['productSummary/currentProductList'];
         },
 
 
-        sortedByCities(cityId){          
+        sortedByCities(cityId){ 
+            this.$store.commit('productSummary/emptyCurrentProductsList'); 
+            this.opacityValue= "0.6"
+            this.opacityValue1= '0.6'         
                 if(!cityId){   
                     this.productList = this.$store.getters['productSummary/stateProductsList'];
                 }else{
                     axios.get(`${apiUrl}/api/state/${cityId}/products`)
                         .then((res)=>{
-                           const mappedData =  res.data.map((item)=>{
+                            const mappedData =  res.data.map((item)=>{
                                 item.card_image = JSON.parse(item.card_image)[0]
                                 item.card_image= `${apiUrl}/storage/${item.card_image}`
+                                this.$store.commit('productSummary/addCurrentProducts', item);
                                 return item;
                             })
                             this.productList = mappedData;
@@ -116,7 +127,9 @@ export default {
                         .catch((error)=>{
                             console.log(error)
                         }); 
+                     
                 }
+    
             return this.productList
        }   
    },

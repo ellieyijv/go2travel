@@ -1,5 +1,6 @@
 <template> 
-    <div class="hovereffect" :tour="tour" >
+<nuxt-link :to="'/'+ state_slug + '/'+ tour.product_code" >
+    <div class="hovereffect">
         <img class="img-responsive" :src="tour.card_image" alt="">
         
         <div class="bottomtitle">
@@ -14,7 +15,7 @@
             
         </div>
     </div>
-
+</nuxt-link>
 </template>
 
 <script>
@@ -24,9 +25,15 @@ export default {
         return{
             hover: false, 
             duration: `${this.tour.duration}天${this.tour.duration-1}夜`,  
+            state_slug: ''
         }
     },
-    
+     mounted(){
+        const statesList = this.$store.getters.statesList;
+        this.state_slug = statesList.find((item)=>{
+            return item.id == this.tour.state_id
+        }).slug
+    }
       
 }
 </script>

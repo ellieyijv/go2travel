@@ -27,6 +27,10 @@ export const actions = {
     async nuxtServerInit ({ commit }) {
         axios.get(`${apiUrl}/api/states`)
         .then(res=>{ 
+            res.data.map((item)=>{
+                item.thumbnail = JSON.parse(item.thumbnail)[0];
+                item.thumbnail= `${apiUrl}/storage/${item.thumbnail}`
+            })
             commit('ADD_STATES', res.data)  
         })
         .catch(err =>{

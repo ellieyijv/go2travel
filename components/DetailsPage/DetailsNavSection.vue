@@ -17,7 +17,7 @@
                 <b-col sm="4">
                     <div id="rightSection">
                         <h4>${{navBarData.sales_price}}<span style="font-size:14px; font-family:'FangPing'">/人起</span></h4>
-                        <p>優惠：原價{{navBarData.price}}</p>
+                        <!-- <p>優惠：原價{{navBarData.price}}</p> -->
                         <p>{{navBarData.price_description}}</p>
                         <b-btn class="contactBtn" block :to="'/'+ navBarData.state.slug +'/' + navBarData.product_code+'/inquiry'">聯系我們</b-btn>
                     </div>
@@ -120,10 +120,6 @@ export default {
             padding-right:1.3rem;
         }
     }
-    @media (min-width:996px){
-         #rightSection p{
-             line-height: 5px;
-         }
-    }
+ 
    
 </style>

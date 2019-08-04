@@ -1,6 +1,6 @@
 <template>
    <div>
-        <DetailsCarousel />
+        <DetailsCarousel :carouselData="carouselData"/>
         <DetailsNavSection  :navBarData="navBarData"/>
         <div class="backgroundstyle">
             <ProductIntro :introData="introData"/>
@@ -37,7 +37,8 @@ export default {
             productFeeDesc: {},
             productDaysPlan:{},
             needsToKnow:{},
-            recommendProducts:[]
+            recommendProducts:[],
+            carouselData: []
         } 
     },
     async asyncData({params}){
@@ -49,10 +50,21 @@ export default {
             item.image= `${apiUrl}/storage/${item.image}`
             return item;
          })
+        data.recommends.map((item)=>{
+            let imgUrl = JSON.parse(item.card_image)[0];
+            item.card_image= `${apiUrl}/storage/${imgUrl}`
+        })
+        data.flyer = JSON.parse(data.flyer);
+        const flyer = data.flyer.map((item)=>{
+            item = `${apiUrl}/storage/${item}`
+            return item;
+        })
+        data.flyer = flyer;
         return {productDetails: data};   
     },
    
     created(){
+        this.carouselData = this.productDetails.flyer
         this.navBarData = {
             id : this.productDetails.id,
             product_name : this.productDetails.product_name,
@@ -60,6 +72,8 @@ export default {
             price : this.productDetails.price,
             product_code : this.productDetails.product_code,
             state : this.productDetails.state,   
+            product_description: this.productDetails.product_description,
+            price_description:this.productDetails.price_description
         }
        
         this.introData = {
@@ -81,13 +95,7 @@ export default {
         this.needsToKnow = this.productDetails.terms_conditions
                  
         this.recommendProducts= this.productDetails.recommends
-        this.recommendProducts.map((item)=>{
-            let imgUrl = JSON.parse(item.card_image)[0];
-            item.card_image= `${apiUrl}/storage/${imgUrl}`
-        })
     },
- 
-
 }
 </script>
 

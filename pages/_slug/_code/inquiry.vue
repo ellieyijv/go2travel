@@ -1,13 +1,34 @@
 <template>
    <div class="container-fluid backgroundColor">
-       <inquiryForm />
+       <inquiryForm :productData="productData"/>
    </div>
 </template>
 
 <script>
 import inquiryForm from "../../../components/InquiryPage/inquiryForm"
+import axios from 'axios'
+const apiUrl = process.env.API_URL || 'http://localhost:80'
 export default {
-    components:{inquiryForm}
+    components:{inquiryForm},
+    data(){
+        return{
+            productData: {}
+        }
+    },
+    async asyncData({ params}) {
+        let product_code = params.code;
+        let {data} = await axios.get(`${apiUrl}/api/${product_code}/withDetails`);
+        const tmp = {
+            product_code: data.product_code,
+            product_name: data.product_name,
+            sales_price : data.sales_price,
+            price : data.price, 
+            product_description: data.product_description,
+            price_description: data.price_description
+        }
+         return {productData: tmp};  
+    },
+  
 }
 </script>
 

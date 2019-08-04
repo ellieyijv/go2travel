@@ -1,11 +1,11 @@
 <template>
-<nuxt-link :to="'/' + globe.countryname">
+<nuxt-link :to="'/' + globe.slug">
     <div :globe="globe" class="parent">
    
-        <img :src="globe.img" class="img-responsive child"/>
+        <img :src="globe.thumbnail" class="img-responsive child"/>
       
     </div>
-      <p >{{globe.title}}</p>
+      <p >{{globe.state}}</p>
 </nuxt-link>
 </template>
 

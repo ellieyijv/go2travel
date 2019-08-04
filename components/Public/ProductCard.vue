@@ -1,6 +1,6 @@
 <template>
 <nuxt-link :to="'/'+ state_slug + '/'+ card.product_code" style="text-decoration:none">
-    <b-card :card="card" class="cardStyle">
+    <b-card  class="cardStyle">
         <div class="parent">
             <div class="child img-top" :style="{ backgroundImage: 'url(' + card.card_image + ')' }"  ></div>
         </div>
@@ -36,7 +36,7 @@ export default {
         }, 
     },
 
-    created(){
+    mounted(){
         const statesList = this.$store.getters.statesList;
         this.state_slug = statesList.find((item)=>{
             return item.id == this.card.state_id
