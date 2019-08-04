@@ -7,9 +7,7 @@
         </b-row>
         <b-row style="border-top: 2px solid #F7F5F1; padding-top:2rem;">
             <b-col sm="12">
-                <li v-for="(item,index) in needstoknowArr" :key="index">
-                    {{item}}
-                </li>
+                <span v-html="needsToKnow"></span>
             </b-col>
         </b-row>
     </b-container>
@@ -17,22 +15,16 @@
 
 <script>
 export default {
-    props: ['needstoknow'],
-    data(){
-        return{
-            needstoknowArr: []
-        }
-    },
-    created(){
-        this.needstoknowArr = this.needstoknow.split(' ');
-    }
+    props: ['needsToKnow'],
+
 }
 </script>
 
 <style scoped>
    #productNeedsToKnow{
-       background-color: white;
-       padding:1.5rem;
+        background-color: white;
+        padding:1.5rem;
+        margin: 4rem auto;
    }
 
    #productNeedsToKnow li{

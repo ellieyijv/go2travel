@@ -5,10 +5,9 @@
         </b-row>
         <b-row style="border-top: 2px solid #F7F5F1">
             <b-col sm="12" v-for="(item, index) in daysplan" :key="index">
-                <h5>{{item.day}}</h5>
-                <p>{{item.content}}</p>
-            </b-col>
-            
+                <h5>第{{item.day}}天</h5>
+                <span v-html="item.description"></span>
+            </b-col>      
         </b-row>
        
     </b-container>
@@ -24,6 +23,7 @@ export default {
     #productDaysPlans{
         background-color: white;
         padding:1.5rem;
+        margin: 4rem auto;
     }
 
     #productDaysPlans h4{

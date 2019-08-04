@@ -7,15 +7,11 @@
         <b-row style="border-top: 2px solid #F7F5F1">
             <b-col class="borderStyle">
                 <h5>費用包含</h5>
-                <li v-for="(item,index) in productFeeDescContainsArr" :key="index">
-                    {{item}}
-                </li>
+                <span v-html="productFeeDesc.inclusion"></span>
             </b-col>
             <b-col>
-                <h5>Product Not Contain</h5>
-                  <li v-for="(item,index) in productFeeDescNotContainArr" :key="index">
-                    {{item}}
-                </li>
+                <h5>費用不包含</h5>
+                <span v-html="productFeeDesc.exclusion"></span>
             </b-col>
         </b-row>
     </b-container>
@@ -24,26 +20,15 @@
 <script>
 export default {
     props: ['productFeeDesc'],
-    data(){
-        return{
-            productFeeDescContainsArr: [],
-            productFeeDescNotContainArr: []
-        }
-    },
-    created(){
-       
-        this.productFeeDescContainsArr = this.productFeeDesc.contains.split(' ');
-        this.productFeeDescNotContainArr = this.productFeeDesc.notContain.split(' ');
-    }
+  
 }
 </script>
 
 <style scoped>
     #productfeedesc{
         background-color:white;
-        padding-top: 1.5rem;
-        padding-right:1.5rem;
-        padding-left:1.5rem;
+        padding: 1.5rem;
+        margin: 4rem auto;
     }
 
     #productfeedesc li{

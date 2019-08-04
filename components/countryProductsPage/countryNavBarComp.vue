@@ -75,7 +75,6 @@ export default {
             }
         },
         clickFunc(cityId){
-            console.log(cityId)
             this.currentTab = cityId;
             this.$emit('filterProductByCity', cityId);
         }  

@@ -1,6 +1,5 @@
 <template>
     <div >
-       <!-- {{$route.params.countryname}} -->
         <heroImgComp />
         <countryNavBarComp  :countrycities = "countrycities" 
                             :productNum = "producListNum"  
@@ -43,18 +42,17 @@ export default {
     },
 
     async asyncData({params}){
-        let id = params.slug;
-        let res = await axios.get(`${apiUrl}/api/${id}/cities`);
-        return {countrycities: res.data}
-        
+        let state_slug = params.slug;
+        let res = await axios.get(`${apiUrl}/api/${state_slug}/cities`);
+        return {countrycities: res.data}   
     },
     async fetch({store, params}) {
-        let state_id = params.slug
+        let state_slug= params.slug
+        console.log(state_slug);
 		store.commit('productSummary/emptyStateProductsList');
-        const {data} = await axios.get(`${apiUrl}/api/${state_id}/products`).catch((error => {  
-            console.log(error)
-        }))
-        
+        const {data} = await axios.get(`${apiUrl}/api/${state_slug}/products`);
+        if(!data) return cb('Can not find the product');
+
         data.forEach(item => { 
 			item.card_image = JSON.parse(item.card_image)[0]
             store.commit('productSummary/addStateProducts', {
@@ -63,7 +61,9 @@ export default {
 				sales_price: item.sales_price,
 				price: item.price,
 				duration: item.duration,
-				card_image: `${apiUrl}/storage/${item.card_image}`,
+                card_image: `${apiUrl}/storage/${item.card_image}`,
+                product_code: item.product_code,
+                state_id: item.state_id,
             })
         })
     },
@@ -100,8 +100,7 @@ export default {
         },
 
 
-        sortedByCities(cityId){
-                
+        sortedByCities(cityId){          
                 if(!cityId){   
                     this.productList = this.$store.getters['productSummary/stateProductsList'];
                 }else{
@@ -110,23 +109,16 @@ export default {
                            const mappedData =  res.data.map((item)=>{
                                 item.card_image = JSON.parse(item.card_image)[0]
                                 item.card_image= `${apiUrl}/storage/${item.card_image}`
-                
-                               return item;
+                                return item;
                             })
                             this.productList = mappedData;
                         })
                         .catch((error)=>{
                             console.log(error)
-                        });
-
-                    //map reduce filter, find    
-                   
+                        }); 
                 }
-           
             return this.productList
-        
-       }
-       
+       }   
    },
 
 

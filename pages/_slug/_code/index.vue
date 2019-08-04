@@ -1,0 +1,100 @@
+<template>
+   <div>
+        <DetailsCarousel />
+        <DetailsNavSection  :navBarData="navBarData"/>
+        <div class="backgroundstyle">
+            <ProductIntro :introData="introData"/>
+            <ProductHighlight :spotsData="spotsData"/>
+            <FeeDesc :productFeeDesc="productFeeDesc"/>
+            <productDaysPlan :daysplan="productDaysPlan" />
+            <ProductNeedsToKnow :needsToKnow="needsToKnow" />
+            <span  v-if="recommendProducts.length">
+                <YouMightInterested :recommendProducts="recommendProducts"/>
+            </span>
+        </div> 
+   </div>
+</template>
+
+<script>
+import DetailsCarousel from '../../../components/DetailsPage/DetailsCarousel';
+import DetailsNavSection from '../../../components/DetailsPage/DetailsNavSection';
+import ProductIntro from '../../../components/DetailsPage/ProductIntro';
+import ProductHighlight from '../../../components/DetailsPage/ProductHighlight';
+import FeeDesc from '../../../components/DetailsPage/FeeDesc';
+import productDaysPlan from '../../../components/DetailsPage/ProductDaysPlan';
+import ProductNeedsToKnow from '../../../components/DetailsPage/ProductNeedsToKnow';
+import YouMightInterested from '../../../components/DetailsPage/YouMightInterested';
+import axios from 'axios'
+const apiUrl = process.env.API_URL || 'http://localhost:80'
+export default {
+    components: { DetailsCarousel, DetailsNavSection, ProductIntro, ProductHighlight, FeeDesc, productDaysPlan, ProductNeedsToKnow, YouMightInterested},
+    data(){
+        return{  
+            navBarData: {},
+            productDetails: {},
+            introData: {},
+            spotsData: [],
+            productFeeDesc: {},
+            productDaysPlan:{},
+            needsToKnow:{},
+            recommendProducts:[]
+        } 
+    },
+    async asyncData({params}){
+    
+        let code = params.code;
+        let {data} = await axios.get(`${apiUrl}/api/${code}/withDetails`);
+        data.spots.map((item)=>{       
+            item.image= JSON.parse(item.image)[0]
+            item.image= `${apiUrl}/storage/${item.image}`
+            return item;
+         })
+        return {productDetails: data};   
+    },
+   
+    created(){
+        this.navBarData = {
+            id : this.productDetails.id,
+            product_name : this.productDetails.product_name,
+            sales_price : this.productDetails.sales_price,
+            price : this.productDetails.price,
+            product_code : this.productDetails.product_code,
+            state : this.productDetails.state,   
+        }
+       
+        this.introData = {
+            tour_language: this.productDetails.tour_language,
+            pick_up_service: this.productDetails.pick_up_service,
+            meals: this.productDetails.meals,
+            policy: this.productDetails.policy,
+            travel_document: this.productDetails.travel_document,
+            duration : this.productDetails.duration,
+        }
+        this.spotsData = this.productDetails.spots;
+
+        this.productFeeDesc = {
+            inclusion: this.productDetails.inclusion,
+            exclusion: this.productDetails.exclusion
+        }
+        this.productDaysPlan = JSON.parse(this.productDetails.ltinerary)
+      
+        this.needsToKnow = this.productDetails.terms_conditions
+                 
+        this.recommendProducts= this.productDetails.recommends
+        this.recommendProducts.map((item)=>{
+            let imgUrl = JSON.parse(item.card_image)[0];
+            item.card_image= `${apiUrl}/storage/${imgUrl}`
+        })
+    },
+ 
+
+}
+</script>
+
+<style scoped>
+    .backgroundstyle{
+        background-color:#f7f5f1;
+        padding-top: 0.1rem;
+        padding-bottom:0.1rem;
+    }
+</style>

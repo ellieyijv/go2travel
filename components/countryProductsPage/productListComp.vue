@@ -2,9 +2,11 @@
     <b-container fluid style= "background-color: #f7f5f1; padding:0;">
     <b-container class="overflow-auto" id="productListComp">  
             <b-row  id="products">
-                    <b-col  cols="6" sm="6" md="6" lg="6" xl="4" v-for="card in currentItems" :key="card.id" class="cardlist">
+                    <b-col  cols="6" sm="6" md="6" lg="6" xl="4" v-for="card in currentItems" :key="card.id" 
+
+class="cardlist">
                         <div >
-                            <SpecialDealCard :card = "card" />
+                            <ProductCard :card = "card" />
                         </div>
                     </b-col>
             </b-row>
@@ -25,10 +27,10 @@
 </template>
 
 <script>
-import SpecialDealCard from "../../components/Homepage/SpecialDealCard";
+import ProductCard from "../../components/Public/ProductCard";
 export default {
 props: ['productList'],
-    components:{SpecialDealCard},
+    components:{ProductCard},
     
     data(){
         return{

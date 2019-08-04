@@ -1,5 +1,5 @@
 <template>
-<nuxt-link :to="'/'+card.slug +'/'+ card.id" style="text-decoration:none">
+<nuxt-link :to="'/'+ state_slug + '/'+ card.product_code" style="text-decoration:none">
     <b-card :card="card" class="cardStyle">
         <div class="parent">
             <div class="child img-top" :style="{ backgroundImage: 'url(' + card.card_image + ')' }"  ></div>
@@ -25,7 +25,7 @@ export default {
     data(){
         return{
             duration: `${this.card.duration}天${this.card.duration-1}夜`,
-         
+            state_slug: ''
         }
     },
     methods:{
@@ -35,6 +35,13 @@ export default {
          
         }, 
     },
+
+    created(){
+        const statesList = this.$store.getters.statesList;
+        this.state_slug = statesList.find((item)=>{
+            return item.id == this.card.state_id
+        }).slug
+    }
   
 }
 </script>

@@ -6,9 +6,9 @@
             </b-col>
         </b-row>
         <b-row style="border-top: 2px solid #F7F5F1" >
-            <b-col v-for="(img, index) in details.productImgs" :key="index" sm="6" lg="4" xl="3" class="hilightlistStyle">
-                <img :src="img.url" />
-                <p>{{img.imgdes}}</p>
+            <b-col v-for="(img, index) in spotsData" :key="index" sm="6" lg="4" xl="3" class="hilightlistStyle">
+                <img :src="img.image" />
+                <p>{{img.name}}</p>
             </b-col>
         </b-row>
     </b-container>
@@ -16,14 +16,15 @@
 
 <script>
 export default {
-   props:[ 'details'],
+   props:[ 'spotsData'],
 }
 </script>
 
 <style scoped>
     #productHighlight{
         background-color: white;
-         padding: 1.5rem;
+        padding: 1.5rem;
+        margin: 4rem auto;
     }
 
     #productHighlight .hilightlistStyle{

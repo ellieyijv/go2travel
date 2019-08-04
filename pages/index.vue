@@ -47,6 +47,9 @@ export default {
 				price: item.product.price,
 				duration: item.product.duration,
 				card_image: `${apiUrl}/storage/${item.product.card_image}`,
+				product_code: item.product.product_code,
+				state_id: item.product.state_id,
+				
             })
 		})
 		
@@ -65,6 +68,9 @@ export default {
 				price: item.product.price,
 				duration: item.product.duration,
 				card_image: `${apiUrl}/storage/${item.product.card_image}`,
+				product_code: item.product.product_code,
+				state_id: item.product.state_id,
+				
             })
 		})
 	},

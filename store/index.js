@@ -27,8 +27,10 @@ export const actions = {
     async nuxtServerInit ({ commit }) {
         axios.get(`${apiUrl}/api/states`)
         .then(res=>{ 
-            commit('ADD_STATES', res.data)
-           
+            commit('ADD_STATES', res.data)  
+        })
+        .catch(err =>{
+            console.log(err)
         })
     }
 }

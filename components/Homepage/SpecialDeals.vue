@@ -7,7 +7,7 @@
         <div class="container" style="padding-bottom:70px;">
             <div class="row">
                 <div v-for="card in cardList" :key="card.id" class="paddingStyle col-md-6 col-lg-6 col-xl-4 col-sm-4 col-6" style="margin-bottom:20px;"> 
-                    <SpecialDealCard :card="card"/>
+                    <ProductCard :card="card"/>
                 </div>
             </div>
         </div>
@@ -15,12 +15,12 @@
 </template>
 
 <script>
-import SpecialDealCard from '../Homepage/SpecialDealCard'
+import ProductCard from '../Public/ProductCard'
 
 
 export default {
     components:{
-		SpecialDealCard
+		ProductCard
     },
 
    data(){
