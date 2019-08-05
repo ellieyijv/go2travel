@@ -3,10 +3,10 @@
             <input  v-model="search" placeholder="search products" class="searchinput col-10"/>
         
             <i class="fas fa-search col-1 searchIcon"></i>
-        
+            
             <ul id="searchProductList" v-if="filteredList.length">
                 <li v-for="item in filteredList" :key="item.id">
-                    <a :href="'/'+item.countryname +'/'+ item.id">{{ item.title }}</a>
+                    <a :href="'/'+item.countryname +'/'+ item.product_code">{{ item.product_name }}</a>
                 </li>
             </ul> 
       
@@ -14,76 +14,29 @@
 </template>
 
 <script>
-class Product {
-    constructor(id,title,countryname) {
-        this.id = id; 
-        this.title = title;
-        this.countryname = countryname;
-    }
-}
+import axios from 'axios'
+const apiUrl = process.env.API_URL || 'http://localhost:80'
 export default {
     data(){
         return{
             search: "",
-            productList:[
-                new Product(
-                    '25407',
-                    "澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
-                    "Australia"
-                ),
-                new Product(
-                    '25408',
-                    "2澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
-                    "Australia"
-                ),
-                new Product(
-                    '25409',
-                    "3澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
-                    "Australia"
-                ),
-                new Product(
-                    '25410',
-                    "4澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
-                    "Australia"
-                ),
-                new Product(
-                    '25411',
-                    "5澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
-                    "Australia"
-                ),
-                new Product(
-                    '25412',
-                    "6澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
-                    "Australia"
-                ),
-                new Product(
-                    '25413',
-                    "7澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城",
-                    "Australia"
-                ),
-                new Product(
-                    '25414',
-                    "8澳大利亚墨尔本+凯恩斯",
-                    "Australia"
-                ),
-                new Product(
-                    '25415',
-                    "9澳大利亚墨尔本+凯恩斯+悉尼自由行",
-                    "Australia"
-                ),     
-            ]
+            productList:[]
         }
     },
+
     computed: {
         filteredList(){
-            let filtered = " ";
+           
             if(this.search){
-                filtered = this.productList.filter(product => 
-                     product.title.toLowerCase().includes(this.search.toLowerCase())
-                )
+                axios.get(`${apiUrl}/api/products?term=${this.search}`)
+                .then((res, reject)=>{
+                    this.productList = res.data
+                })
             }
-            return filtered;
-        }
+         
+            return this.productList;
+        },
+
     },
 }
 </script>
