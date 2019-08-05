@@ -1,18 +1,17 @@
 <template>
-<nuxt-link :to="'/'+card.countryname +'/'+ card.id" style="text-decoration:none">
-    <b-card :card="card" class="cardStyle">
+<nuxt-link :to="'/'+ state_slug + '/'+ card.product_code" style="text-decoration:none">
+    <b-card  class="cardStyle">
         <div class="parent">
-            <div class="child img-top" :style="{ backgroundImage: 'url(' + card.img + ')' }"  ></div>
+            <div class="child img-top" :style="{ backgroundImage: 'url(' + card.card_image + ')' }"  ></div>
         </div>
-        <b-card-text class="special-title">{{card.title}}</b-card-text>
-        <b-card-text class="special-subtitle">{{card.subtitle}}</b-card-text>  
+        <b-card-text class="special-title">{{card.product_name}}</b-card-text>
+        <b-card-text class="special-subtitle">原價${{card.price}} 最後機會 立馬下訂</b-card-text>  
         <div class="container-fluid">
             <div class="row">
-                <b-card-text class="col special-price col-12 col-sm-12 col-md-4">${{numberWithCommas(card.price)}} /人起</b-card-text>    
-                <div class="special-days col" >{{card.days}}</div>
+                <b-card-text class="col special-price col-12 col-sm-12 col-md-4">${{numberWithCommas(card.sales_price)}} /人起</b-card-text>    
+                <div class="special-days col" >{{duration}}</div>
                 <b-button class="special-more col btn-lg">查看更多</b-button>       
-            </div>
-            
+            </div>   
         </div>
     </b-card>  
 </nuxt-link>
@@ -20,12 +19,28 @@
 
 <script>
 import { BCard } from 'bootstrap-vue'
+
 export default {
     props:['card'],
+    data(){
+        return{
+            duration: `${this.card.duration}天${this.card.duration-1}夜`,
+            state_slug: ''
+        }
+    },
     methods:{
         numberWithCommas(x) {
+            x=Math.floor(x);
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        }
+         
+        }, 
+    },
+
+    mounted(){
+        const statesList = this.$store.getters.statesList;
+        this.state_slug = statesList.find((item)=>{
+            return item.id == this.card.state_id
+        }).slug
     }
   
 }

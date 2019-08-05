@@ -4,7 +4,7 @@
         <b-container class="countrynavbar">
             <b-row>
                 <b-col cols="auto" class="mr-auto p-3 countryname ">
-                    <h5>{{$route.params.countryname}}</h5>
+                    <h5>{{$route.params.slug}}</h5>
                 </b-col>
               
                 <b-col cols="auto" >
@@ -28,16 +28,16 @@
         <b-container>
             <b-row >
                 <b-col sm="12">
-                    Please choose your destination
+                    请选择城市
                 </b-col>
             </b-row>
             <b-row>
               
-                 <b-col v-for="city in countrycities" :key="city.name" 
+                 <b-col v-for="city in countrycities" :key="city.id" 
                             class="justify-content-between"
                             lg="2" cols="6" md="4" 
-                            @click="clickFunc(city.name)" >
-                        <div :class="['tab-button', { active: currentTab === city.name }]" > 
+                            @click="clickFunc(city.id)" >
+                        <div :class="['tab-button', { active: currentTab === city.id }]" > 
                            {{city.name}}
                         </div>
 
@@ -74,10 +74,9 @@ export default {
                 this.filtericon = "fas fa-sliders-h"
             }
         },
-        clickFunc(cityName){
-            console.log(cityName)
-            this.currentTab = cityName;
-            this.$emit('filterProductByCity', cityName);
+        clickFunc(cityId){
+            this.currentTab = cityId;
+            this.$emit('filterProductByCity', cityId);
         }  
     },
    

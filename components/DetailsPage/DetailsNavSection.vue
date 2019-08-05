@@ -1,25 +1,30 @@
 <template>
 <div>
     <b-container fluid>
-        <b-container :card="card" :details = "details" id="detailsNavSection">
+        <b-container  :navBarData = "navBarData" id="detailsNavSection">
             <b-row>
                 <b-col sm="6">
                     <b-nav>
                         <b-nav-item to="/" class="navClickStyle">首頁 ></b-nav-item>
+<<<<<<< HEAD
                         <b-nav-item :to="'/'+card.countryname +'/'" class="navClickStyle">{{card.countryname}} ></b-nav-item>
                         <b-nav-item active disabled>{{card.title}}</b-nav-item>
+=======
+                        <b-nav-item :to="'/'+navBarData.state.slug" class="navClickStyle">{{navBarData.state.state}} ></b-nav-item>
+                        <b-nav-item active disabled>{{navBarData.product_name}}</b-nav-item>
+>>>>>>> v1
                     </b-nav>
-                    <h4>{{card.title}}</h4>
-                    <p style="padding-top:15px;">{{details.productDesc}} | 產品編號 : {{details.productID}}</p>
+                    <h4>{{navBarData.product_name}}</h4>
+                    <p style="padding-top:15px;">{{navBarData.product_description}} | 產品編號 : {{navBarData.product_code}}</p>
                 </b-col>
                 <b-col sm="2">
                 </b-col>
                 <b-col sm="4">
                     <div id="rightSection">
-                        <h4>${{card.price}}<span style="font-size:14px; font-family:'FangPing'">/人起</span></h4>
-                        <p>{{details.productSpecialPrice}}</p>
-                        <p>{{details.productRebate}}</p>
-                        <b-btn class="contactBtn" block :to="'/'+ path + '/inquiry'">聯系我們</b-btn>
+                        <h4>${{navBarData.sales_price}}<span style="font-size:14px; font-family:'FangPing'">/人起</span></h4>
+                        <!-- <p>優惠：原價{{navBarData.price}}</p> -->
+                        <p>{{navBarData.price_description}}</p>
+                        <b-btn class="contactBtn" block :to="'/'+ navBarData.state.slug +'/' + navBarData.product_code+'/inquiry'">聯系我們</b-btn>
                     </div>
                 </b-col>
             </b-row>
@@ -47,18 +52,8 @@
 
 <script>
 export default {
-    props:['card', 'details'],
-    data(){
-        return{
-            path: '',
-        }
-    },
-    methods: {
-     
-    },
-    created(){
-        this.path = this.$route.params.countryname + '/' + this.$route.params.id;
-    }
+    props:['navBarData'],
+   
         
 }
 </script>
@@ -130,10 +125,6 @@ export default {
             padding-right:1.3rem;
         }
     }
-    @media (min-width:996px){
-         #rightSection p{
-             line-height: 5px;
-         }
-    }
+ 
    
 </style>

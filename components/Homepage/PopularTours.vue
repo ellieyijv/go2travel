@@ -6,7 +6,7 @@
         </div>
         <div class="container">
             <div class="row">
-                <div v-for="tour in tourList" :key="tour.id" class="paddingStyle col-md-3 col-xs-6 col-sm-4 col-6" style="margin-bottom:20px;"> 
+                <div v-for="tour in cardList" :key="tour.id" class="paddingStyle col-md-3 col-xs-6 col-sm-4 col-6" style="margin-bottom:20px;"> 
                     <PopularTourCard :tour="tour" />
                 </div>
             </div>
@@ -20,74 +20,13 @@ export default {
     components:{
 		PopularTourCard
     },
-    data(){
-        return{
-            tourList: [{
-                id: 1,
-                img: "/images/popular/popular1.png",
-                title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城...",
-                subtitle: "最後機會 立馬下訂",
-                price:"$3,447",
-                days:"15天14夜"
-            },
-            {
-                id: 2,
-                img: "/images/popular/popular2.png",
-                title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城...",
-                subtitle: "最後機會 立馬下訂",
-                price:"$3,447",
-                days:"15天14夜"
-            },
-            {
-                id: 3,
-                img: "/images/popular/popular3.png",
-                title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城...",
-                subtitle: "最後機會 立馬下訂",
-                price:"$3,447",
-                days:"15天14夜"
-            },
-            {
-                id: 4,
-                img: "/images/popular/popular4.png",
-                title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城...",
-                subtitle: "最後機會 立馬下訂",
-                price:"$3,447",
-                days:"15天14夜"
-            },
-            {
-                id: 5,
-                img: "/images/popular/popular5.png",
-                title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城...",
-                subtitle: "最後機會 立馬下訂",
-                price:"$3,447",
-                days:"15天14夜"
-            },
-            {
-                id: 6,
-                img: "/images/popular/popular6.png",
-                title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城...",
-                subtitle: "最後機會 立馬下訂",
-                price:"$3,447",
-                days:"15天14夜"
-            },
-            {
-                id: 7,
-                img: "/images/popular/popular7.png",
-                title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城...",
-                subtitle: "最後機會 立馬下訂",
-                price:"$3,447",
-                days:"15天14夜"
-            },
-            {
-                id: 8,
-                img: "/images/popular/popular8.png",
-                title:"澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城...",
-                subtitle: "最後機會 立馬下訂",
-                price:"$3,447",
-                days:"15天14夜"
-            }]
-        }
-    }
+    
+     computed: {
+       cardList(){
+           return this.$store.getters['productSummary/popularList']
+       } 
+    },  
+
 }
 </script>
 

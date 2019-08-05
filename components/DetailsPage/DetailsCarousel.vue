@@ -4,10 +4,11 @@
     style="text-shadow: 0px 0px 2px #000"
     fade
     controls 
+    
   >
     <div class="carousel-inner">
-        <section v-for="card in detailsImgList" :key="card.id"> 
-            <div class="carousel-item active imagebox" :style="{ backgroundImage: 'url(' + card.img + ')'}">
+        <section v-for="image in carouselData" :key="image.id"> 
+            <div class="carousel-item active imagebox" :style="{ backgroundImage: 'url(' + image + ')'}">
                
             </div>
         </section>
@@ -16,19 +17,9 @@
 </template>
 
 <script>
+
 export default {
-    data(){
-       return{
-           detailsImgList:[{
-               productId: '25407',
-               img: '/images/carousel2.png',
-           },
-           {
-               productId: '1',
-               img: '/images/carousel.png',
-           },]
-       }
-    }
+    props: ['carouselData']
 }
 </script>
 

@@ -1,33 +1,33 @@
 <template>
     <b-container fluid id="aboutusDetailsComp">
           <b-row style=" direction: rtl;">
-               <b-col md="6" xl="6" class="backimg">   
+               <b-col md="6" xl="6" class="backimg" :style="{ backgroundImage: 'url(' + aboutusData.first_img_url + ')' }">   
                 </b-col>
-                <b-col md="6" lg="6" class="containerStyle">
+                <b-col md="6" lg="6" class="containerStyle" >
                     <div class="contentStyle">
-                        <h5>填充文字澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城3晚</h5>
-                        <p>南半球的热情在这里绽放，时尚、优雅、活力、传奇……伴随着慵懒的海湾，狂欢！火车一般是从墨尔本南十字火车站出发，从墨尔本到吉朗。其中从墨尔本到吉朗是火车线，周一至周五高峰时期十几分钟一趟，周六、周日基本每个小时都有一趟。不过大洋路小镇的维线大巴班次不多</p> 
+                        <h5>{{aboutusData.first_title}}</h5>
+                        <p>{{aboutusData.first_description}}</p> 
                     </div>
                 </b-col>
             </b-row>
              <b-row >
-                 <b-col md="6" xl="6" class="backimg">   
+                 <b-col md="6" xl="6" class="backimg" :style="{ backgroundImage: 'url(' + aboutusData.second_img_url + ')' }">   
                 </b-col>
-                <b-col md="6" lg="6" xl="6" class="containerStyle">
+                <b-col md="6" lg="6" xl="6" class="containerStyle" >
                     <div class="contentStyle">
-                        <h5>填充文字澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城3晚</h5>
-                        <p>南半球的热情在这里绽放，时尚、优雅、活力、传奇……伴随着慵懒的海湾，狂欢！火车一般是从墨尔本南十字火车站出发，从墨尔本到吉朗。其中从墨尔本到吉朗是火车线，周一至周五高峰时期十几分钟一趟，周六、周日基本每个小时都有一趟。不过大洋路小镇的维线大巴班次不多</p> 
+                        <h5>{{aboutusData.second_title}}</h5>
+                        <p>{{aboutusData.second_description}}</p> 
                     </div>
                 </b-col>
                
             </b-row>
              <b-row style=" direction: rtl;">
-                <b-col  md="6" xl="6" class="backimg">   
+                <b-col  md="6" xl="6" class="backimg" :style="{ backgroundImage: 'url(' + aboutusData.third_img_url + ')' }">   
                 </b-col>
                 <b-col md="6" lg="6" xl="6" class="containerStyle">
                     <div class="contentStyle">
-                        <h5>填充文字澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城3晚</h5>
-                        <p>南半球的热情在这里绽放，时尚、优雅、活力、传奇……伴随着慵懒的海湾，狂欢！火车一般是从墨尔本南十字火车站出发，从墨尔本到吉朗。其中从墨尔本到吉朗是火车线，周一至周五高峰时期十几分钟一趟，周六、周日基本每个小时都有一趟。不过大洋路小镇的维线大巴班次不多</p> 
+                        <h5>{{aboutusData.third_title}}</h5>
+                        <p>{{aboutusData.third_description}}</p> 
                     </div>
                 </b-col>
            
@@ -36,8 +36,10 @@
 </template>
 
 <script>
-export default {
 
+export default {
+    props:['aboutusData'],
+   
 }
 </script>
 
@@ -48,7 +50,7 @@ export default {
 }
 
 .backimg{
-    background-image: url('/images/about/aboutus1.png');
+    /* background-image: url('/images/about/aboutus1.png'); */
     background-repeat: no-repeat;
     padding-bottom:587px;
     background-position: center;

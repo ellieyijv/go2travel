@@ -1,20 +1,21 @@
 <template> 
-    <div class="hovereffect" :tour="tour" >
-        <img class="img-responsive" :src="tour.img" alt="">
+<nuxt-link :to="'/'+ state_slug + '/'+ tour.product_code" >
+    <div class="hovereffect">
+        <img class="img-responsive" :src="tour.card_image" alt="">
         
         <div class="bottomtitle">
-            <p >{{ tour.title }}</p>  
+            <p >{{ tour.product_name }}</p>  
         </div>
         <div class="slider" >
             <div style="padding:5%">
-                <p class="tourDays">{{tour.days}}</p>
-                <p class="tourTitle">{{tour.title}}</p>
-                <p class="tourPrice">{{tour.price}}<span>/人起</span></p>
+                <p class="tourDays">{{duration}}</p>
+                <p class="tourTitle">{{tour.product_name}}</p>
+                <p class="tourPrice">{{tour.sales_price}}<span>/人起</span></p>
             </div>
             
         </div>
     </div>
-
+</nuxt-link>
 </template>
 
 <script>
@@ -22,11 +23,17 @@ export default {
     props: ['tour'],
     data(){
         return{
-            hover: false,
-           
+            hover: false, 
+            duration: `${this.tour.duration}天${this.tour.duration-1}夜`,  
+            state_slug: ''
         }
     },
-    
+     mounted(){
+        const statesList = this.$store.getters.statesList;
+        this.state_slug = statesList.find((item)=>{
+            return item.id == this.tour.state_id
+        }).slug
+    }
       
 }
 </script>

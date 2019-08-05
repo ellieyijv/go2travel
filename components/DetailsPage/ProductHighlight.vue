@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
 	<b-container id="productHighlight">
 		<b-row>
 			<b-col sm="12">
@@ -27,10 +28,26 @@
 				</div>	
 		</b-row>
 	</b-container>
+=======
+    <b-container id="productHighlight">
+        <b-row>
+            <b-col sm="12">
+                <h4>線路特色</h4>
+            </b-col>
+        </b-row>
+        <b-row style="border-top: 2px solid #F7F5F1" >
+            <b-col v-for="(img, index) in spotsData" :key="index" sm="6" lg="4" xl="3" class="hilightlistStyle">
+                <img :src="img.image" />
+                <p>{{img.name}}</p>
+            </b-col>
+        </b-row>
+    </b-container>
+>>>>>>> v1
 </template>
 
 <script>
 export default {
+<<<<<<< HEAD
     props: ["details"],
     data() {
 		return {
@@ -113,6 +130,18 @@ export default {
 	color: #103a5b;
 	padding-bottom: 1rem;
 }
+=======
+   props:[ 'spotsData'],
+}
+</script>
+
+<style scoped>
+    #productHighlight{
+        background-color: white;
+        padding: 1.5rem;
+        margin: 4rem auto;
+    }
+>>>>>>> v1
 
 #productHighlight .hilightlistStyle {
 	text-align: center;

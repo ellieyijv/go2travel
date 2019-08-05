@@ -1,18 +1,17 @@
 <template>
     <b-container fluid id="heroImgComp">
-        <div class="heroImg" />
+        <div class="heroImg" :style="{ backgroundImage: 'url(' + bannerImage + ')' }"/>
     </b-container>
 </template>
 
 <script>
 export default {
-
+    props: ["bannerImage"]
 }
 </script>
 
 <style scoped>
     .heroImg{
-        background-image: url('/images/carousel2.png');
         position: relative;
         background-repeat: no-repeat;
         padding-bottom: 410px;

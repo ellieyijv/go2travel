@@ -6,8 +6,8 @@
         indicators 
     >
     <div class="carousel-inner">
-        <section v-for="card in detailsImgList" :key="card.id"> 
-            <div class="carousel-item active imagebox" :style="{ backgroundImage: 'url(' + card.img + ')'}">
+        <section v-for="card in herobannerImg" :key="card.index"> 
+            <div class="carousel-item active imagebox" :style="{ backgroundImage: 'url(' + card + ')'}">
                <img src="/images/about/herobannertext.png" class="centeredTitle"/>
             </div>
         </section>
@@ -17,16 +17,9 @@
 
 <script>
 export default {
+    props: ['herobannerImg'],
     data(){
        return{
-           detailsImgList:[{
-               productId: '25407',
-               img: '/images/about/Rectangle.png',
-           },
-           {
-               productId: '1',
-               img: '/images/carousel.png',
-           },]
        }
     }
 }

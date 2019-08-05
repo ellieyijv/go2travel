@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <section>
     <div v-if="$device.isDesktop">
       <div>
@@ -35,6 +36,29 @@ export default {
     AppNavBar
   }
 };
+=======
+  <div>
+        <AppHeader/>
+		<AppNavBar />
+        <nuxt />
+        <Footer />
+  </div>
+</template>
+<script>
+import AppHeader from '../components/Public/AppHeader'
+import AppNavBar from '../components/Public/AppNavBar'
+import Footer from '../components/Public/Footer'
+import axios from 'axios'
+const apiUrl = process.env.API_URL || 'http://localhost:80'
+
+export default {
+  components:{
+    AppHeader,Footer, AppNavBar
+  },
+ 
+    
+}
+>>>>>>> v1
 </script>
 
 <style>

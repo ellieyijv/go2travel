@@ -3,16 +3,16 @@
         <b-container style="padding-top:3rem;" >
             <b-row>
                 <b-col sm="6" class="leftSection">
-                    <h4>澳大利亚墨尔本+凯恩斯+悉尼自由行 经典东海岸每城</h4>
-                    <p style="padding-top:15px;">獨家提供史蒂芬港中文精品小團 | 產品編號 : 25407</p>
+                    <h4>{{productData.product_name}}</h4>
+                    <p style="padding-top:15px;">{{productData.product_description}} | 產品編號 : {{productData.product_code}}</p>
                 </b-col>
                 <b-col sm="2">
                 </b-col>
                 <b-col sm="4">
                     <div class="rightSection">
-                        <h4>$3,447<span style="font-size:14px; font-family:'FangPing'">/人起</span></h4>
-                        <p>優惠：原價$1,899/成人 $1,299/兒童</p>
-                        <p>出行後點評可返 $20</p>    
+                        <h4>{{productData.sales_price}}<span style="font-size:14px; font-family:'FangPing'">/人起</span></h4>
+                        <!-- <p>優惠：原價${{productData.price}}/成人</p>   -->
+                        <p>{{productData.price_description}}</p>    
                     </div>
                 </b-col>
             </b-row>
@@ -73,6 +73,7 @@
 import inquiryFormElement from './inquiryFormElement'
 export default {
     components: {inquiryFormElement},
+    props:['productData'],
     data(){
         return{
             formRowOne:[{
@@ -149,8 +150,6 @@ export default {
 .rightSection p{
     font-size: 14px;
     color: #7f7f7f;
-    line-height:5px;
-    
 }
 
 .inquiryform{
