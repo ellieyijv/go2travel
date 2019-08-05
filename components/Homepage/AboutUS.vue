@@ -36,7 +36,7 @@ export default {
 
 <style scoped>
 
- @media screen (min-width: 890px) and (max-width:1300px){
+ @media (min-width: 890px) and (max-width:1300px){
     .contactUsText{
         width:80%;
     }

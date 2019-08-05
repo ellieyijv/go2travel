@@ -86,50 +86,13 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-=======
 import axios from 'axios'
 const apiUrl = process.env.API_URL || 'http://localhost:80'
 export default {
     layout: 'formpagelayout',
     data(){
         return{
-            basicInfos: {}
-        }
-    },
-
-     async asyncData() {
-        let {data} = await axios.get(`${apiUrl}/api/basicInfos`);
-        return {basicInfos: data}
-    }
-}
-</script>
-
-<style>
-#contactus{
-    height:130rem;
-}
-#contactus .contactusform, #contactus .contactinfoform{
- 
-    background-color:#fff;
-    margin:3rem 0;
-}
-
-#contactus .contactusform h4, .contactinfoform h4{
-    color:#103a5b;
-    font-size:20px;
-    letter-spacing: 2px;
-    padding:2rem;
-    font-weight:bold;  
-}
->>>>>>> v1
-
-
-import axios from 'axios';
-export default {
-    // layout: 'formpagelayout',
-    data(){
-        return{
+            basicInfos: {},
             name: '',
             email: '',
             phone: '',
@@ -139,7 +102,13 @@ export default {
             isDisabled: false
         }
     },
-    async mounted() {
+
+     async asyncData() {
+        let {data} = await axios.get(`${apiUrl}/api/basicInfos`);
+        return {basicInfos: data}
+    },
+
+     async mounted() {
         await this.$recaptcha.init()
     },
     methods: {
@@ -171,28 +140,32 @@ export default {
 }
 </script>
 
-<style scoped>
-    @media(min-width:1080px){
+<style>
+#contactus{
+    height:130rem;
+}
+#contactus .contactusform, #contactus .contactinfoform{
+ 
+    background-color:#fff;
+    margin:3rem 0;
+}
+
+#contactus .contactusform h4, .contactinfoform h4{
+    color:#103a5b;
+    font-size:20px;
+    letter-spacing: 2px;
+    padding:2rem;
+    font-weight:bold;  
+}
+
+@media(min-width:1080px){
         #contactus{
             height: 100vh;
         }
         
     }
-    #contactus .contactusform, #contactus .contactinfoform{
-    
-        background-color:#fff;
-        margin:3rem 0;    
-    }
 
-    #contactus .contactusform h4, .contactinfoform h4{
-        color:#103a5b;
-        font-size:20px;
-        letter-spacing: 2px;
-        padding:2rem;
-        font-weight:bold;  
-    }
-
-    #contactus legend, .contactinfoform p, .contentStyle{
+  #contactus legend, .contactinfoform p, .contentStyle{
         font-size:13px !important;
         color:#3c3c3c;
         font-family: 'FangPingRegular';
@@ -220,4 +193,5 @@ export default {
     #contactus .contactinfoform h5{
         font-size:14px;
     }
+
 </style>

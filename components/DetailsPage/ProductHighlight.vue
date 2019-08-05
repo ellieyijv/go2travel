@@ -1,34 +1,4 @@
 <template>
-<<<<<<< HEAD
-	<b-container id="productHighlight">
-		<b-row>
-			<b-col sm="12">
-				<h4>線路特色</h4>
-			</b-col>
-		</b-row>
-		<b-row style="border-top: 2px solid #F7F5F1">
-				<div class="card-carousel-wrapper">
-					<div class="card-carousel--nav__left" @click="moveCarousel(-1)" :disabled="atHeadOfList"></div>
-					<div class="card-carousel">
-						<div class="card-carousel--overflow-container">
-							<div
-								class="card-carousel-cards"
-								:style="{ transform: 'translateX' + '(' + currentOffset + 'px' + ')'}"
-							>
-							<div class="card-carousel--card hilightlistStyle" 
-                                v-for="(img, index) in details.productImgs" :key="index" sm="6" lg="4" xl="3">
-									<img :src="img.url" />
-									<p>{{ img.name }}</p>
-								
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="card-carousel--nav__right" @click="moveCarousel(1)" :disabled="atEndOfList"></div>
-				</div>	
-		</b-row>
-	</b-container>
-=======
     <b-container id="productHighlight">
         <b-row>
             <b-col sm="12">
@@ -42,95 +12,10 @@
             </b-col>
         </b-row>
     </b-container>
->>>>>>> v1
 </template>
 
 <script>
 export default {
-<<<<<<< HEAD
-    props: ["details"],
-    data() {
-		return {
-			currentOffset: 0,
-			windowSize: 4,
-			paginationFactor: 275	
-		};
-	},
-	//get the window width size
-	created() {
-		if(process.client){
-			window.addEventListener('resize', this.handleResize)
-			this.handleResize();
-		}
-  	},
-  	destroyed() {
-		if(process.client){
-			window.removeEventListener('resize', this.handleResize)
-		}
-  	},
-    computed: {
-		atEndOfList() {
-			return (
-				this.currentOffset <=
-				this.paginationFactor *
-					-1 *
-					(this.details.productImgs.length - this.windowSize)
-			);
-		},
-		atHeadOfList() {
-			return this.currentOffset === 0;
-		}
-	},
-	methods: {
-		moveCarousel(direction) {
-			
-			if (direction === 1 && !this.atEndOfList) {
-				this.currentOffset -= this.paginationFactor;
-			} else if (direction === -1 && !this.atHeadOfList) {
-				this.currentOffset += this.paginationFactor;
-			}
-		},
-
-		handleResize() {
-			let width = window.innerWidth;
-			if( width >=1200){
-				this.windowSize = 4;
-			}
-			if( width>=992 && width<1200){
-				this.windowSize = 3;
-			}
-			if( width>=768 && width<992){
-				this.windowSize = 2;
-			}
-			if( width < 768){
-				this.windowSize = 1;
-			}
-		},
-
-	
-	}
-};
-</script>
-
-<style scoped>
-#productHighlight {
-	background-color: white;
-	padding: 1.5rem;
-}
-
-#productHighlight .hilightlistStyle {
-	color: #7f7f7f;
-	font-size: 14px;
-	padding-top: 2rem;
-}
-
-#productHighlight h4 {
-	font-size: 20px;
-	letter-spacing: 3px;
-	color: #103a5b;
-	padding-bottom: 1rem;
-}
-=======
    props:[ 'spotsData'],
 }
 </script>
@@ -141,7 +26,6 @@ export default {
         padding: 1.5rem;
         margin: 4rem auto;
     }
->>>>>>> v1
 
 #productHighlight .hilightlistStyle {
 	text-align: center;
