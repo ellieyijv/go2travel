@@ -6,13 +6,8 @@
                 <b-col sm="6">
                     <b-nav>
                         <b-nav-item to="/" class="navClickStyle">首頁 ></b-nav-item>
-<<<<<<< HEAD
-                        <b-nav-item :to="'/'+card.countryname +'/'" class="navClickStyle">{{card.countryname}} ></b-nav-item>
-                        <b-nav-item active disabled>{{card.title}}</b-nav-item>
-=======
                         <b-nav-item :to="'/'+navBarData.state.slug" class="navClickStyle">{{navBarData.state.state}} ></b-nav-item>
                         <b-nav-item active disabled>{{navBarData.product_name}}</b-nav-item>
->>>>>>> v1
                     </b-nav>
                     <h4>{{navBarData.product_name}}</h4>
                     <p style="padding-top:15px;">{{navBarData.product_description}} | 產品編號 : {{navBarData.product_code}}</p>
