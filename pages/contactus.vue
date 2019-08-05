@@ -74,44 +74,25 @@
                         <div class="formcontent">
                             <b-col>
                                 <h5>咨詢熱線</h5>
-                                <p>02 9586 3881</p>
+                                <p>{{basicInfos.hotline}}</p>
                             </b-col>
                             <b-col>
                                 <h5>緊急電話</h5>
-                                <p>0410 717 880</p>
+                                <p>{{basicInfos.emergence_contact}}</p>
                             </b-col>
                             <b-col>
                                 <h5>電郵地址</h5>
-                                <p>info_go4funtravel@hotmail.com</p>
+                                <p>{{basicInfos.email}}</p>
                             </b-col>
                             <b-col>
                                 <h5>店鋪地址</h5>
-                                <p>Shop 5B, 107-109 Forest Rd, Hurstville, 2220</p>
+                                <p>{{basicInfos.address}}</p>
                             </b-col>
                             <b-col>
                                 <h5>工作時間</h5>
                                 <b-row class="contentStyle">
-                                    <b-col cols="5">
-                                        週一到週五
-                                    </b-col>
-                                    <b-col cols="7">
-                                        9:30am - 5:30pm
-                                    </b-col>
-                                </b-row>
-                                <b-row class="contentStyle">
-                                    <b-col cols="5">
-                                        週六 
-                                    </b-col>
-                                    <b-col cols="7">
-                                        9:30am - 4:00pm
-                                    </b-col>
-                                </b-row>
-                                <b-row class="contentStyle">
-                                    <b-col cols="5">
-                                        週日
-                                    </b-col>
-                                    <b-col cols="7">
-                                        休息
+                                    <b-col>
+                                        <span v-html="basicInfos.trading_hours"></span>
                                     </b-col>
                                 </b-row>
                             </b-col>
@@ -125,8 +106,20 @@
 </template>
 
 <script>
+import axios from 'axios'
+const apiUrl = process.env.API_URL || 'http://localhost:80'
 export default {
-    layout: 'formpagelayout'
+    layout: 'formpagelayout',
+    data(){
+        return{
+            basicInfos: {}
+        }
+    },
+
+     async asyncData() {
+        let {data} = await axios.get(`${apiUrl}/api/basicInfos`);
+        return {basicInfos: data}
+    }
 }
 </script>
 

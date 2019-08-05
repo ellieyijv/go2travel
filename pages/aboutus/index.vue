@@ -1,6 +1,6 @@
 <template>
     <div>
-        <aboutusHeroimgComp />
+        <aboutusHeroimgComp :herobannerImg="aboutusData.herobannerImg"/>
         <aboutusHeroDesc :description="aboutusData.description"/>
         <aboutusDetails :aboutusData="aboutusData"/>
     </div>
@@ -21,12 +21,21 @@ export default {
     },
     async asyncData() {
         let {data} = await axios.get(`${apiUrl}/api/aboutus`);
-        return {aboutusData: data[0]}  
+        
+        data.herobannerImg = JSON.parse(data.herobannerImg);
+        const herobannerImg = data.herobannerImg.map((item)=>{
+            item = `${apiUrl}/storage/${item}`
+            return item;
+        })
+        data.herobannerImg = herobannerImg;
+
+        data.aboutusImg = `${apiUrl}/storage/${data.aboutusImg.replace(/\\/g,'/') }`
+        data.first_img_url = `${apiUrl}/storage/${data.first_img_url.replace(/\\/g,'/')  }`
+        data.second_img_url = `${apiUrl}/storage/${data.second_img_url.replace(/\\/g,'/')  }`
+        data.third_img_url = `${apiUrl}/storage/${data.third_img_url.replace(/\\/g,'/')  }`
+        return {aboutusData: data}  
     },
 
-    mounted(){
-        console.log(this.aboutusData);
-    }
 }
 </script>
 

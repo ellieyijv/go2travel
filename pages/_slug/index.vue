@@ -44,6 +44,7 @@ export default {
     async asyncData({params}){
         let state_slug = params.slug;
         let res = await axios.get(`${apiUrl}/api/${state_slug}/cities`);
+       
         return {countrycities: res.data}   
     },
     async fetch({store, params}) {
@@ -71,15 +72,11 @@ export default {
    },
    mounted(){
         this.countrycities.unshift({id:'' ,name: '显示全部', slug: 'showall'})
-        //the second element in countrycities, contains state_id. 0 is showall.
-        const state_id = this.countrycities[1].state_id
         const statesList = this.$store.getters.statesList;
+        let slug = this.$route.params.slug;
         this.bannerImage = statesList.find((item)=>{
-            return item.id == state_id
+            return item.slug == slug
         }).banner_image
-        this.bannerImage = JSON.parse(this.bannerImage);
-        this.bannerImage = `${apiUrl}/storage/${this.bannerImage}`
-        
    },
    methods:{   
         sortedProductList(){        
@@ -91,7 +88,6 @@ export default {
              })
             this.arrowPriceDirection = this.$store.getters['productSummary/stateArrowPriceDirection'];
             this.productList = this.$store.getters['productSummary/currentProductList'];
-
         },
 
    

@@ -12,7 +12,8 @@ export default {
     components:{inquiryForm},
     data(){
         return{
-            productData: {}
+            productData: {},
+         
         }
     },
     async asyncData({ params}) {

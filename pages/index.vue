@@ -1,11 +1,11 @@
 <template>
 	<div id="homepagestyle">
 		
-		<Carousel />
+		<Carousel :carousel="carousel"/>
 		<SpecialDeals />
 		<PopularTours />
 		<Globe />
-		<AboutUS />
+		<AboutUS :aboutusData="aboutusData"/>
 		<Footer />
 	    <!-- <BackToTop /> -->
 	</div>
@@ -26,10 +26,36 @@ const apiUrl = process.env.API_URL || 'http://localhost:80'
 export default {
 	data(){
 		return{
-			cardList: ''
+			cardList: '',
+			aboutusData: '',
+			carousel: {}
 		}
 	},
+	
+	async asyncData() {
+		let {data} = await axios.get(`${apiUrl}/api/aboutus`);
+		let carouselData = await axios.get(`${apiUrl}/api/getHeroBannerProducts`);
+		let carousel = carouselData.data.records.map((item)=>{
+			 item.flyer = JSON.parse(item.flyer)[0]
+			 return {	
+				 		id: item.id,
+			 			product_name: item.product_name,
+						sales_price: item.sales_price,
+						price: item.price,
+						duration: `${item.duration}天${item.duration-1}夜`,
+						product_code: item.product_code,
+						state_id: item.state_id,	
+						flyer: `${apiUrl}/storage/${item.flyer}`,
+						state_slug: item.state.slug
+					}
+		})
+		console.log(carousel);
+        data.aboutusImg = `${apiUrl}/storage/${data.aboutusImg.replace(/\\/g,'/') }`
+		return {aboutusData: data,
+				carousel: carousel}  
 		
+
+    },
 	
 	async fetch({store}) {
 		//get special deals data
@@ -48,8 +74,7 @@ export default {
 				duration: item.product.duration,
 				card_image: `${apiUrl}/storage/${item.product.card_image}`,
 				product_code: item.product.product_code,
-				state_id: item.product.state_id,
-				
+				state_id: item.product.state_id
             })
 		})
 		

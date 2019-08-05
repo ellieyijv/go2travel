@@ -1,9 +1,9 @@
 <template>
     <b-container fluid id="aboutusDetailsComp">
           <b-row style=" direction: rtl;">
-               <b-col md="6" xl="6" class="backimg">   
+               <b-col md="6" xl="6" class="backimg" :style="{ backgroundImage: 'url(' + aboutusData.first_img_url + ')' }">   
                 </b-col>
-                <b-col md="6" lg="6" class="containerStyle">
+                <b-col md="6" lg="6" class="containerStyle" >
                     <div class="contentStyle">
                         <h5>{{aboutusData.first_title}}</h5>
                         <p>{{aboutusData.first_description}}</p> 
@@ -11,9 +11,9 @@
                 </b-col>
             </b-row>
              <b-row >
-                 <b-col md="6" xl="6" class="backimg">   
+                 <b-col md="6" xl="6" class="backimg" :style="{ backgroundImage: 'url(' + aboutusData.second_img_url + ')' }">   
                 </b-col>
-                <b-col md="6" lg="6" xl="6" class="containerStyle">
+                <b-col md="6" lg="6" xl="6" class="containerStyle" >
                     <div class="contentStyle">
                         <h5>{{aboutusData.second_title}}</h5>
                         <p>{{aboutusData.second_description}}</p> 
@@ -22,7 +22,7 @@
                
             </b-row>
              <b-row style=" direction: rtl;">
-                <b-col  md="6" xl="6" class="backimg">   
+                <b-col  md="6" xl="6" class="backimg" :style="{ backgroundImage: 'url(' + aboutusData.third_img_url + ')' }">   
                 </b-col>
                 <b-col md="6" lg="6" xl="6" class="containerStyle">
                     <div class="contentStyle">
@@ -36,8 +36,10 @@
 </template>
 
 <script>
+
 export default {
-    props:['aboutusData']
+    props:['aboutusData'],
+   
 }
 </script>
 
@@ -48,7 +50,7 @@ export default {
 }
 
 .backimg{
-    background-image: url('/images/about/aboutus1.png');
+    /* background-image: url('/images/about/aboutus1.png'); */
     background-repeat: no-repeat;
     padding-bottom:587px;
     background-position: center;

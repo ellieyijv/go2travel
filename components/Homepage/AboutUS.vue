@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid" id="aboutUS">
         <div class="row" style="background-color:#F7F5F1">
-            <div class="col-md-12 col-sm-12 col-lg-6 col-xl-5 ufb-banner-container" >
+            <div class="col-md-12 col-sm-12 col-lg-6 col-xl-5 ufb-banner-container" :style="{ backgroundImage: 'url(' + aboutusData.aboutusImg + ')'}">
                 <!-- <img src="/images/aboutus.png" style="width:100%"/> -->
             </div>
             <div class="col-md-12  col-sm-12 col-lg-6  col-xl-7 content-container" >
@@ -12,7 +12,7 @@
                     </div>
                     <div class="col-lg-9 col-md-12" >
                         <div class="contactUsText">
-                            <P >南半球的热情在这里绽放，时尚、优雅、活力、传奇，伴随着慵懒的海湾，狂欢！火车一般是从墨尔本南十字火车站出发，从墨尔本到吉朗。其中从墨尔本到吉朗是火车线，周一至周五高峰时期十几分钟一趟，周六、周日基本每个小时都有一趟。</p>
+                            <P >{{aboutusData.description}}</p>
                             <b-button class="mt-5 btn-lg" variant="outline-secondary" to="aboutus">查看更多</b-button>
                         </div>
                     </div>
@@ -25,6 +25,7 @@
 <script>
 
 export default {
+    props:['aboutusData'],
     methods:{
         // goToAboutUs(){
         //     this.$router.push('/aboutus');
@@ -87,7 +88,7 @@ export default {
 }
 
 .ufb-banner-container {
-    background-image: url('/images/aboutus.png');
+    /* background-image: url('/images/aboutus.png'); */
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

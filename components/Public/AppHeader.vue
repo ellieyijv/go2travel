@@ -4,7 +4,7 @@
     <b-container class="contactStyle">
     <b-row align-h="between">
       <b-col cols="6" sm="10" >
-        <span>致電 020 7637 7760 </span><span class="addborder"> 電郵 go4funtravel@hotmail.com </span>
+        <span>致電 {{basicInfos.hotline}} </span><span class="addborder"> 電郵 {{basicInfos.email}}</span>
       </b-col>
       <b-col cols="2" ><nuxt-link to="/contactus"><p class="addborder">聯系我們</p></nuxt-link></b-col>
     </b-row>
@@ -16,7 +16,19 @@
 <script>
 import { BContainer, BNavbar } from "bootstrap-vue";
 
-export default {};
+export default {
+    data(){
+        return{
+            basicInfos: ""
+        }
+    },
+
+    mounted(){
+        this.basicInfos = this.$store.getters.basicInfos
+        
+    }
+
+};
 </script>
 
 <style  scoped>
