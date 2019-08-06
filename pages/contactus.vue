@@ -90,6 +90,12 @@ import axios from 'axios'
 const apiUrl = process.env.API_URL || 'http://localhost:80'
 export default {
     layout: 'formpagelayout',
+    head: {
+		title: 'About US PAGE',
+		meta: [
+		{ hid: 'description', name: 'description', content: '联系我们' }
+			],
+	},
     data(){
         return{
             basicInfos: {},

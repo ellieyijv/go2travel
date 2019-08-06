@@ -17,7 +17,7 @@ export default {
     head: {
 		title: 'About US PAGE',
 		meta: [
-		{ hid: 'description', name: 'description', content: '联系我们,' }
+		{ hid: 'description', name: 'description', content: '联系我们,GO4FUN' }
 			],
 	},
 

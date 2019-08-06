@@ -24,8 +24,13 @@ import axios from 'axios';
 const apiUrl = process.env.API_URL || 'http://localhost:80'
 
 export default {
-   components:{heroImgComp, countryNavBarComp, productListComp},
-
+    components:{heroImgComp, countryNavBarComp, productListComp},
+    head: {
+		title: 'State and Country products',
+		meta: [
+		{ hid: 'description', name: 'description', content: 'country products' }
+			],
+	},
    data(){
        return{
             orderByPriceasc: true,
