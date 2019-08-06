@@ -27,8 +27,8 @@
     <b-container v-if="filter == true" fluid style="background-color:white" class="cityNav">
         <b-container>
             <b-row >
-                <b-col sm="12">
-                    请选择城市
+                <b-col sm="12" class="mt-4 mb-1" style="color:#4f4f4f; font-size:14px">
+                    请选择要去的地方
                 </b-col>
             </b-row>
             <b-row>

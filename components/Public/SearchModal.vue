@@ -6,7 +6,7 @@
             
             <ul id="searchProductList" v-if="filteredList.length">
                 <li v-for="item in filteredList" :key="item.id">
-                    <a :href="'/'+item.countryname +'/'+ item.product_code">{{ item.product_name }}</a>
+                    <a :href="'/'+item.state.slug +'/'+ item.product_code">{{ item.product_name }}</a>
                 </li>
             </ul> 
       

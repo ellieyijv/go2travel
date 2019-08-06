@@ -32,7 +32,6 @@ export default {
         numberWithCommas(x) {
             x=Math.floor(x);
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-         
         }, 
     },
 
