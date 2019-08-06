@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+const apiUrl = process.env.API_URL
 export default {
     props: ['tour'],
     data(){
@@ -29,10 +31,14 @@ export default {
         }
     },
      mounted(){
-        const statesList = this.$store.getters.statesList;
-        this.state_slug = statesList.find((item)=>{
-            return item.id == this.tour.state_id
-        }).slug
+        const statesList =[]
+        axios.get(`${apiUrl}/api/states`)
+                .then((res, reject)=>{
+                    statesList = res.data
+                    this.state_slug = statesList.find((item)=>{
+                        return item.id == this.tour.state_id
+                    }).slug
+                })   
     }
       
 }

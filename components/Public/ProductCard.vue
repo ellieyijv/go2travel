@@ -19,7 +19,8 @@
 
 <script>
 import { BCard } from 'bootstrap-vue'
-
+import axios from 'axios'
+const apiUrl = process.env.API_URL
 export default {
     props:['card'],
     data(){
@@ -36,10 +37,16 @@ export default {
     },
 
     mounted(){
-        const statesList = this.$store.getters.statesList;
-        this.state_slug = statesList.find((item)=>{
-            return item.id == this.card.state_id
-        }).slug
+        const statesList =[]
+        axios.get(`${apiUrl}/api/states`)
+                .then((res, reject)=>{
+                    statesList = res.data
+                     this.state_slug = statesList.find((item)=>{
+                        return item.id == this.card.state_id
+                    }).slug
+                })   
+       
+      
     }
   
 }

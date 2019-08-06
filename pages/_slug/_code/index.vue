@@ -25,7 +25,7 @@ import productDaysPlan from '../../../components/DetailsPage/ProductDaysPlan';
 import ProductNeedsToKnow from '../../../components/DetailsPage/ProductNeedsToKnow';
 import YouMightInterested from '../../../components/DetailsPage/YouMightInterested';
 import axios from 'axios'
-const apiUrl = process.env.API_URL || 'http://localhost:80'
+const apiUrl = process.env.API_URL
 export default {
     components: { DetailsCarousel, DetailsNavSection, ProductIntro, ProductHighlight, FeeDesc, productDaysPlan, ProductNeedsToKnow, YouMightInterested},
     data(){
@@ -44,6 +44,7 @@ export default {
     async asyncData({params}){
     
         let code = params.code;
+    
         let {data} = await axios.get(`${apiUrl}/api/${code}/withDetails`);
         data.spots.map((item)=>{       
             item.image= JSON.parse(item.image)[0]

@@ -21,7 +21,7 @@ import AboutUS from '../components/Homepage/AboutUS'
 import BackToTop from '../components/Public/BackToTop'
 
 import axios from 'axios'
-const apiUrl = process.env.API_URL || 'http://localhost:80'
+const apiUrl = process.env.API_URL 
 
 export default {
 	data(){
@@ -60,9 +60,7 @@ export default {
 	async fetch({store}) {
 		//get special deals data
 		store.commit('productSummary/emptyList');
-        const {data} = await axios.get(`${apiUrl}/api/specialdeals`).catch((error => {  
-            console.log(error)
-        }))
+        const {data} = await axios.get(`${apiUrl}/api/specialdeals`)
     
         data.forEach(item => { 
 			item.product.card_image = JSON.parse(item.product.card_image)[0]

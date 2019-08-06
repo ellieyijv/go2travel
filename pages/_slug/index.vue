@@ -72,12 +72,19 @@ export default {
    },
    mounted(){
         this.countrycities.unshift({id:'' ,name: '显示全部', slug: 'showall'})
-        const statesList = this.$store.getters.statesList;
-        let slug = this.$route.params.slug;
-        this.bannerImage = statesList.find((item)=>{
-            return item.slug == slug
-        }).banner_image
-   },
+        const statesList =[]
+        axios.get(`${apiUrl}/api/states`)
+                .then((res, reject)=>{
+                    statesList = res.data
+                    let slug = this.$route.params.slug;
+                    this.bannerImage = statesList.find((item)=>{
+                        return item.slug == slug
+                    }).banner_image
+                })
+    },
+
+       
+  
    methods:{   
         sortedProductList(){        
             this.orderByPriceasc = !this.orderByPriceasc;
