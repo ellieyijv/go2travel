@@ -72,7 +72,8 @@ export default {
 				duration: item.product.duration,
 				card_image: `${apiUrl}/storage/${item.product.card_image}`,
 				product_code: item.product.product_code,
-				state_id: item.product.state_id
+				state_id: item.product.state_id,
+				state_slug:item.product.state.slug
             })
 		})
 		
@@ -93,6 +94,7 @@ export default {
 				card_image: `${apiUrl}/storage/${item.product.card_image}`,
 				product_code: item.product.product_code,
 				state_id: item.product.state_id,
+				state_slug:item.product.state.slug
 				
             })
 		})

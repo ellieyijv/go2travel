@@ -1,5 +1,5 @@
 <template>
-<nuxt-link :to="'/'+ state_slug + '/'+ card.product_code" style="text-decoration:none">
+<nuxt-link :to="'/'+ card.state_slug + '/'+ card.product_code" style="text-decoration:none">
     <b-card  class="cardStyle">
         <div class="parent">
             <div class="child img-top" :style="{ backgroundImage: 'url(' + card.card_image + ')' }"  ></div>
@@ -36,18 +36,8 @@ export default {
         }, 
     },
 
-    mounted(){
-        const statesList =[]
-        axios.get(`${apiUrl}/api/states`)
-                .then((res, reject)=>{
-                    statesList = res.data
-                     this.state_slug = statesList.find((item)=>{
-                        return item.id == this.card.state_id
-                    }).slug
-                })   
-       
-      
-    }
+   
+   
   
 }
 </script>

@@ -1,5 +1,5 @@
 <template> 
-<nuxt-link :to="'/'+ state_slug + '/'+ tour.product_code" >
+<nuxt-link :to="'/'+ tour.state_slug + '/'+ tour.product_code" >
     <div class="hovereffect">
         <img class="img-responsive" :src="tour.card_image" alt="">
         
@@ -27,19 +27,11 @@ export default {
         return{
             hover: false, 
             duration: `${this.tour.duration}天${this.tour.duration-1}夜`,  
-            state_slug: ''
+            state_slug: '',
+            stateList:[]
         }
     },
-     mounted(){
-        const statesList =[]
-        axios.get(`${apiUrl}/api/states`)
-                .then((res, reject)=>{
-                    statesList = res.data
-                    this.state_slug = statesList.find((item)=>{
-                        return item.id == this.tour.state_id
-                    }).slug
-                })   
-    }
+  
       
 }
 </script>
