@@ -49,7 +49,7 @@ export default {
 						state_slug: item.state.slug
 					}
 		})
-		console.log(carousel);
+		
         data.aboutusImg = `${apiUrl}/storage/${data.aboutusImg.replace(/\\/g,'/') }`
 		return {aboutusData: data,
 				carousel: carousel}  

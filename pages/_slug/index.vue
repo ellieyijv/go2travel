@@ -71,16 +71,9 @@ export default {
         this.productList = this.$store.getters['productSummary/stateProductsList'];   
    },
    mounted(){
-        this.countrycities.unshift({id:'' ,name: '显示全部', slug: 'showall'})
-        const statesList =[]
-        axios.get(`${apiUrl}/api/states`)
-                .then((res, reject)=>{
-                    statesList = res.data
-                    let slug = this.$route.params.slug;
-                    this.bannerImage = statesList.find((item)=>{
-                        return item.slug == slug
-                    }).banner_image
-                })
+        this.countrycities.cities.unshift({id:'' ,name: '显示全部', slug: 'showall'})
+        this.bannerImage = JSON.parse(this.countrycities.state.banner_image);
+        this.bannerImage = `${apiUrl}/storage/${this.bannerImage}`
     },
 
        
