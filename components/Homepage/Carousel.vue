@@ -16,7 +16,7 @@
                         <div class="container mb-1" style="padding-top:160px;">
                             <p>{{card.duration}}</p>
                             <h5>{{card.product_name}}</h5>
-                            <h4 style="padding-top:25px;">{{card.sales_price}} <span style="font-size:14px; color:#337AB2;">/人起</span></h4>
+                            <h4 style="padding-top:25px;">{{numberWithCommas(card.sales_price)}} <span style="font-size:14px; color:#337AB2;">/人起</span></h4>
                         </div>
                     </div>
                 </a>
@@ -31,7 +31,12 @@
 <script>
 export default {
     props: ['carousel'],
-
+    methods: {
+        numberWithCommas(x) {
+            x=Math.floor(x);
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }, 
+    }
   
 }
 </script>
