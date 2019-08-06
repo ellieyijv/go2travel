@@ -33,7 +33,7 @@
             </b-row>
             <b-row>
               
-                 <b-col v-for="city in countrycities" :key="city.id" 
+                 <b-col v-for="city in countrycities.cities" :key="city.id" 
                             class="justify-content-between"
                             lg="2" cols="6" md="4" 
                             @click="clickFunc(city.id)" >

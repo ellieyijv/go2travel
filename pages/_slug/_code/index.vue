@@ -43,25 +43,30 @@ export default {
     },
     async asyncData({params}){
     
-        let code = params.code;
-    
-        let {data} = await axios.get(`${apiUrl}/api/${code}/withDetails`);
-        data.spots.map((item)=>{       
-            item.image= JSON.parse(item.image)[0]
-            item.image= `${apiUrl}/storage/${item.image}`
-            return item;
-         })
-        data.recommends.map((item)=>{
-            let imgUrl = JSON.parse(item.card_image)[0];
-            item.card_image= `${apiUrl}/storage/${imgUrl}`
-        })
-        data.flyer = JSON.parse(data.flyer);
-        const flyer = data.flyer.map((item)=>{
-            item = `${apiUrl}/storage/${item}`
-            return item;
-        })
-        data.flyer = flyer;
-        return {productDetails: data};   
+        try {
+                let code = params.code;
+                const {data} = await axios.get(`${apiUrl}/api/${code}/withDetails`);
+                data.spots.map((item)=>{       
+                item.image= JSON.parse(item.image)[0]
+                item.image= `${apiUrl}/storage/${item.image}`
+                return item;
+                })
+                data.recommends.map((item)=>{
+                    let imgUrl = JSON.parse(item.card_image)[0];
+                    item.card_image= `${apiUrl}/storage/${imgUrl}`
+                })
+                data.flyer = JSON.parse(data.flyer);
+                const flyer = data.flyer.map((item)=>{
+                    item = `${apiUrl}/storage/${item}`
+                    return item;
+                })
+                data.flyer = flyer;
+                return {productDetails: data};   
+        } catch (error) {
+            console.log(error)
+        }
+       
+ 
     },
    
     created(){

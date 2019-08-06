@@ -42,10 +42,16 @@ export default {
     },
 
     async asyncData({params}){
-        let state_slug = params.slug;
-        let res = await axios.get(`${apiUrl}/api/${state_slug}/cities`);
+        try {
+            let state_slug = params.slug;
+            let res = await axios.get(`${apiUrl}/api/${state_slug}/cities`);
+        
+            return {countrycities: res.data}   
+            
+        } catch (error) {
+            console.log(error)
+        }
        
-        return {countrycities: res.data}   
     },
     async fetch({store, params}) {
         let state_slug= params.slug

@@ -24,6 +24,13 @@ import axios from 'axios'
 const apiUrl = process.env.API_URL 
 
 export default {
+	head: {
+		title: 'Home page 🚀',
+		meta: [
+		{ hid: 'description', name: 'description', content: 'go4fun 旅游 悉尼 澳大利亚' }
+			],
+	},
+
 	data(){
 		return{
 			cardList: '',

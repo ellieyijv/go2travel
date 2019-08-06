@@ -17,17 +17,23 @@ export default {
         }
     },
     async asyncData({ params}) {
-        let product_code = params.code;
-        let {data} = await axios.get(`${apiUrl}/api/${product_code}/withDetails`);
-        const tmp = {
-            product_code: data.product_code,
-            product_name: data.product_name,
-            sales_price : data.sales_price,
-            price : data.price, 
-            product_description: data.product_description,
-            price_description: data.price_description
+        try {
+            let product_code = params.code;
+            let {data} = await axios.get(`${apiUrl}/api/${product_code}/withDetails`);
+            const tmp = {
+                product_code: data.product_code,
+                product_name: data.product_name,
+                sales_price : data.sales_price,
+                price : data.price, 
+                product_description: data.product_description,
+                price_description: data.price_description
+            }
+            return {productData: tmp}; 
+            
+        } catch (error) {
+            console.log(error)
         }
-         return {productData: tmp};  
+         
     },
   
 }

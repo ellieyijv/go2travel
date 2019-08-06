@@ -14,6 +14,13 @@ import axios from 'axios';
 const apiUrl = process.env.API_URL || 'http://localhost:80'
 export default {
     components:{aboutusHeroimgComp, aboutusHeroDesc, aboutusDetails},
+    head: {
+		title: 'About US PAGE',
+		meta: [
+		{ hid: 'description', name: 'description', content: '联系我们,' }
+			],
+	},
+
     data(){
         return{
             aboutusData:{}
@@ -21,7 +28,7 @@ export default {
     },
     async asyncData() {
         let {data} = await axios.get(`${apiUrl}/api/aboutus`);
-        
+        if(!data) return cb('Can not find the product');
         data.herobannerImg = JSON.parse(data.herobannerImg);
         const herobannerImg = data.herobannerImg.map((item)=>{
             item = `${apiUrl}/storage/${item}`
