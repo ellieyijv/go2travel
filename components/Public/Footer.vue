@@ -15,8 +15,10 @@
                 <section class="p-2" >
                     <div class="social">
                     <i class="fab">&#xf39e;</i>
-                    <i class="fab fa-weixin"></i>
+                    <i class="fab fa-weixin" @click="showORCode = !showORCode"></i>
+                    <img v-if="showORCode" src="images/wechat.png" class="qrcode"/>
                     </div>
+                   
                 </section>
             </div>
             <div class="text-center">
@@ -29,7 +31,11 @@
 
 <script>
 export default {
-
+    data(){
+        return {
+            showORCode: false,
+        }
+    }
 }
 </script>
 
@@ -86,8 +92,33 @@ i.fab {
   }
   .links{   
     margin-right: 0;
+    }
 }
+
+@media (min-width:930px){
+    .social{
+        position:relative;
+    }
+    .qrcode{
+        position: absolute;
+        left: 90px;
+        top: -25px;
+    }
 }
+
+@media (max-width:930px){
+     .social{
+        position:relative;
+    }
+    .qrcode{
+        position: absolute;
+        z-index: 15;
+        bottom:30px;
+        left:0
+        
+    }
+}
+
 
 /* @media (max-width: 575px) {
   #footer {

@@ -59,18 +59,8 @@ export default {
         padding:0;
     }
     .alignCenter{
-     
         padding-bottom:70px;
     }
     
-    @media only screen and (max-width: 767px) {
-        #globe .alignCenter{
-            margin-left:0;
-        
-        }
-       /* .alignCenter .col{
-            padding-left:8px;
-            padding-right:8px;
-        } */
-    }
+    
 </style>

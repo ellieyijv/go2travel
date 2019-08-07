@@ -36,17 +36,18 @@ export default {
 
 <style scoped>
 
- @media (min-width: 890px) and (max-width:1300px){
-    .contactUsText{
-        width:80%;
-    }
- } 
+
 .contactUsText{
     word-wrap: break-word; 
-    width: 50%;
+    width: 80%;
     padding-bottom: 20px;
 }
 
+ @media (min-width: 1400px){
+    .contactUsText{
+        width:50%;
+    }
+ } 
 .contactUsText p{
     font-size:14px;
 }

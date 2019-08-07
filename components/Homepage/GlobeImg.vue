@@ -22,21 +22,7 @@ p{
      margin-top:10px; 
      color:white
 }
-@media only screen and (max-width: 767px) {
-    img{
-        height:52px;
-        width: auto;
-    }
 
-    p{
-        font-size:10px;
-    }
-
-    div{
-        width:52px;
-    }
-  
-}
 
 .parent {
    /* width: 100%; */
