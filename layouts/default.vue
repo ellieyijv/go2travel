@@ -9,14 +9,19 @@
       </div>
     </div>
     <div v-else-if="$device.isTablet">
-
         <div>
-          <AppNavBar />
-          <nuxt />
-          <Footer />
+      
+        <nuxt />
+        
       </div>
     </div>
-    
+    <div v-else>
+       <div>
+        <AppNavBar />
+        <nuxt />
+       <Footer />
+      </div>
+    </div>
   </section>
 </template>
 <script>

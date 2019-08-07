@@ -35,7 +35,13 @@ export default {
 </script>
 
 <style scoped>
-
+ @media (max-width: 991px){
+    .contactUsText{
+        margin: 0 auto;
+        text-align: center;  
+        margin-bottom:15px;
+    }
+ }
 
 .contactUsText{
     word-wrap: break-word; 
@@ -83,7 +89,7 @@ export default {
     letter-spacing: 3px;
 }
 
-.contactUsText button{
+.contactUsText .btn{
     border-radius: 0;
    
 }
@@ -97,12 +103,6 @@ export default {
     padding-bottom:460px;  
 }
  
- @media (max-width: 991px){
-    .contactUsText{
-        margin: 30px auto;
-        text-align: center;    
-    }
- }
 
 
 
@@ -110,11 +110,6 @@ export default {
     height:460px;
 }
 
-/* 
-@media (max-width: 575px) {
-  #aboutUS {
-    display: none;
-  }
-} */
+
 
 </style>
