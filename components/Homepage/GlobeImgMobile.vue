@@ -1,20 +1,29 @@
 <template>
     <nuxt-link :to="'/' + globe.slug">
-    <div :globe="globe" class="parent">
-   
-        <img :src="globe.thumbnail" class="img-responsive child"/>
-      
-    </div>
-      <p >{{globe.state}}</p>
-</nuxt-link>
+        <span class="img-responsive">
+            <div :globe="globe" >
+                <img :src="globe.thumbnail" />
+            </div>
+            <p >{{globe.state}}</p>
+        </span>
+    </nuxt-link>
 </template>
 
 <script>
 export default {
-     props: ['globe']
+     props: ['globe'],
+    
 }
 </script>
 
-<style>
+<style scoped>
+p{
+    font-size:10px;
+    margin-top:5px;
+    color:white
+}
 
+.img-responsive img{
+   width:100%;
+}
 </style>

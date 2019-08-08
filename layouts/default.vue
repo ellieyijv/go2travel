@@ -9,10 +9,8 @@
       </div>
     </div>
     <div v-else-if="$device.isTablet">
-        <div>
-      
-        <nuxt />
-        
+        <div> 
+        <nuxt /> 
       </div>
     </div>
     <div v-else>

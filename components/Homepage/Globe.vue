@@ -7,7 +7,12 @@
             <div class="container globelist">
                 <div class="row alignCenter">
                     <div v-for="globe in globeList" :key="globe.id" class="col"> 
-                        <GlobeImg :globe="globe" style="text-align:center" />
+                        <span v-if="$device.isMobile">
+                             <GlobeImgMobile :globe="globe" style="text-align:center"  />
+                        </span>
+                        <span v-else>
+                            <GlobeImg :globe="globe" style="text-align:center" />
+                        </span>
                     </div>
                 </div>
             </div>
@@ -17,9 +22,9 @@
 
 <script>
 import GlobeImg from './GlobeImg'
-
+import GlobeImgMobile from './GlobeImgMobile'
 export default {
-    components:{GlobeImg},
+    components:{GlobeImg, GlobeImgMobile},
     data(){
         return{
             globeList:[]

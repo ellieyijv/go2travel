@@ -13,7 +13,7 @@
                     <div class="col-lg-9 col-md-12" >
                         <div class="contactUsText">
                             <P >{{aboutusData.description}}</p>
-                            <b-button class="mt-5 btn-lg" variant="outline-secondary" to="aboutus">查看更多</b-button>
+                            <b-button class="mt-5 btn-lg buttonStyle" variant="outline-secondary" to="aboutus">查看更多</b-button>
                         </div>
                     </div>
                 </div>
@@ -40,6 +40,10 @@ export default {
         margin: 0 auto;
         text-align: center;  
         margin-bottom:15px;
+    }
+    .buttonStyle{
+        margin-bottom:3rem !important;
+        margin-top:1rem !important;
     }
  }
 

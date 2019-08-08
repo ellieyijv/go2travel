@@ -12,7 +12,7 @@
                         <b-nav-item class="getridofline" >隱私政策</b-nav-item>
                     </b-nav>
                 </section>
-                <section class="p-2" >
+                <section>
                     <div class="social">
                     <i class="fab">&#xf39e;</i>
                     <i class="fab fa-weixin" @click="showORCode = !showORCode"></i>
@@ -21,7 +21,7 @@
                    
                 </section>
             </div>
-            <div class="text-center">
+            <div class="text-center mt-3">
                   <p>Copyright 2019 @ Go4Fun Travel Services</p>
             </div>
         </b-container>
