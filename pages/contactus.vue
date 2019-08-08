@@ -111,9 +111,14 @@ export default {
         }
     },
 
-     async asyncData() {
-        let {data} = await axios.get(`${apiUrl}/api/basicInfos`);
-        return {basicInfos: data}
+     async asyncData({redirect}) {
+         try {
+            let {data} = await axios.get(`${apiUrl}/api/basicInfos`);
+            return {basicInfos: data}
+         } catch (error) {
+             redirect(301, '/error')
+         }
+      
     },
 
      async mounted() {

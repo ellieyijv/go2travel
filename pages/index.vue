@@ -39,7 +39,7 @@ export default {
 		}
 	},
 	
-	async asyncData() {
+	async asyncData({redirect}) {
 		try {
 			let {data} = await axios.get(`${apiUrl}/api/aboutus`);
 			let carouselData = await axios.get(`${apiUrl}/api/getHeroBannerProducts`);
@@ -63,7 +63,7 @@ export default {
 				carousel: carousel}  
 			
 		} catch (error) {
-			error({ statusCode: 404, message: 'Post not found' });
+			redirect(301, '/error')
 		}
 	
     },

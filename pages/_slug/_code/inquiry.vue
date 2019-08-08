@@ -16,7 +16,7 @@ export default {
          
         }
     },
-    async asyncData({ params}) {
+    async asyncData({ params, redirect}) {
         try {
             let product_code = params.code;
             let {data} = await axios.get(`${apiUrl}/api/${product_code}/withDetails`);
@@ -31,7 +31,7 @@ export default {
             return {productData: tmp}; 
             
         } catch (error) {
-            error({ statusCode: 404, message: 'Post not found' });
+            redirect(301, '/error')
         }
          
     },

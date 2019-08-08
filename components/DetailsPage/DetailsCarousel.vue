@@ -1,11 +1,10 @@
 <template>
-       <b-carousel
-    id="carousel-fade"
-    style="text-shadow: 0px 0px 2px #000"
-    fade
-    controls 
-    
-  >
+    <b-carousel
+        id="carousel-fade"
+        style="text-shadow: 0px 0px 2px #000"
+        fade
+        controls 
+    >
     <div class="carousel-inner">
         <section v-for="image in carouselData" :key="image.id"> 
             <div class="carousel-item active imagebox" :style="{ backgroundImage: 'url(' + image + ')'}">

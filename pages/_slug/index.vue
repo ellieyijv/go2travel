@@ -47,14 +47,14 @@ export default {
     },
 
 
-    async asyncData({params}){
+    async asyncData({params, redirect}){
         try {
             let state_slug = params.slug;
             let res = await axios.get(`${apiUrl}/api/${state_slug}/cities`);
             return {countrycities: res.data}   
             
         } catch (e) {
-            error({ statusCode: 404, message: 'Post not found' });
+            redirect(301, '/error')
         }
        
     },

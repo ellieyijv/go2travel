@@ -4,7 +4,12 @@
         <DetailsNavSection  :navBarData="navBarData"/>
         <div class="backgroundstyle">
             <ProductIntro :introData="introData"/>
-            <ProductHighlight :spotsData="spotsData"/>
+            <span v-if="$device.isMobile">
+                <ProductHighlightMobile :spotsData="spotsData"/>
+            </span>
+            <span v-else>
+                <ProductHighlight :spotsData="spotsData"/>
+            </span>
             <FeeDesc :productFeeDesc="productFeeDesc"/>
             <productDaysPlan :daysplan="productDaysPlan" />
             <ProductNeedsToKnow :needsToKnow="needsToKnow" />
@@ -24,10 +29,11 @@ import FeeDesc from '../../../components/DetailsPage/FeeDesc';
 import productDaysPlan from '../../../components/DetailsPage/ProductDaysPlan';
 import ProductNeedsToKnow from '../../../components/DetailsPage/ProductNeedsToKnow';
 import YouMightInterested from '../../../components/DetailsPage/YouMightInterested';
+import ProductHighlightMobile from '../../../components/DetailsPage/ProductHighlightMobile';
 import axios from 'axios'
 const apiUrl = process.env.API_URL
 export default {
-    components: { DetailsCarousel, DetailsNavSection, ProductIntro, ProductHighlight, FeeDesc, productDaysPlan, ProductNeedsToKnow, YouMightInterested},
+    components: { DetailsCarousel, DetailsNavSection, ProductIntro, ProductHighlight, FeeDesc, productDaysPlan, ProductNeedsToKnow, YouMightInterested, ProductHighlightMobile},
     data(){
         return{  
             navBarData: {},
@@ -46,7 +52,7 @@ export default {
         return /^\d+$/.test(context.params.code)
     },
 
-    async asyncData({params}){
+    async asyncData({params, redirect}){
     
         try {
                 let code = params.code;
@@ -68,7 +74,7 @@ export default {
                 data.flyer = flyer;
                 return {productDetails: data};   
         } catch (error) {
-             error({ statusCode: 404, message: 'Post not found' });
+             redirect(301, '/error')
         }
        
  
