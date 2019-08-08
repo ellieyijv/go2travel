@@ -61,6 +61,7 @@ export default {
     color:#103A5B;
     font-family: "FangPingMedium";
     padding:10px;
+  
 }
 
 .special-subtitle{
@@ -134,7 +135,9 @@ export default {
         width:170px;
         font-size:12px;
         height:32px;
-     
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
     .child {
         padding-top: 102px;

@@ -20,27 +20,58 @@
             <b-row>
                
                 <b-col>
-                <b-form class="inquiryform">
+                <b-form class="inquiryform"
+                         @submit.prevent="sendInquiryEmail" >
+                           <div v-if="errors.length">
+                            <b>Please correct the following error(s):</b>
+                            <ul>
+                                <li v-for="error in errors" :key="error.id">{{ error }}</li>
+                            </ul>
+                        </div>
                     <b-col cols="12" class="formtitlestyle">
                         <h4>咨詢報價</h4>
                     </b-col> 
                     <div class="formcontent"> 
                     <b-row >
-                        <b-col md="4" v-for="item in formRowOne" :key="item.id">
-                            <inquiryFormElement :item="item" />
-                        </b-col>
+                        <b-form-group label="姓*" lable-for="surname" class="col-md-4">
+                            <b-form-input id="surname" required type="text" v-model="surname"></b-form-input>
+                        </b-form-group> 
+                       
+                        <b-form-group label="名*" lable-for="firstname" class="col-md-4">
+                            <b-form-input id="firstname" required type="text" v-model="firstname"></b-form-input>
+                        </b-form-group>  
+
+                        <b-form-group label="電郵*" lable-for="email" class="col-md-4">
+                            <b-form-input id="email" required type="email" v-model="email"></b-form-input>
+                        </b-form-group>     
                     </b-row>
 
                      <b-row >
-                        <b-col md="4" v-for="item in formRowTwo" :key="item.id">
-                            <inquiryFormElement :item="item" />
-                        </b-col>
+                        <b-form-group label="電話*" lable-for="phone" class="col-md-4">
+                            <b-form-input id="phone" required type="number" v-model="phone"></b-form-input>
+                        </b-form-group> 
+                       
+                        <b-form-group label="出發日期*" lable-for="startDate" class="col-md-4">
+                            <b-form-input id="startDate" required type="text" v-model="startDate"></b-form-input>
+                        </b-form-group>  
+
+                        <b-form-group label="出發城市*" lable-for="startCity" class="col-md-4">
+                            <b-form-input id="startCity" required type="text" v-model="startCity"></b-form-input>
+                        </b-form-group> 
                     </b-row>
 
                     <b-row >
-                        <b-col md="4" v-for="item in formRowThree" :key="item.id">
-                            <inquiryFormElement :item="item" />
-                        </b-col>
+                        <b-form-group label="旅客人數*" lable-for="visitorNo" class="col-md-4">
+                            <b-form-input id="visitorNo" required type="number" v-model="visitorNo"></b-form-input>
+                        </b-form-group> 
+                       
+                        <b-form-group label="性別" lable-for="sex" class="col-md-4">
+                            <b-form-input id="sex"  type="text" v-model="sex"></b-form-input>
+                        </b-form-group>  
+
+                        <b-form-group label="出生日期" lable-for="birth" class="col-md-4">
+                            <b-form-input id="birth"  type="date" v-model="birth"></b-form-input>
+                        </b-form-group> 
                     </b-row>
 
                     <b-row>
@@ -51,14 +82,13 @@
                                 >
                                      <b-form-textarea
                                         id="textarea"
-                                    
                                         rows="4"       
-                                        ></b-form-textarea>
+                                        v-model="remark"></b-form-textarea>
                                 </b-form-group>
                         </b-col>
                     </b-row>
                     <b-row>
-                        <b-button type="submit" variant="primary" class="formBtn">提交</b-button>
+                        <b-button type="submit" variant="primary" class="formBtn" :disabled="isDisabled">提交</b-button>
                     </b-row>
                     </div>
                 </b-form>
@@ -70,60 +100,62 @@
 </template>
 
 <script>
-import inquiryFormElement from './inquiryFormElement'
+import axios from 'axios'
 export default {
-    components: {inquiryFormElement},
+    
     props:['productData'],
     data(){
         return{
-            formRowOne:[{
-                id: 'surname',
-                label: '姓*',
-                type: "text"
-            },
-            {
-                id: 'firstname',
-                label: "名*",
-                type: "text"
-            },
-            {
-                id: 'email',
-                label: "電郵*",
-                type:"email"
-            }],
-            
-            formRowTwo:[{
-                id: 'phone',
-                label: '電話*',
-                type: "text"
-            },
-            {
-                id: 'startDate',
-                label: "出發日期*",
-                type: "text"
-            },
-            {
-                id: 'startCity',
-                label: "出發城市*",
-                type:"email"
-            }],
+            surname:'',
+            firstname: '',
+            email:'',
+            phone:'',
+            startDate: '',
+            startCity: '',
+            visitorNo: '',
+            sex: '',
+            birth:'',
+            remark:'',
+            isDisabled: false,
+            message: "",
+            errors:[],
+        }
+    },
 
-             formRowThree:[{
-                id: 'visitorNo',
-                label: '旅客人數*',
-                type: "text"
-            },
-            {
-                id: 'sex',
-                label: "性別*",
-                type: "text"
-            },
-            {
-                id: 'birth',
-                label: "出生日期*",
-                type:"email"
-            }],
+    async mounted() {
+        await this.$recaptcha.init()
+    },
 
+    methods:{
+        sendInquiryEmail(){
+            if(this.surname && this.firstname && this.email && this.phone &&this.startDate && this.startCity && this.visitorNo){
+              this.isDisabled = true; 
+            }  
+            this.message  = "";
+            const token = this.$recaptcha.execute('login');
+            axios.post("/api/sendemail/inquiryform", {
+                surname:this.surname,
+                firstname: this.firstname,
+                email: this.email,
+                phone: this.phone,
+                startDate: this.startDate,
+                startCity: this.startCity,
+                visitorNo: this.visitorNo,
+                sex: this.sex,
+                birth:  this.birth,
+                remark: this.remark,
+               
+            }).then(res =>{  
+                    if(res.data.message == "success"){
+                        this.isDisabled = false;
+                        this.message = "Thanks for contacting us";
+                    }else{
+                        this.isDisabled = false;
+                        this.errors.push(res.data.response);
+                    }  
+                }).catch(function (error){
+                   this.errors.push(error); 
+             })           
         }
     }
 }

@@ -11,10 +11,12 @@
                             <ul>
                                 <li v-for="error in errors" :key="error.id">{{ error }}</li>
                             </ul>
-                            <h5 v-if="message.length">{{message}}</h5>
                         </div>
                         <b-row >
                             <h4>聯系我們</h4>
+                        </b-row>
+                        <b-row v-if="message.length">
+                            <h5  class="pl-4">{{message}}</h5>
                         </b-row>
                         <div class="formcontent">
                             <b-row>
@@ -134,6 +136,10 @@ export default {
                     if(res.data.message == "success"){
                         this.isDisabled = false;
                         this.message = "Thanks for contacting us";
+                        this.name="";
+                        this.phone ="";
+                        this.email="";
+                        this.msg = "";
                     }else{
                         this.isDisabled = false;
                         this.errors.push(res.data.response);
