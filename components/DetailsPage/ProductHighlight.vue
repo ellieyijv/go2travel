@@ -17,7 +17,7 @@
 							>
 							<div class="card-carousel--card hilightlistStyle" 
                                 v-for="(img, index) in spotsData" :key="index" sm="6" lg="4" xl="3">
-									<img :src="img.image" />
+									<img :src="img.image"  style="height: 141px;"/>
 									<p>{{ img.name }}</p>
 
 								</div>
