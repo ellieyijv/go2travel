@@ -46,25 +46,25 @@ export default {
        }
     },
 
+
     async asyncData({params}){
         try {
             let state_slug = params.slug;
             let res = await axios.get(`${apiUrl}/api/${state_slug}/cities`);
-        
             return {countrycities: res.data}   
             
-        } catch (error) {
-            console.log(error)
+        } catch (e) {
+            error({ statusCode: 404, message: 'Post not found' });
         }
        
     },
-    async fetch({store, params}) {
+
+    async fetch({store, params, redirect}) {
         let state_slug= params.slug
-		store.commit('productSummary/emptyStateProductsList');
-        const {data} = await axios.get(`${apiUrl}/api/${state_slug}/products`);
-        if(!data) return cb('Can not find the product');
-       
-        data.forEach(item => { 
+        store.commit('productSummary/emptyStateProductsList');
+        try {
+            const {data} = await axios.get(`${apiUrl}/api/${state_slug}/products`);
+            data.forEach(item => { 
 			item.card_image = JSON.parse(item.card_image)[0]
             store.commit('productSummary/addStateProducts', {
                 id: item.id,
@@ -75,8 +75,11 @@ export default {
                 card_image: `${apiUrl}/storage/${item.card_image}`,
                 product_code: item.product_code,
                 state_id: item.state_id,
+                })
             })
-        })
+        } catch (e) {
+            redirect(301, '/error')
+        }  
     },
    created(){ 
         this.productList = this.$store.getters['productSummary/stateProductsList'];   
@@ -132,7 +135,7 @@ export default {
                             this.productList = mappedData;
                         })
                         .catch((error)=>{
-                            console.log(error)
+                            this.$nuxt.error({ statusCode: 404, message: 'Post not found' });
                         }); 
                      
                 }

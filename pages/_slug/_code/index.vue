@@ -41,15 +41,20 @@ export default {
             carouselData: []
         } 
     },
+
+    validate(context){
+        return /^\d+$/.test(context.params.code)
+    },
+
     async asyncData({params}){
     
         try {
                 let code = params.code;
                 const {data} = await axios.get(`${apiUrl}/api/${code}/withDetails`);
                 data.spots.map((item)=>{       
-                item.image= JSON.parse(item.image)[0]
-                item.image= `${apiUrl}/storage/${item.image}`
-                return item;
+                    item.image= JSON.parse(item.image)[0]
+                    item.image= `${apiUrl}/storage/${item.image}`
+                    return item;
                 })
                 data.recommends.map((item)=>{
                     let imgUrl = JSON.parse(item.card_image)[0];
@@ -63,7 +68,7 @@ export default {
                 data.flyer = flyer;
                 return {productDetails: data};   
         } catch (error) {
-            console.log(error)
+             error({ statusCode: 404, message: 'Post not found' });
         }
        
  

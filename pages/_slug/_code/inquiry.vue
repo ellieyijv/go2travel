@@ -31,7 +31,7 @@ export default {
             return {productData: tmp}; 
             
         } catch (error) {
-            console.log(error)
+            error({ statusCode: 404, message: 'Post not found' });
         }
          
     },

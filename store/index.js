@@ -50,7 +50,7 @@ export const actions = {
             commit('ADD_STATES', res.data)  
         })
         .catch(err =>{
-            console.log(err)
+            this.$nuxt.error(err);
         })
         commit('EMPTY_BASIC_INFO')
         axios.get(`${apiUrl}/api/basicInfos`)
@@ -58,7 +58,7 @@ export const actions = {
             commit('ADD_BASIC_INFO', res.data)  
         })
         .catch(err =>{
-            console.log(err)
+            this.$nuxt.error("get basic info wrong");
         })
 
     }

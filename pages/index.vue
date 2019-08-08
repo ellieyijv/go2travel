@@ -40,11 +40,12 @@ export default {
 	},
 	
 	async asyncData() {
-		let {data} = await axios.get(`${apiUrl}/api/aboutus`);
-		let carouselData = await axios.get(`${apiUrl}/api/getHeroBannerProducts`);
-		let carousel = carouselData.data.records.map((item)=>{
-			 item.flyer = JSON.parse(item.flyer)[0]
-			 return {	
+		try {
+			let {data} = await axios.get(`${apiUrl}/api/aboutus`);
+			let carouselData = await axios.get(`${apiUrl}/api/getHeroBannerProducts`);
+			let carousel = carouselData.data.records.map((item)=>{
+			item.flyer = JSON.parse(item.flyer)[0]
+			return {	
 				 		id: item.id,
 			 			product_name: item.product_name,
 						sales_price: item.sales_price,
@@ -54,22 +55,25 @@ export default {
 						state_id: item.state_id,	
 						flyer: `${apiUrl}/storage/${item.flyer}`,
 						state_slug: item.state.slug
-					}
+			}
 		})
 		
         data.aboutusImg = `${apiUrl}/storage/${data.aboutusImg.replace(/\\/g,'/') }`
 		return {aboutusData: data,
 				carousel: carousel}  
-		
-
+			
+		} catch (error) {
+			error({ statusCode: 404, message: 'Post not found' });
+		}
+	
     },
 	
-	async fetch({store}) {
+	async fetch({store, redirect}) {
 		//get special deals data
 		store.commit('productSummary/emptyList');
-        const {data} = await axios.get(`${apiUrl}/api/specialdeals`)
-    
-        data.forEach(item => { 
+		try {
+			const {data} = await axios.get(`${apiUrl}/api/specialdeals`)
+        	data.forEach(item => { 
 			item.product.card_image = JSON.parse(item.product.card_image)[0]
             store.commit('productSummary/add', {
                 id: item.product.id,
@@ -83,14 +87,16 @@ export default {
 				state_slug:item.product.state.slug
             })
 		})
+		} catch (error) {
+			redirect(301, '/error')
+		}
+      
 		
 		//get popular tours data
 		store.commit('productSummary/emptyPopularToursList');
-        const popular_data = await axios.get(`${apiUrl}/api/populartours`).catch((error => {  
-            console.log(error)
-        }))
-	
-        popular_data.data.forEach(item => { 
+		try {
+			const popular_data = await axios.get(`${apiUrl}/api/populartours`)
+        	popular_data.data.forEach(item => { 
 			item.product.card_image = JSON.parse(item.product.card_image)[0]
             store.commit('productSummary/addPopularTours', {
                 id: item.product.id,
@@ -105,6 +111,10 @@ export default {
 				
             })
 		})
+		} catch (error) {
+			redirect(301, '/error')
+		}
+       
 	},
 
 	components:{
