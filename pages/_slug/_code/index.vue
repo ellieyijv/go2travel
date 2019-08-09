@@ -48,10 +48,7 @@ export default {
         } 
     },
 
-    validate(context){
-        return /^\d+$/.test(context.params.code)
-    },
-
+  
     async asyncData({params, redirect}){
     
         try {
