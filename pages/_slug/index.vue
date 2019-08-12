@@ -35,7 +35,7 @@ export default {
        return{
             orderByPriceasc: true,
             orderByDaysasc: true,
-            countrycities: [],
+            countrycities: {},
             arrowDaysDirection: "fas fa-arrow-up",
             arrowPriceDirection: "fas fa-arrow-up",
             opacityValue: "0.6",
@@ -45,16 +45,19 @@ export default {
             bannerImage: ''
        }
     },
-
+    mounted(){
+        console.log(this.countrycities);
+    },
 
     async asyncData({params, redirect}){
         try {
             let state_slug = params.slug;
             let res = await axios.get(`${apiUrl}/api/${state_slug}/cities`);
+         
             return {countrycities: res.data}   
             
         } catch (e) {
-            redirect(301, '/error')
+            console.log(e);
         }
        
     },
@@ -78,7 +81,7 @@ export default {
                 })
             })
         } catch (e) {
-            redirect(301, '/error')
+            console.log(error);
         }  
     },
    created(){ 
