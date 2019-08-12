@@ -4,7 +4,7 @@
         <b-container class="countrynavbar">
             <b-row>
                 <b-col cols="auto" class="mr-auto p-3 countryname ">
-                    <h5>{{countrycities.state.state}}</h5>
+                    <h5>{{countrycities}}</h5>
                 </b-col>
               
                 <b-col cols="auto" >
@@ -79,6 +79,10 @@ export default {
             this.$emit('filterProductByCity', cityId);
         }  
     },
+
+    mounted(){
+        console.log(this.countrycities);
+    }
    
 }
 </script>

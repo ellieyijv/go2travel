@@ -116,7 +116,7 @@ export default {
             let {data} = await axios.get(`${apiUrl}/api/basicInfos`);
             return {basicInfos: data}
          } catch (error) {
-             redirect(301, '/error')
+             console.log(error);
          }
       
     },

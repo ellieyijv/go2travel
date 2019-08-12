@@ -31,7 +31,7 @@ export default {
             return {productData: tmp}; 
             
         } catch (error) {
-            redirect(301, '/error')
+            console.log(error);
         }
          
     },

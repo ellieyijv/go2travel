@@ -25,7 +25,7 @@ const apiUrl = process.env.API_URL
 
 export default {
 	head: {
-		title: 'Home page 🚀',
+		title: 'Go4fun home page 🚀',
 		meta: [
 		{ hid: 'description', name: 'description', content: 'go4fun 旅游 悉尼 澳大利亚' }
 			],
@@ -39,12 +39,13 @@ export default {
 		}
 	},
 	
-	async asyncData({redirect}) {
+	async asyncData() {
 		try {
 			let {data} = await axios.get(`${apiUrl}/api/aboutus`);
 			let carouselData = await axios.get(`${apiUrl}/api/getHeroBannerProducts`);
 			let carousel = carouselData.data.records.map((item)=>{
-			item.flyer = JSON.parse(item.flyer)[0]
+			item.banner_image = JSON.parse(item.banner_image)[0]
+			console.log(item.banner_image);
 			return {	
 				 		id: item.id,
 			 			product_name: item.product_name,
@@ -53,22 +54,20 @@ export default {
 						duration: `${item.duration}天${item.duration-1}夜`,
 						product_code: item.product_code,
 						state_id: item.state_id,	
-						flyer: `${apiUrl}/storage/${item.flyer}`,
-						state_slug: item.state.slug
+					
+						state_slug: item.state.slug					
 			}
-		})
-		
-        data.aboutusImg = `${apiUrl}/storage/${data.aboutusImg.replace(/\\/g,'/') }`
-		return {aboutusData: data,
-				carousel: carousel}  
-			
+		})			
+			data.aboutusImg = `${apiUrl}/storage/${data.aboutusImg.replace(/\\/g,'/') }`
+			return {aboutusData: data,
+					carousel: carousel}  			
 		} catch (error) {
-			redirect(301, '/error')
+			console.log(error);
 		}
 	
     },
 	
-	async fetch({store, redirect}) {
+	async fetch({store}) {
 		//get special deals data
 		store.commit('productSummary/emptyList');
 		try {
@@ -88,7 +87,7 @@ export default {
             })
 		})
 		} catch (error) {
-			redirect(301, '/error')
+			console.log(error);
 		}
       
 		
@@ -112,7 +111,7 @@ export default {
             })
 		})
 		} catch (error) {
-			redirect(301, '/error')
+			console.log(error);
 		}
        
 	},

@@ -71,7 +71,7 @@ export default {
                 data.flyer = flyer;
                 return {productDetails: data};   
         } catch (error) {
-             redirect(301, '/error')
+            console.log(error);
         }
        
  
