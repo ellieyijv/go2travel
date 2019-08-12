@@ -45,9 +45,7 @@ export default {
             bannerImage: ''
        }
     },
-    mounted(){
-        console.log(this.countrycities);
-    },
+  
 
     async asyncData({params, redirect}){
         try {

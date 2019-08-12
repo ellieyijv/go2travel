@@ -1,5 +1,5 @@
 <template>
-<nuxt-link :to="'/'+ card.state_slug + '/'+ card.product_code" style="text-decoration:none">
+<nuxt-link :to="'/'+ card.product_slug + '/' + card.product_code" style="text-decoration:none">
     <b-card  class="cardStyle">
         <div class="parent">
             <div class="child img-top" :style="{ backgroundImage: 'url(' + card.card_image + ')' }"  ></div>

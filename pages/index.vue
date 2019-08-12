@@ -1,7 +1,7 @@
 <template>
 	<div id="homepagestyle">
 		
-		<Carousel :carousel="carousel"/>
+		<Carousel :carousel="carouselData"/>
 		<SpecialDeals />
 		<PopularTours />
 		<Globe />
@@ -34,8 +34,8 @@ export default {
 	data(){
 		return{
 			cardList: '',
-			aboutusData: '',
-			carousel: {}
+			aboutusData: {},
+			carouselData: {}
 		}
 	},
 	
@@ -43,24 +43,22 @@ export default {
 		try {
 			let {data} = await axios.get(`${apiUrl}/api/aboutus`);
 			let carouselData = await axios.get(`${apiUrl}/api/getHeroBannerProducts`);
-			let carousel = carouselData.data.records.map((item)=>{
-			item.banner_image = JSON.parse(item.banner_image)[0]
-			console.log(item.banner_image);
+	
+			let carousel = carouselData.data.map((item)=>{
 			return {	
 				 		id: item.id,
-			 			product_name: item.product_name,
-						sales_price: item.sales_price,
-						price: item.price,
-						duration: `${item.duration}天${item.duration-1}夜`,
-						product_code: item.product_code,
-						state_id: item.state_id,	
-					
-						state_slug: item.state.slug					
+			 			title: item.title,
+						sales_price: item.product.sales_price,
+						hero_banner_image: `${apiUrl}/storage/${item.hero_banner_image}`,
+						product_id: item.product_id,
+						product_slug:item.product.slug,	
+						state_slug: item.product.state.slug					
 			}
 		})			
-			data.aboutusImg = `${apiUrl}/storage/${data.aboutusImg.replace(/\\/g,'/') }`
-			return {aboutusData: data,
-					carousel: carousel}  			
+			data.aboutusImg = `${apiUrl}/storage/${data.aboutusImg}`
+			console.log(carousel);
+			console.log(data);
+			return {aboutusData: data, carouselData: carousel}  			
 		} catch (error) {
 			console.log(error);
 		}
@@ -73,17 +71,17 @@ export default {
 		try {
 			const {data} = await axios.get(`${apiUrl}/api/specialdeals`)
         	data.forEach(item => { 
-			item.product.card_image = JSON.parse(item.product.card_image)[0]
             store.commit('productSummary/add', {
                 id: item.product.id,
 				product_name: item.product.product_name,
 				sales_price: item.product.sales_price,
 				price: item.product.price,
 				duration: item.product.duration,
-				card_image: `${apiUrl}/storage/${item.product.card_image}`,
+				card_image: `${apiUrl}/storage/${item.card_image}`,
 				product_code: item.product.product_code,
 				state_id: item.product.state_id,
-				state_slug:item.product.state.slug
+				state_slug:item.product.state.slug,
+				product_slug: item.product.slug
             })
 		})
 		} catch (error) {
@@ -96,19 +94,20 @@ export default {
 		try {
 			const popular_data = await axios.get(`${apiUrl}/api/populartours`)
         	popular_data.data.forEach(item => { 
-			item.product.card_image = JSON.parse(item.product.card_image)[0]
-            store.commit('productSummary/addPopularTours', {
-                id: item.product.id,
-				product_name: item.product.product_name,
-				sales_price: item.product.sales_price,
-				price: item.product.price,
-				duration: item.product.duration,
-				card_image: `${apiUrl}/storage/${item.product.card_image}`,
-				product_code: item.product.product_code,
-				state_id: item.product.state_id,
-				state_slug:item.product.state.slug
-				
-            })
+		
+				store.commit('productSummary/addPopularTours', {
+					id: item.product.id,
+					product_name: item.product.product_name,
+					sales_price: item.product.sales_price,
+					price: item.product.price,
+					duration: item.product.duration,
+					card_image: `${apiUrl}/storage/${item.card_iamge}`,
+					product_code: item.product.product_code,
+					state_id: item.product.state_id,
+					state_slug:item.product.state.slug,
+					product_slug: item.product.slug
+					
+				})
 		})
 		} catch (error) {
 			console.log(error);

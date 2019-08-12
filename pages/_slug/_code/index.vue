@@ -53,9 +53,10 @@ export default {
     
         try {
                 let code = params.code;
+               
                 const {data} = await axios.get(`${apiUrl}/api/${code}/withDetails`);
                 data.spots.map((item)=>{       
-                    item.image= JSON.parse(item.image)[0]
+                    
                     item.image= `${apiUrl}/storage/${item.image}`
                     return item;
                 })
@@ -63,12 +64,12 @@ export default {
                     let imgUrl = JSON.parse(item.card_image)[0];
                     item.card_image= `${apiUrl}/storage/${imgUrl}`
                 })
-                data.flyer = JSON.parse(data.flyer);
-                const flyer = data.flyer.map((item)=>{
+                data.banner_image = JSON.parse(data.banner_image);
+                const banner_image = data.banner_image.map((item)=>{
                     item = `${apiUrl}/storage/${item}`
                     return item;
                 })
-                data.flyer = flyer;
+                data.banner_image = banner_image;
                 return {productDetails: data};   
         } catch (error) {
             console.log(error);
@@ -78,7 +79,7 @@ export default {
     },
    
     created(){
-        this.carouselData = this.productDetails.flyer
+        this.carouselData = this.productDetails.banner_image
         this.navBarData = {
             id : this.productDetails.id,
             product_name : this.productDetails.product_name,
