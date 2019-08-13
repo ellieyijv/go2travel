@@ -1,8 +1,8 @@
 <template>
     <nuxt-link :to="'/' + globe.slug">
         <span class="img-responsive">
-            <div :globe="globe" >
-                <img :src="globe.thumbnail" />
+            <div :globe="globe" class="parent">
+                <img :src="globe.thumbnail"/>
             </div>
             <p >{{globe.state}}</p>
         </span>
@@ -24,6 +24,13 @@ p{
 }
 
 .img-responsive img{
-   width:100%;
+    width:100%;
+    height:90%;
+    border-radius: 50%;
+}
+
+.parent{
+    
+    height:3rem;
 }
 </style>

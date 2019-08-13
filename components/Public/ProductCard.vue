@@ -5,7 +5,7 @@
             <div class="child img-top" :style="{ backgroundImage: 'url(' + card.card_image + ')' }"  ></div>
         </div>
         <b-card-text class="special-title">{{card.product_name}}</b-card-text>
-        <b-card-text class="special-subtitle">原價${{card.price}} 最後機會 立馬下訂</b-card-text>  
+        <b-card-text class="special-subtitle">原價${{numberWithCommas(card.price)}} 最後機會 立馬下訂</b-card-text>  
         <div class="container-fluid">
             <div class="row">
                 <b-card-text class="col special-price col-12 col-sm-12 col-md-4">${{numberWithCommas(card.sales_price)}} /人起</b-card-text>    
