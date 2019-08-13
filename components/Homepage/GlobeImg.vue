@@ -2,7 +2,7 @@
 <nuxt-link :to="'/' + globe.slug">
     <div :globe="globe" class="parent">
    
-        <img :src="globe.thumbnail" class="img-responsive child"/>
+        <img :src="globe.thumbnail" class="img-responsive child" :alt="globe.state"/>
       
     </div>
       <p >{{globe.state}}</p>

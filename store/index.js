@@ -54,7 +54,7 @@ export const actions = {
         commit('ADD_STATES', stateResponse.data);
                 commit('ADD_BASIC_INFO', basicResponse.data);			
         } catch (error) {
-        console.log(error);
+            console.log(error);
         }
     }
 

@@ -78,7 +78,7 @@ export default {
                 product_slug: item.slug
                 })
             })
-        } catch (e) {
+        } catch (error) {
             console.log(error);
         }  
     },
@@ -136,7 +136,7 @@ export default {
                             this.productList = mappedData;
                         })
                         .catch((error)=>{
-                            this.$nuxt.error({ statusCode: 404, message: 'Post not found' });
+                            console.log(error);
                         }); 
                      
                 }

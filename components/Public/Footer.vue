@@ -3,7 +3,7 @@
         <b-container>
             <div class="d-flex justify-content-between">
                 <section class="footerLogo">
-                    <img src="/images/footerlogo.png" />
+                    <img src="/images/footerlogo.png"  alt="footer logo"/>
                 </section>
                 <section >
                     <b-nav class="links" style="font-size:14px">
@@ -16,7 +16,7 @@
                     <div class="social">
                     <i class="fab">&#xf39e;</i>
                     <i class="fab fa-weixin" @click="showORCode = !showORCode"></i>
-                    <img v-if="showORCode" src="images/wechat.png" class="qrcode"/>
+                    <img v-if="showORCode" src="images/wechat.png" class="qrcode" alt="wechat qr"/>
                     </div>
                    
                 </section>
