@@ -55,14 +55,12 @@ export default {
                 let code = params.code;
                
                 const {data} = await axios.get(`${apiUrl}/api/${code}/withDetails`);
-                data.spots.map((item)=>{       
-                    
+                data.spots.map((item)=>{          
                     item.image= `${apiUrl}/storage/${item.image}`
                     return item;
                 })
                 data.recommends.map((item)=>{
-                    let imgUrl = JSON.parse(item.card_image)[0];
-                    item.card_image= `${apiUrl}/storage/${imgUrl}`
+                    item.card_image= `${apiUrl}/storage/${item.card_image}`
                 })
                 data.banner_image = JSON.parse(data.banner_image);
                 const banner_image = data.banner_image.map((item)=>{

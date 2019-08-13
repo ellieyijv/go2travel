@@ -50,14 +50,12 @@ export default {
 			 			title: item.title,
 						sales_price: item.product.sales_price,
 						hero_banner_image: `${apiUrl}/storage/${item.hero_banner_image}`,
-						product_id: item.product_id,
+						product_code: item.product.product_code,
 						product_slug:item.product.slug,	
 						state_slug: item.product.state.slug					
 			}
 		})			
 			data.aboutusImg = `${apiUrl}/storage/${data.aboutusImg}`
-			console.log(carousel);
-			console.log(data);
 			return {aboutusData: data, carouselData: carousel}  			
 		} catch (error) {
 			console.log(error);
@@ -77,7 +75,7 @@ export default {
 				sales_price: item.product.sales_price,
 				price: item.product.price,
 				duration: item.product.duration,
-				card_image: `${apiUrl}/storage/${item.card_image}`,
+				card_image: `${apiUrl}/storage/${item.product.card_image}`,
 				product_code: item.product.product_code,
 				state_id: item.product.state_id,
 				state_slug:item.product.state.slug,
@@ -101,7 +99,7 @@ export default {
 					sales_price: item.product.sales_price,
 					price: item.product.price,
 					duration: item.product.duration,
-					card_image: `${apiUrl}/storage/${item.card_iamge}`,
+					card_image: `${apiUrl}/storage/${item.product.card_image}`,
 					product_code: item.product.product_code,
 					state_id: item.product.state_id,
 					state_slug:item.product.state.slug,

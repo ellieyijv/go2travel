@@ -21,7 +21,7 @@ import heroImgComp from "../../components/countryProductsPage/heroImgComp";
 import countryNavBarComp from "../../components/countryProductsPage/countryNavBarComp";
 import productListComp from "../../components/countryProductsPage/productListComp";
 import axios from 'axios';
-const apiUrl = process.env.API_URL || 'http://localhost:80'
+const apiUrl = process.env.API_URL 
 
 export default {
     components:{heroImgComp, countryNavBarComp, productListComp},
@@ -47,11 +47,10 @@ export default {
     },
   
 
-    async asyncData({params, redirect}){
+    async asyncData({params}){
         try {
             let state_slug = params.slug;
             let res = await axios.get(`${apiUrl}/api/${state_slug}/cities`);
-         
             return {countrycities: res.data}   
             
         } catch (e) {
@@ -60,13 +59,13 @@ export default {
        
     },
 
-    async fetch({store, params, redirect}) {
+    async fetch({store, params}) {
         let state_slug= params.slug
         store.commit('productSummary/emptyStateProductsList');
         try {
             const {data} = await axios.get(`${apiUrl}/api/${state_slug}/products`);
             data.forEach(item => { 
-			item.card_image = JSON.parse(item.card_image)[0]
+			// item.card_image = JSON.parse(item.card_image)[0]
             store.commit('productSummary/addStateProducts', {
                 id: item.id,
 				product_name: item.product_name,
@@ -128,7 +127,7 @@ export default {
                     axios.get(`${apiUrl}/api/state/${cityId}/products`)
                         .then((res)=>{
                             const mappedData =  res.data.map((item)=>{
-                                item.card_image = JSON.parse(item.card_image)[0]
+                                // item.card_image = JSON.parse(item.card_image)[0]
                                 item.card_image= `${apiUrl}/storage/${item.card_image}`
                                 this.$store.commit('productSummary/addCurrentProducts', item);
                                 return item;

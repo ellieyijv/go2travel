@@ -9,19 +9,19 @@
    
     <div class="carousel-inner">
             <section v-for="card in carousel" :key="card.id"> 
-            <nuxt-link :to="'/'+ card.state_slug + '/'+ card.product_slug" style="text-decoration:none">
-            <div class="carousel-item active imagebox" :style="{ backgroundImage: 'url(' + card.hero_banner_image + ')'}">
-                <a href="#hola">
-                    <div class="imagebox-desc">
-                        <div class="container mb-1" style="padding-top:160px;">
-                          
-                            <h5>{{card.title}}</h5>
-                            <h4 style="padding-top:25px;">{{numberWithCommas(card.sales_price)}} <span style="font-size:14px; color:#337AB2;">/人起</span></h4>
-                        </div>
+                <nuxt-link :to="'/'+ card.product_slug + '/'+ card.product_code" style="text-decoration:none">
+                    <div class="carousel-item active imagebox" :style="{ backgroundImage: 'url(' + card.hero_banner_image + ')'}">
+                        
+                            <div class="imagebox-desc">
+                                <div class="container mb-1" style="padding-top:160px;">
+                                
+                                    <h5>{{card.title}}</h5>
+                                    <h4 style="padding-top:25px;">{{numberWithCommas(card.sales_price)}} <span style="font-size:14px; color:#337AB2;">/人起</span></h4>
+                                </div>
+                            </div>
+                         
                     </div>
-                </a>
-            </div>
-            </nuxt-link>
+              </nuxt-link>
             </section>      
     </div>
     

@@ -39,29 +39,23 @@ export const mutations = {
   
 export const actions = {
     async nuxtServerInit ({ commit }) {
-        axios.get(`${apiUrl}/api/states`)
-        .then(res=>{ 
-            res.data.map((item)=>{
-                item.thumbnail = JSON.parse(item.thumbnail)[0];
-                item.thumbnail= `${apiUrl}/storage/${item.thumbnail}`
-                item.banner_image = JSON.parse(item.banner_image)[0];
-                item.banner_image= `${apiUrl}/storage/${item.banner_image}`
-            })
-            commit('ADD_STATES', res.data)  
-        })
-        .catch(err =>{
-            this.$nuxt.error(err);
-        })
-        commit('EMPTY_BASIC_INFO')
-        axios.get(`${apiUrl}/api/basicInfos`)
-        .then(res=>{ 
-            commit('ADD_BASIC_INFO', res.data)  
-        })
-        .catch(err =>{
-            this.$nuxt.error("get basic info wrong");
-        })
 
+    try {
+        let stateResponse = await  axios.get(`${apiUrl}/api/states`);
+        let basicResponse = await axios.get(`${apiUrl}/api/basicInfos`);
+
+         stateResponse.data.map((item)=>{
+            item.thumbnail = JSON.parse(item.thumbnail)[0];
+            item.thumbnail= `${apiUrl}/storage/${item.thumbnail}`
+            item.banner_image = JSON.parse(item.banner_image)[0];
+            item.banner_image= `${apiUrl}/storage/${item.banner_image}`
+        })
+    		
+        commit('ADD_STATES', stateResponse.data);
+                commit('ADD_BASIC_INFO', basicResponse.data);			
+        } catch (error) {
+        console.log(error);
+        }
     }
-
 
 }
