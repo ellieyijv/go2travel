@@ -75,6 +75,7 @@ export default {
                 card_image: `${apiUrl}/storage/${item.card_image}`,
                 product_code: item.product_code,
                 state_id: item.state_id,
+                product_slug: item.slug
                 })
             })
         } catch (e) {
