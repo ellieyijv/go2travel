@@ -39,7 +39,7 @@ export default {
 		}
 	},
 	
-	async asyncData() {
+	async asyncData(error) {
 		try {
 			let {data} = await axios.get(`${apiUrl}/api/aboutus`);
 			let carouselData = await axios.get(`${apiUrl}/api/getHeroBannerProducts`);
@@ -57,13 +57,14 @@ export default {
 		})			
 			data.aboutusImg = `${apiUrl}/storage/${data.aboutusImg}`
 			return {aboutusData: data, carouselData: carousel}  			
-		} catch (error) {
-			console.log(error);
+		} catch {
+			error({message: "we can't find the resource for you"})
+            return {status: 400}
 		}
 	
     },
 	
-	async fetch({store}) {
+	async fetch({store, error}) {
 		//get special deals data
 		store.commit('productSummary/emptyList');
 		try {
@@ -82,8 +83,9 @@ export default {
 				product_slug: item.product.slug
             })
 		})
-		} catch (error) {
-			console.log(error);
+		} catch {
+			error({message: "we can't find the resource for you"})
+            return {status: 400}
 		}
       
 		
@@ -107,8 +109,9 @@ export default {
 					
 				})
 		})
-		} catch (error) {
-			console.log(error);
+		} catch {
+			error({message: "we can't find the resource for you"})
+            return {status: 400}
 		}
        
 	},

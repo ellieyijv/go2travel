@@ -47,19 +47,20 @@ export default {
     },
   
 
-    async asyncData({params}){
+    async asyncData({params, error}){
         try {
             let state_slug = params.slug;
             let res = await axios.get(`${apiUrl}/api/${state_slug}/cities`);
             return {countrycities: res.data}   
             
-        } catch (e) {
-            console.log(e);
+        } catch {
+            error({message: "we can't find the resource for you"})
+            return {status: 400}
         }
        
     },
 
-    async fetch({store, params}) {
+    async fetch({store, params, error}) {
         let state_slug= params.slug
         store.commit('productSummary/emptyStateProductsList');
         try {
@@ -78,8 +79,9 @@ export default {
                 product_slug: item.slug
                 })
             })
-        } catch (error) {
-            console.log(error);
+        } catch {
+            error({message: "we can't find the resource for you"})
+            return {status: 400}
         }  
     },
    created(){ 

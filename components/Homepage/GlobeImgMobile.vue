@@ -24,7 +24,7 @@ p{
 }
 
 .img-responsive img{
-    width:100%;
+    width:2.8rem;
     height:90%;
     border-radius: 50%;
 }

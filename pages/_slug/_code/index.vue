@@ -49,7 +49,7 @@ export default {
     },
 
   
-    async asyncData({params, redirect}){
+    async asyncData({params, redirect, error}){
     
         try {
                 let code = params.code;
@@ -69,8 +69,9 @@ export default {
                 })
                 data.banner_image = banner_image;
                 return {productDetails: data};   
-        } catch (error) {
-            console.log(error);
+        } catch {
+            error({message: "we can't find the resource for you"})
+            return {status: 400}
         }
        
  
